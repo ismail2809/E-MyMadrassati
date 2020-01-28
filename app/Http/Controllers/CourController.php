@@ -10,7 +10,7 @@ class CourController extends Controller
     public function index()
     {
         $cours = Cour::all();
-        return view('cour.index',compact($cours));
+        return view('cour.index',compact('cours'));
     }
 
     public function create()

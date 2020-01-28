@@ -33,7 +33,7 @@ class InscriptionController extends Controller
 
         $inscriptions = Inscription::all();
         
-        return view('inscription.index',compact($inscriptions));
+        return view('inscription.index',compact('inscriptions'));
     }
 
     public function edit($id){

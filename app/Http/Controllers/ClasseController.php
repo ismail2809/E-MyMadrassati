@@ -4,18 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Classe;
+use App\Niveau;
 
 class ClasseController extends Controller
 {
     public function index()
     {
         $classes = Classe::all();
-        return view('classe.index',compact($classes));
+        return view('classe.index',compact('classes'));
     }
 
     public function create()
     { 
-        return view('classe.new');
+        $niveaux = Niveau::all();
+        //dd($niveaux);               
+        return view('classe.new',compact('niveaux'));
     }
 
     public function store(Request $request){
@@ -51,7 +54,6 @@ class ClasseController extends Controller
         $classe = Classe::find($id);
         $classe->delete();
 
-        return redirect('/classes');
-        
+        return redirect('/classes');        
     }
 }

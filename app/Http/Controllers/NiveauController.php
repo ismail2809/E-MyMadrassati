@@ -27,7 +27,7 @@ class NiveauController extends Controller
 
         $niveaus = Niveau::all();
         
-        return view('niveau.index',compact($niveaus));
+        return view('niveau.index',compact('niveaus'));
     }
 
     public function edit($id){

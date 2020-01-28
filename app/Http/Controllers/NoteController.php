@@ -31,7 +31,7 @@ class NoteController extends Controller
 
         $notes = Note::all();
         
-        return view('note.index',compact($notes));
+        return view('note.index',compact('notes'));
     }
 
     public function edit($id){

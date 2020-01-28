@@ -26,7 +26,7 @@ class TypeController extends Controller
 
         $types = type::all();
         
-        return view('type.index',compact($types));
+        return view('type.index',compact('types'));
     }
 
     public function edit($id){

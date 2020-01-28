@@ -10,7 +10,7 @@ class MatiereController extends Controller
       public function index()
     {
         $matieres = Matiere::all();
-        return view('matiere.index',compact($matieres));
+        return view('matiere.index',compact('matieres'));
     }
 
     public function create()

@@ -10,7 +10,7 @@ class AnnéeController extends Controller
    public function index()
     {
         $années = Année::all();
-        return view('année.index',compact($années));
+        return view('année.index',compact('années'));
     }
 
     public function create()

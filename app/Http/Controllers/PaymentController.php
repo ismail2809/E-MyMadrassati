@@ -10,7 +10,7 @@ class PaymentController extends Controller
     public function index()
     {
         $payements = Payement::all();
-        return view('payment.index',compact($payements));
+        return view('payment.index',compact('payements'));
     }
 
     public function create(){
@@ -21,29 +21,12 @@ class PaymentController extends Controller
     public function store(Request $request){
         
         $payement                  = new Payement();  
-        $payement->titre           = $request->titre;           
         $payement->etudiant_id     = $request->etudiant_id;
         $payement->année_id        = $request->année_id;
         $payement->versement       = $request->versement;
         $payement->montantpayé     = $request->montantpayé;
         $payement->mode            = $request->mode;
-        $payement->description = $request->description;
-
-        
-        $payement->save();
-
-        return redirect();
-    }
-
-    public function store(Request $request){
-        
-        $payement                  = new Payement();  
-        $payement->etudiant_id     = $request->etudiant_id;
-        $payement->année_id        = $request->année_id;
-        $payement->versement       = $request->versement;
-        $payement->montantpayé     = $request->montantpayé;
-        $payement->mode            = $request->mode;
-        $payement->description = $request->description;
+        $payement->description     = $request->description;
 
 
         $payement->save();
@@ -65,7 +48,7 @@ class PaymentController extends Controller
         $payement->versement       = $request->versement;
         $payement->montantpayé     = $request->montantpayé;
         $payement->mode            = $request->mode;
-        $payement->description = $request->description;
+        $payement->description     = $request->description;
 
         
         $payement->save();
