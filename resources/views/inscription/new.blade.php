@@ -110,12 +110,13 @@
 						<div class="form">
 							<h5>Description</h5>
 							<textarea class="WYSIWYG" name="description" cols="15" rows="3" id="summary" spellcheck="true"></textarea>
-						</div>					 
+						</div>	
+
+						<button class="button preview">Enregistrer <i class="fa fa-arrow-circle-right"></i></button> 
+				 
 					</form>
 				</div>
 				<!-- Section / End -->			 
-
-				<a href="#" class="button preview">Enregistrer <i class="fa fa-arrow-circle-right"></i></a>
 
 			</div>
 		</div>

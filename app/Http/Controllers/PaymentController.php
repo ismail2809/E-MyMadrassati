@@ -15,7 +15,7 @@ class PaymentController extends Controller
 
     public function create(){
      
-        return view('payement.new');
+        return view('payment.new');
     }
 
     public function store(Request $request){
@@ -23,6 +23,7 @@ class PaymentController extends Controller
         $payement                  = new Payement();  
         $payement->etudiant_id     = $request->etudiant_id;
         $payement->année_id        = $request->année_id;
+        $payement->inscription_id  = $request->inscription_id;   
         $payement->versement       = $request->versement;
         $payement->montantpayé     = $request->montantpayé;
         $payement->mode            = $request->mode;
@@ -37,7 +38,7 @@ class PaymentController extends Controller
     public function edit($id){
 
         $payement = Payement::find($id);
-        return view('payement.edit',['payement'=>$payement]);
+        return view('payment.edit',['payement'=>$payement]);
     }
     
     public function update(Request $request){
@@ -45,6 +46,7 @@ class PaymentController extends Controller
         $payement                  = new Payement();  
         $payement->etudiant_id     = $request->etudiant_id;
         $payement->année_id        = $request->année_id;
+        $payement->inscription_id  = $request->inscription_id;           
         $payement->versement       = $request->versement;
         $payement->montantpayé     = $request->montantpayé;
         $payement->mode            = $request->mode;

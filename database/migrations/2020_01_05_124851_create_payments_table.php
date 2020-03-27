@@ -19,6 +19,8 @@ class CreatePaymentsTable extends Migration
             $table->foreign('etudiant_id')->references('id')->on('etudiants');
             $table->integer('année_id')->unsigned();
             $table->foreign('année_id')->references('id')->on('années');
+            $table->integer('inscription_id')->unsigned();
+            $table->foreign('inscription_id')->references('id')->on('inscriptions');
             $table->string('montantpayé')->nullable();
             $table->string('versement')->nullable();
             $table->string('montantpayé')->nullable();

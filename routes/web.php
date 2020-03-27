@@ -15,16 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/1', function () {
-    return view('layouts.master');
+Route::get('/2', function () {
+    return view('backend.inscription.1');
 });
+
+Route::get('/3', function () {
+    return view('payement.new');
+});
+
+Route::get('/profile', function () {
+    return view('user.profile');
+});
+
+Route::get('/updateprofile', function () {
+    return view('user.updateprofile');
+});
+
+Route::get('events', 'EventController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/inscription/new', 'InscriptionController@create');
+Route::get('/inscription/new2', 'InscriptionController@create2');
 Route::get('/inscriptions', 'InscriptionController@index');
+Route::post('/inscription', 'InscriptionController@store');
 Route::get('/inscription/{id}/edit','InscriptionController@edit');
 Route::put('/inscription/{id}','InscriptionController@update');
 Route::get('/inscription/{id}','InscriptionController@destroy');
@@ -64,3 +80,11 @@ Route::get('/types', 'TypeController@index');
 Route::get('/type/{id}/edit','TypeController@edit');
 Route::put('/type/{id}','TypeController@update');
 Route::get('/type/{id}','TypeController@destroy');
+
+Route::get('/payement/new', 'PaymentController@create');
+Route::get('/payements', 'PaymentController@index');
+Route::post('/payement', 'PaymentController@store');
+Route::get('/payement/{id}/edit','PaymentController@edit');
+Route::put('/payement/{id}','PaymentController@update');
+Route::get('/payement/{id}','PaymentController@destroy');
+
