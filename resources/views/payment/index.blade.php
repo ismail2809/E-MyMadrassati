@@ -36,16 +36,21 @@
 	              <td>2020</td> 
 	              <td>27-03-2020</td> 
 	               <td class="td-actions text-right">
-	                <a href="{{ url('/payment/id_inscription') }}" class="btn btn-info btn-round">
-	                	<i class="material-icons">euro_symbol</i>
-	                </a>             
+	                <button type="button" rel="tooltip" class="btn btn-info btn-round">
+	                  <i class="material-icons">person</i>
+	                </button>
+	                <button type="button" rel="tooltip" class="btn btn-success btn-round">
+	                  <i class="material-icons">edit</i>
+	                </button>
+	                <button type="button" rel="tooltip" class="btn btn-danger btn-round">
+	                  <i class="material-icons">close</i>
+	                </button>
 	              </td>
 	            </tr>                     
 	          </tbody>
 	        </table>
 	      </div>
 	    </div>
-
 	    <!-- end content-->
 	  </div>
 	  <!--  end card  -->
