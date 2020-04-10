@@ -100,6 +100,56 @@
           </li>
 
           <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#a4">
+              <i class="material-icons">access_time</i>
+              <p> Absences
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="a4">
+              <ul class="nav"> 
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ url('/absences') }}">
+                    <span class="sidebar-mini"> N </span>
+                    <span class="sidebar-normal"> Nouvelle </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ url('/absences/tous') }}">
+                    <span class="sidebar-mini"> L </span>
+                    <span class="sidebar-normal"> Liste </span>
+                  </a>
+                </li> 
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#a5">
+              <i class="material-icons">create</i>
+              <p> Notes
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="a5">
+              <ul class="nav"> 
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ url('/notes') }}">
+                    <span class="sidebar-mini"> N </span>
+                    <span class="sidebar-normal"> Nouvelle </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ url('/notes/tous') }}">
+                    <span class="sidebar-mini"> L </span>
+                    <span class="sidebar-normal"> Liste </span>
+                  </a>
+                </li> 
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#a3">
               <i class="material-icons">people_alt</i>
               <p> Utilisateurs

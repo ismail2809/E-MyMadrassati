@@ -37,6 +37,18 @@ Route::get('/payments', function () {
     return view('payment.index');
 });
 
+Route::get('/absences', function () {
+    return view('absence.index');
+});
+
+Route::get('/absences/classe', function () {
+    return view('absence.classe');
+});
+
+Route::get('/absences/tous', function () {
+    return view('absence.listes');
+});
+
 Route::get('/payment/id_inscription', function () {
     return view('payment.insert');
 });
@@ -50,12 +62,12 @@ Route::get('/', function () {
     	return view('dashboard.dashboard');
 });
 
-Route::get('/2', function () {
-    return view('backend.inscription.1');
+Route::get('/notes', function () {
+    return view('note.index');
 });
 
-Route::get('/3', function () {
-    return view('payement.new');
+Route::get('/notes/classe', function () {
+    return view('note.classe');
 });
 
 Route::get('events', 'EventController@index');
