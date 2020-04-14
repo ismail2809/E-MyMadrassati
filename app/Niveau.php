@@ -8,9 +8,9 @@ class Niveau extends Model
 {
 	protected $table = 'niveaus';
 
-    public function types(){
+    public function categories(){
 
-        return $this->belongsTo('App\Type','type_id');
+        return $this->belongsTo('App\Categorie','categorie_id');
         
     }
     public function classe(){

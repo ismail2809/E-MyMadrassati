@@ -17,8 +17,8 @@ class CreateNiveausTable extends Migration
             $table->bigIncrements('id');
             $table->string('titre');
             $table->string('description')->nullable();
-            $table->integer('type_id')->unsigned();
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->integer('categorie_id')->unsigned();
+            $table->foreign('categorie_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

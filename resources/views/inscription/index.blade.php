@@ -10,7 +10,7 @@
 	      <div class="card-icon">
 	        <i class="material-icons">assignment</i>
 	      </div>
-	      <h4 class="card-title">DataTables.net</h4>
+	      <h4 class="card-title">Liste des inscriptions</h4>
 	    </div>
 	    <div class="card-body">
 	      <div class="toolbar">
@@ -22,19 +22,26 @@
 	            <tr>
 	              <th>Numero d'inscription</th>
 	              <th>Prénom Nom</th>
+	              <th>Catégorie</th>
 	              <th>Niveau</th>
+	              <th>Classe</th>
+	              <th>Tarif</th>
 	              <th>Année</th>  
 	              <th>Création</th>  
 	              <th class="disabled-sorting text-right">Actions</th>
 	            </tr>
 	          </thead> 
 	          <tbody>
+	            @foreach($inscriptions as $inscription)
 	            <tr>
-	              <td>Gavin Cortez</td>
-	              <td>Team Leader</td>
-	              <td>3ème année</td>
-	              <td>2020</td> 
-	              <td>27-03-2020</td> 
+	              <td>{{ $inscription->num_inscription }}</td> 
+	              <td>{{ $inscription->etudiant_id }}</td> 
+	              <td>{{ $inscription->categorie_id }}</td>
+	              <td>{{ $inscription->niveau_id }}</td> 
+	              <td>{{ $inscription->classe_id }}</td> 
+	              <td>{{ $inscription->tarif }}</td> 
+	              <td>{{ $inscription->année_id }}</td> 
+	              <td>{{ $inscription->created_at->format('d-m-Y') }}</td> 
 	               <td class="td-actions text-right">
 	                <button type="button" rel="tooltip" class="btn btn-info btn-round">
 	                  <i class="material-icons">person</i>
@@ -46,7 +53,8 @@
 	                  <i class="material-icons">close</i>
 	                </button>
 	              </td>
-	            </tr>                     
+	            </tr>              
+	            @endforeach       
 	          </tbody>
 	        </table>
 	      </div>

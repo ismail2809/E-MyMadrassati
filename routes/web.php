@@ -21,14 +21,6 @@ Route::get('/updateprofile', function () {
     return view('user.updateprofile');
 });
 
-Route::get('/inscription/new', function () {
-    return view('inscription.new');
-});
-
-Route::get('/inscriptions', function () {
-    return view('inscription.index');
-});
-
 Route::get('/payment/new', function () {
     return view('payment.new');
 });
@@ -69,6 +61,34 @@ Route::get('/notes', function () {
 Route::get('/notes/classe', function () {
     return view('note.classe');
 });
+Route::get('/notes/etudiant', function () {
+    return view('note.note_etudiant');
+});
+
+Route::get('/notes/etudiant/new', function () {
+    return view('note.new');
+});
+
+Route::get('/notes/etudiant/edit', function () {
+    return view('note.edit');
+});
+
+Route::get('/notes/listes', function () {
+    return view('note.listes');
+});
+
+Route::get('/Demandesdocuments/nouvelle', function () {
+    return view('demandedocument.new');
+});
+
+Route::get('/Demandesdocuments', function () {
+    return view('demandedocument.listes');
+});
+
+Route::get('/timeline', function () {
+    return view('reseau.timeline');
+});
+
 
 Route::get('events', 'EventController@index');
 
@@ -76,7 +96,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*
+
 Route::get('/inscription/new', 'InscriptionController@create');
 Route::get('/inscription/new2', 'InscriptionController@create2');
 Route::get('/inscriptions', 'InscriptionController@index');
@@ -85,6 +105,14 @@ Route::get('/inscription/{id}/edit','InscriptionController@edit');
 Route::put('/inscription/{id}','InscriptionController@update');
 Route::get('/inscription/{id}','InscriptionController@destroy');
 
+/*Route::get('/inscription/new', function () {
+    return view('inscription.new');
+});
+
+Route::get('/inscriptions', function () {
+    return view('inscription.index');
+});*/
+/*
 Route::get('/année/new', 'AnnéeController@create');
 Route::get('/années', 'AnnéeController@index');
 Route::get('/année/{id}/edit','AnnéeController@edit');

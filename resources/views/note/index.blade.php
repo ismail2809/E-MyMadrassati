@@ -9,7 +9,7 @@
 
 	    <div class="card-header card-header-warning card-header-text">
 	      <div class="card-icon">
-	        <i class="material-icons">query_builder</i>
+	        <i class="material-icons">create</i>
 	      </div>
 	      <h4 class="card-title">Notes </h4>
 	    </div>

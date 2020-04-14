@@ -1,16 +1,18 @@
 @extends('back.master')
+@section('title','Editer Inscription')
 
-@section('title','Nouvelle Inscription')
 @section('content') 
  
 <div class="mr-auto ml-auto">
     <!--      Wizard container        -->
     <div class="wizard-container">
       <div class="card card-wizard" data-color="orange" id="wizardProfile">
-        <form method="post" action="{{url('/inscription')}}" enctype="multipart/form-data" >
+        <form method="post" action="{{url('/inscription/'.$inscription->id)}}" enctype="multipart/form-data" >
           {{ csrf_field() }} 
-          <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
-
+          <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       --> 
+ 
+            <input type="hidden" name="_method" value="PUT">
+                    
             <div class="card-header text-center">
               <h3 class="card-title">Création du compte</h3>
             </div>
@@ -46,7 +48,7 @@
                     <div class="col-sm-6">
                       <div class="picture-container">
                         <div class="picture">
-                          <img src="{{ asset('back/assets/img/default-avatar.png') }}" class="picture-src" id="wizardPicturePreview"  />
+                          <img src="{{ asset('back/assets/img/default-avatar.png') }}"  class="picture-src" id="wizardPicturePreview"  />
                           <input type="file" id="wizard-picture" name="avatar">
                         </div>
                         <h6 class="description">Choisir Photo</h6>
@@ -61,7 +63,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput1" class="bmd-label-floating">Prénom</label>
-                          <input type="text" class="form-control" id="exampleInput1" name="prenom">
+                          <input type="text" class="form-control" id="exampleInput1" name="prenom" value="{{ $inscription->etudiant_id}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -72,7 +74,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput2" class="bmd-label-floating">Nom</label>
-                          <input type="text" class="form-control" id="exampleInput2" name="nom">
+                          <input type="text" class="form-control" id="exampleInput2" name="nom" value="{{ $inscription->etudiant_id}}">
                         </div>
                       </div>
                     </div>
@@ -85,7 +87,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput3" class="bmd-label-floating">Numéro d'inscription</label>
-                          <input type="text" class="form-control" id="exampleInput3" name="num_inscription">
+                          <input type="text" class="form-control" id="exampleInput3" name="num_inscription" value="{{ $inscription->num_inscription}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -96,7 +98,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput4" class="bmd-label-floating">Tél</label>
-                          <input type="number" class="form-control" id="exampleInput4" name="tel">
+                          <input type="number" class="form-control" id="exampleInput4" name="tel" value="{{ $inscription->etudiant_id}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -106,7 +108,7 @@
                           </span>
                         </div>
                         <div class="form-group">
-                           <input type="date" class="form-control datepicker" id="exampleemalil" name="ddn">
+                           <input type="date" class="form-control datepicker" id="exampleemalil" name="ddn" value="{{ $inscription->etudiant_id}}">
                         </div>
                       </div>
                     </div>
@@ -119,7 +121,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput5" class="bmd-label-floating">Email</label>
-                          <input type="email" class="form-control" id="exampleInput5" name="email">
+                          <input type="email" class="form-control" id="exampleInput5" name="email" value="{{ $inscription->etudiant_id}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -143,7 +145,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput6" class="bmd-label-floating">Lieu naissance</label>
-                          <input type="text" class="form-control" id="exampleInput6" name="lieu_naissance">
+                          <input type="text" class="form-control" id="exampleInput6" name="lieu_naissance" value="{{ $inscription->etudiant_id}}">
                         </div>
                       </div>                    
                     </div>
@@ -151,7 +153,7 @@
                     <div class="col-sm"> 
                         <div class="form-group">
                           <label class="bmd-label-floating"> Exemple 3 rue XXX , maarif Casablanca.</label>
-                          <textarea class="form-control" rows="5" name="adresse"></textarea>
+                          <textarea class="form-control" rows="5" name="adresse">{{ $inscription->etudiant_id}}</textarea>
                         </div>
                     </div>
                   </div>
@@ -169,7 +171,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput3" class="bmd-label-floating">Nom Père ( Tuteur )</label>
-                          <input type="text" class="form-control" id="exampleInput3" name="nom_tuteur">
+                          <input type="text" class="form-control" id="exampleInput3" name="nom_tuteur" value="{{ $inscription->nom_tuteur}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -180,7 +182,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput4" class="bmd-label-floating">Tél</label>
-                          <input type="number" class="form-control" id="exampleInput4" name="tel_tuteur">
+                          <input type="number" class="form-control" id="exampleInput4" name="tel_tuteur" value="{{ $inscription->tel}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -207,7 +209,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput5" class="bmd-label-floating">Prénom</label>
-                          <input type="text" class="form-control" id="exampleInput5" name="prenom_tuteur">
+                          <input type="text" class="form-control" id="exampleInput5" name="prenom_tuteur" value="{{ $inscription->etudiant_id}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -218,7 +220,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput5" class="bmd-label-floating">Email</label>
-                          <input type="email" class="form-control" id="exampleInput5" name="email_tuteur">
+                          <input type="email" class="form-control" id="exampleInput5" name="email_tuteur" value="{{ $inscription->email_tuteur}}">
                         </div>
                       </div>
 
@@ -230,7 +232,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput6" class="bmd-label-floating">Profession</label>
-                          <input type="text" class="form-control" id="exampleInput6" name="profession_tuteur">
+                          <input type="text" class="form-control" id="exampleInput6" name="profession_tuteur"  value="{{ $inscription->profession_tuteur}}">
                         </div>
                       </div>
                     </div>                          
@@ -315,7 +317,7 @@
                     <div class="col-sm-6">
                       <div class="input-group form-control">  
                           <label for="exampleInput22" class="bmd-label-floating">Tarif</label>
-                          <input type="number" class="form-control" id="exampleInput22" name="tarif"> 
+                          <input type="number" class="form-control" id="exampleInput22" name="tarif" value="{{ $inscription->tarif}}"> 
                       </div>
                     </div>
 

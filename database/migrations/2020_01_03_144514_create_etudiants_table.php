@@ -17,9 +17,12 @@ class CreateEtudiantsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('cie')->nullable();
-            $table->string('tel_pere')->nullable();
-            $table->string('tel_mere')->nullable();
+            $table->string('prenom_tuteur')->nullable();
+            $table->string('nom_tuteur')->nullable();
+            $table->string('tel_tuteur')->nullable();
+            $table->string('email_tuteur')->nullable();
+            $table->string('sexe_tuteur')->nullable();
+            $table->string('profession_tuteur')->nullable();
             $table->timestamps();
         });
     }

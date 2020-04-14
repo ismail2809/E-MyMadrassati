@@ -48,7 +48,15 @@
               <i class="material-icons">dashboard</i>
               <p> Dashboard </p>
             </a>
-          </li>  
+          </li> 
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ url('/timeline') }}">
+              <i class="material-icons">language</i>
+              <p> Fil d'actualité </p>
+            </a>
+          </li> 
+
           <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#a1">
               <i class="material-icons">create_new_folder</i>
@@ -76,7 +84,7 @@
 
            <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#a2">
-              <i class="material-icons">local_atm</i>
+              <i class="material-icons">insert_chart</i>
               <p> Payements
                 <b class="caret"></b>
               </p>
@@ -115,7 +123,7 @@
                   </a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="{{ url('/absences/tous') }}">
+                  <a class="nav-link" href="{{ url('/absences/listes') }}">
                     <span class="sidebar-mini"> L </span>
                     <span class="sidebar-normal"> Liste </span>
                   </a>
@@ -126,7 +134,7 @@
 
           <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#a5">
-              <i class="material-icons">create</i>
+              <i class="material-icons">school</i>
               <p> Notes
                 <b class="caret"></b>
               </p>
@@ -140,7 +148,32 @@
                   </a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="{{ url('/notes/tous') }}">
+                  <a class="nav-link" href="{{ url('/notes/listes') }}">
+                    <span class="sidebar-mini"> L </span>
+                    <span class="sidebar-normal"> Liste </span>
+                  </a>
+                </li> 
+              </ul>
+            </div>
+          </li>
+
+           <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#a6">
+              <i class="material-icons">question_answer</i>
+              <p> Demandes documents
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="a6">
+              <ul class="nav"> 
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ url('/Demandesdocuments/nouvelle') }}">
+                    <span class="sidebar-mini"> N </span>
+                    <span class="sidebar-normal"> Nouvelle </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ url('/Demandesdocuments') }}">
                     <span class="sidebar-mini"> L </span>
                     <span class="sidebar-normal"> Liste </span>
                   </a>

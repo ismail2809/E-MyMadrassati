@@ -21,9 +21,13 @@ class CreateInscriptionsTable extends Migration
             $table->foreign('classe_id')->references('id')->on('classes');
             $table->integer('année_id')->unsigned();
             $table->foreign('année_id')->references('id')->on('années');
-            $table->string('total_frais');
+            $table->string('niveau_id');
+            $table->string('categorie_id');
+            $table->string('tarif');
             $table->string('modalité')->nullable();
             $table->string('description')->nullable();
+            $table->string('transport')->nullable();
+            $table->string('cantine')->nullable();
             $table->timestamps();
         });
     }
