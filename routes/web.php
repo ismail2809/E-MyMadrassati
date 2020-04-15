@@ -97,13 +97,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/inscription/new', 'InscriptionController@create');
-Route::get('/inscription/new2', 'InscriptionController@create2');
+Route::get('/inscription/new', 'InscriptionController@create'); 
 Route::get('/inscriptions', 'InscriptionController@index');
 Route::post('/inscription', 'InscriptionController@store');
 Route::get('/inscription/{id}/edit','InscriptionController@edit');
 Route::put('/inscription/{id}','InscriptionController@update');
 Route::get('/inscription/{id}','InscriptionController@destroy');
+Route::get('/inscription/{id}','InscriptionController@show');
 
 /*Route::get('/inscription/new', function () {
     return view('inscription.new');

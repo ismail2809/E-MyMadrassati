@@ -1,5 +1,5 @@
 @extends('back.master')
-@section('title','Liste Inscription')
+@section('title','Détail Inscription')
 
 @section('content') 
 
@@ -10,7 +10,7 @@
 	      <div class="card-icon">
 	        <i class="material-icons">assignment</i>
 	      </div>
-	      <h4 class="card-title">Liste des inscriptions</h4>
+	      <h4 class="card-title">Détail inscription</h4>
 	    </div>
 	    <div class="card-body">
 	      <div class="toolbar">
@@ -26,30 +26,30 @@
 	              <th style="color: red"><b>Niveau</b></th>
 	              <th style="color: red"><b>Classe</b></th>
 	              <th style="color: red"><b>Tarif</b></th>
+	              <th style="color: red"><b>Modalité</b></th>  
+	              <th style="color: red"><b>Transport</b></th>  
+	              <th style="color: red"><b>Cantine</b></th>  
 	              <th style="color: red"><b>Année</b></th>  
-	              <th style="color: red"><b>Création</b></th>   
-	              <th class="disabled-sorting text-center" colspan="3" >
-	              	<a href="{{url('/inscription/new')}}" type="button" class="btn btn-success btn-round" title="Ajouter">
-	              		<i class="material-icons">add</i>
-                  	</a>
+	              <th style="color: red"><b>Description</b></th>  
+	              <th style="color: red"><b>Création</b></th>   			
+	              <th class="disabled-sorting text-center" colspan="2" >
 	              </th>
 	            </tr>
 	          </thead> 
 	          <tbody>
-	            @foreach($inscriptions as $inscription)
 	            <tr>
 	              <td>{{ $inscription->num_inscription }}</td> 
-	              <td>{{ $inscription->etudiants->users->prenom }} {{ $inscription->etudiants->users->nom }}</td> 
-	              <td>{{ $inscription->categories->titre }}</td>
-	              <td>{{ $inscription->niveaus->titre }}</td> 
-	              <td>{{ $inscription->classes->titre }}</td> 
+	              <td>{{ $user->prenom }} {{ $user->nom }}</td> 
+	              <td>{{ $categorie->titre }}</td>
+	              <td>{{ $niveau->titre }}</td> 
+	              <td>{{ $classe->titre }}</td> 
 	              <td>{{ $inscription->tarif }}</td> 
-	              <td>{{ $inscription->années->année }}</td> 
-	              <td>{{ $inscription->created_at->format('d-m-Y') }}</td> 
-	              <td class="td-actions text-right">
-	               	<a href="{{url('/inscription/'.$inscription->id)}}" type="button" class="btn btn-info btn-round" title="détail"><i class="material-icons">search</i> 
-                  	</a> 
-                  </td>
+	              <td>{{ $inscription->modalité }}</td>  
+	              <td>{{ $inscription->transport }}</td> 
+	              <td>{{ $inscription->cantine }}</td> 
+	              <td>{{ $année->année }}</td> 
+	              <td>{{ $inscription->description }}</td>
+	              <td>{{ $inscription->created_at->format('d-m-Y') }}</td>  
                   <td class="td-actions text-right">
                   	<a href="{{url('/inscription/'.$inscription->id.'/edit')}}" type="button" class="btn btn-warning btn-round" title="Modifier"><i class="material-icons">edit</i> 
                   	</a> 
@@ -63,8 +63,7 @@
 	                      </button>
                      </form>  
 	              </td>
-	            </tr>              
-	            @endforeach       
+	            </tr>  	            
 	          </tbody>
 	        </table>
 	      </div>

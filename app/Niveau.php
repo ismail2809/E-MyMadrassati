@@ -16,4 +16,9 @@ class Niveau extends Model
     public function classe(){
         return $this->hasMany('App\Classe');
     }
+
+    public function inscription(){
+        return $this->hasMany('App\Inscription');
+    }
+    
 }

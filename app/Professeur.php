@@ -16,4 +16,9 @@ class Professeur extends Model
     public function note(){
         return $this->hasMany('App\Note');
     }
+    public function users(){
+
+        return $this->belongsTo('App\User','user_id');
+        
+    }
 }

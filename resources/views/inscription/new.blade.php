@@ -1,12 +1,12 @@
 @extends('back.master')
 
-@section('title','Nouvelle Inscription')
+@section('title','Nouvelle  Inscription')
 @section('content') 
  
 <div class="mr-auto ml-auto">
     <!--      Wizard container        -->
     <div class="wizard-container">
-      <div class="card card-wizard" data-color="orange" id="wizardProfile">
+      <div class="card card-wizard" data-color="green" id="wizardProfile">
         <form method="post" action="{{url('/inscription')}}" enctype="multipart/form-data" >
           {{ csrf_field() }} 
           <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->

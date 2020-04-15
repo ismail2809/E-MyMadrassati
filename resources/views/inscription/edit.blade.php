@@ -7,14 +7,14 @@
     <!--      Wizard container        -->
     <div class="wizard-container">
       <div class="card card-wizard" data-color="orange" id="wizardProfile">
-        <form method="post" action="{{url('/inscription/'.$inscription->id)}}" enctype="multipart/form-data" >
+        <form method="post" action="{{url('/inscription/'.$inscription->id)}}"  >
           {{ csrf_field() }} 
           <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       --> 
  
             <input type="hidden" name="_method" value="PUT">
                     
             <div class="card-header text-center">
-              <h3 class="card-title">Création du compte</h3>
+              <h3 class="card-title">Modification du compte</h3>
             </div>
 
             <div class="wizard-navigation">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput1" class="bmd-label-floating">Prénom</label>
-                          <input type="text" class="form-control" id="exampleInput1" name="prenom" value="{{ $inscription->etudiant_id}}">
+                          <input type="text" class="form-control" id="exampleInput1" name="prenom" value="{{ $inscription->etudiants->users->prenom }}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -74,7 +74,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput2" class="bmd-label-floating">Nom</label>
-                          <input type="text" class="form-control" id="exampleInput2" name="nom" value="{{ $inscription->etudiant_id}}">
+                          <input type="text" class="form-control" id="exampleInput2" name="nom" value="{{ $inscription->etudiants->users->nom }}">
                         </div>
                       </div>
                     </div>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput4" class="bmd-label-floating">Tél</label>
-                          <input type="number" class="form-control" id="exampleInput4" name="tel" value="{{ $inscription->etudiant_id}}">
+                          <input type="text" class="form-control" id="exampleInput4" name="tel" value="{{ $inscription->etudiants->users->tel }}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -108,7 +108,7 @@
                           </span>
                         </div>
                         <div class="form-group">
-                           <input type="date" class="form-control datepicker" id="exampleemalil" name="ddn" value="{{ $inscription->etudiant_id}}">
+                           <input type="date" class="form-control datepicker" id="exampleemalil" name="ddn" value="{{ $inscription->etudiants->users->ddn }}">
                         </div>
                       </div>
                     </div>
@@ -121,7 +121,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput5" class="bmd-label-floating">Email</label>
-                          <input type="email" class="form-control" id="exampleInput5" name="email" value="{{ $inscription->etudiant_id}}">
+                          <input type="email" class="form-control" id="exampleInput5" name="email" value="{{ $inscription->etudiants->users->email }}" >
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -132,8 +132,13 @@
                         </div> 
                         <div class="form-group select-wizard"> 
                           <select class="selectpicker" name="sexe" data-style="select-with-transition" title="Sexe"> 
-                            <option value="Homme"> Homme </option>
-                            <option value="Femme"> Femme </option> 
+                            @if($inscription->etudiants->users->sexe == 'Homme')
+                              <option value="{{$inscription->etudiants->users->sexe}}" selected> Homme </option> 
+                              <option value="Femme" > Femme </option>
+                               @else
+                              <option value="Homme" > Homme </option> 
+                              <option value="{{$inscription->etudiants->users->sexe}}" selected> Femme </option> 
+                            @endif
                           </select> 
                         </div>
                       </div>
@@ -145,7 +150,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput6" class="bmd-label-floating">Lieu naissance</label>
-                          <input type="text" class="form-control" id="exampleInput6" name="lieu_naissance" value="{{ $inscription->etudiant_id}}">
+                          <input type="text" class="form-control" id="exampleInput6" name="lieu_naissance" value="{{ $inscription->etudiants->users->lieu_naissance}}">
                         </div>
                       </div>                    
                     </div>
@@ -153,7 +158,7 @@
                     <div class="col-sm"> 
                         <div class="form-group">
                           <label class="bmd-label-floating"> Exemple 3 rue XXX , maarif Casablanca.</label>
-                          <textarea class="form-control" rows="5" name="adresse">{{ $inscription->etudiant_id}}</textarea>
+                          <textarea class="form-control" rows="5" name="adresse">{{ $inscription->etudiants->users->adresse}}</textarea>
                         </div>
                     </div>
                   </div>
@@ -171,7 +176,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput3" class="bmd-label-floating">Nom Père ( Tuteur )</label>
-                          <input type="text" class="form-control" id="exampleInput3" name="nom_tuteur" value="{{ $inscription->nom_tuteur}}">
+                          <input type="text" class="form-control" id="exampleInput3" name="nom_tuteur" value="{{$inscription->etudiants->nom_tuteur}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -182,7 +187,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput4" class="bmd-label-floating">Tél</label>
-                          <input type="number" class="form-control" id="exampleInput4" name="tel_tuteur" value="{{ $inscription->tel}}">
+                          <input type="number" class="form-control" id="exampleInput4" name="tel_tuteur" value="{{$inscription->etudiants->tel_tuteur}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -193,8 +198,13 @@
                         </div> 
                         <div class="form-group select-wizard"> 
                           <select class="selectpicker" data-style="select-with-transition" name="sexe_tuteur" title="Sexe"> 
-                            <option value="Homme"> Homme </option>
-                            <option value="Femme"> Femme </option> 
+                             @if($etudiant->sexe_tuteur == 'Homme')
+                              <option value="{{$etudiant->sexe_tuteur}}" selected> Homme </option> 
+                              <option value="Femme" > Femme </option>
+                               @else
+                              <option value="Homme" > Homme </option> 
+                              <option value="{{$etudiant->sexe_tuteur}}" selected> Femme </option> 
+                            @endif
                           </select> 
                         </div>
                       </div>
@@ -209,7 +219,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput5" class="bmd-label-floating">Prénom</label>
-                          <input type="text" class="form-control" id="exampleInput5" name="prenom_tuteur" value="{{ $inscription->etudiant_id}}">
+                          <input type="text" class="form-control" id="exampleInput5" name="prenom_tuteur" value="{{$inscription->etudiants->prenom_tuteur}}">
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -220,7 +230,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput5" class="bmd-label-floating">Email</label>
-                          <input type="email" class="form-control" id="exampleInput5" name="email_tuteur" value="{{ $inscription->email_tuteur}}">
+                          <input type="email" class="form-control" id="exampleInput5" name="email_tuteur" value="{{$inscription->etudiants->email_tuteur}}">
                         </div>
                       </div>
 
@@ -232,7 +242,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput6" class="bmd-label-floating">Profession</label>
-                          <input type="text" class="form-control" id="exampleInput6" name="profession_tuteur"  value="{{ $inscription->profession_tuteur}}">
+                          <input type="text" class="form-control" id="exampleInput6" name="profession_tuteur"  value="{{$inscription->etudiants->profession_tuteur}}">
                         </div>
                       </div>
                     </div>                          
@@ -250,7 +260,11 @@
                         <label>Année Scholaire</label>
                         <select class="selectpicker" data-size="7" data-style="select-with-transition" name="année_id" title="Single Select"> 
                           @foreach($années as $année)
-                          <option value="{{ $année->id }}"> {{ $année->année}} </option> 
+                            @if($inscription->année_id == $année->id)
+                                  <option value="{{ $année->id }}" selected >{{ $année->année }}</option>
+                              @else
+                                  <option value="{{ $année->id }}" >{{ $année->année }}</option>
+                            @endif
                           @endforeach
                         </select>
                       </div>
@@ -259,10 +273,14 @@
                     <div class="col-sm-6">
                       <div class="form-group select-wizard">
                         <label>Catégorie</label>
-                        <select class="selectpicker" data-size="7" data-style="select-with-transition" name="categorie_id" title="Single Select"> 
-                          @foreach($catégories as $Catégorie)
-                          <option value="{{ $Catégorie->id }}"> {{ $Catégorie->titre}} </option> 
-                          @endforeach
+                        <select class="selectpicker" data-size="7" data-style="select-with-transition" name="categorie_id" title="Catégories"> 
+                          @foreach($catégories as $catégorie)
+                            @if($inscription->categorie_id == $catégorie->id)
+                                  <option value="{{ $catégorie->id }}" selected >{{ $catégorie->titre }}</option>
+                              @else
+                                  <option value="{{ $catégorie->id }}" >{{ $catégorie->titre }}</option>
+                            @endif
+                           @endforeach
                         </select>
                       </div>
                     </div>
@@ -270,10 +288,14 @@
                     <div class="col-sm-6">
                       <div class="form-group select-wizard">
                         <label>Niveau</label>
-                        <select class="selectpicker" data-size="7" data-style="select-with-transition" name="niveau_id" title="Single Select"> 
+                        <select class="selectpicker" data-size="7" data-style="select-with-transition" name="niveau_id" title="Niveau"> 
                            @foreach($niveaux as $niveau)
-                          <option value="{{ $niveau->id }}"> {{ $niveau->titre}} </option> 
-                          @endforeach 
+                           @if($inscription->niveau_id == $niveau->id)
+                                  <option value="{{ $niveau->id }}" selected >{{ $niveau->titre }}</option>
+                              @else
+                                  <option value="{{ $niveau->id }}" >{{ $niveau->titre }}</option>
+                           @endif
+                           @endforeach 
                         </select>
                       </div>
                     </div>
@@ -281,10 +303,14 @@
                     <div class="col-sm-6">
                       <div class="form-group select-wizard">
                         <label>Classe</label>
-                        <select class="selectpicker" data-size="7" data-style="select-with-transition" name="classe_id" title="Single Select"> 
-                           @foreach($classes as $classe)
-                          <option value="{{ $classe->id }}"> {{ $classe->titre}} </option> 
-                          @endforeach 
+                        <select class="selectpicker" data-size="7" data-style="select-with-transition" name="classe_id" title="Classe"> 
+                          @foreach($classes as $classe)
+                            @if($inscription->classe_id == $classe->id)
+                                <option value="{{ $classe->id }}" selected >{{ $classe->titre }}</option>
+                            @else
+                                <option value="{{ $classe->id }}" >{{ $classe->titre }}</option>
+                            @endif
+                           @endforeach 
                         </select>
                       </div>
                     </div>
@@ -297,10 +323,11 @@
                       <div class="form-group select-wizard">
                         <label>Modalité</label>
                         <select class="selectpicker" data-style="select-with-transition" name="modalité" title="Modalité"> 
-                          <option value="Mensuel"> Mensuel </option>
-                          <option value="Trimestriel"> Trimestriel </option> 
-                          <option value="Annuel"> Annuel </option> 
-                        </select>
+ 
+                              <option value="Mensuel" {{ ( $inscription->modalité == 'Mensuel') ? 'selected' : '' }}> Mensuel </option>
+                              <option value="Trimestriel" {{ ( $inscription->modalité == 'Trimestriel') ? 'selected' : '' }}> Trimestriel </option> 
+                              <option value="Annuel" {{ ( $inscription->modalité == 'Annuel') ? 'selected' : '' }}> Annuel </option>
+                         </select>
                       </div>
                     </div>
 
@@ -308,8 +335,13 @@
                       <div class="form-group select-wizard">
                         <label>Transport</label>
                         <select class="selectpicker" data-style="select-with-transition" name="transport" title="Single Select"> 
-                          <option value="Oui"> Oui </option>
-                          <option value="Non"> Non </option> 
+                          @if($inscription->transport == 'Oui')
+                              <option value="{{$inscription->transport}}" selected> {{$inscription->transport}} </option> 
+                              <option value="Non"> Non </option> 
+                              @else
+                              <option value="{{$inscription->transport}}" selected> {{$inscription->transport}} </option>                         
+                              <option value="Oui"> Oui </option> 
+                          @endif 
                         </select>
                       </div>
                     </div>
@@ -325,8 +357,13 @@
                       <div class="form-group select-wizard">
                         <label>Cantine</label>
                         <select class="selectpicker" data-style="select-with-transition" name="cantine" title="Select"> 
-                          <option value="Oui"> Oui </option>
-                          <option value="Non"> Non </option> 
+                          @if($inscription->cantine == 'Oui')
+                              <option value="{{$inscription->cantine}}" selected> {{$inscription->cantine}} </option> 
+                              <option value="Non"> Non </option> 
+                              @else
+                              <option value="{{$inscription->cantine}}" selected> {{$inscription->cantine}} </option>                         
+                              <option value="Oui"> Oui </option> 
+                          @endif
                         </select>
                       </div>
                     </div>

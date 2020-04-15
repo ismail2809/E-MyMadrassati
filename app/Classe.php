@@ -22,7 +22,9 @@ class Classe extends Model
     public function inscription(){
         return $this->hasMany('App\Inscription');
     }
+    
     public function note(){
         return $this->hasMany('App\Note');
     }
 }
+

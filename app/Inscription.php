@@ -21,4 +21,16 @@ class Inscription extends Model
         return $this->belongsTo('App\Classe','classe_id');
         
     }
+
+    public function categories(){
+
+        return $this->belongsTo('App\Categorie','categorie_id');
+        
+    }
+
+    public function niveaus(){
+
+        return $this->belongsTo('App\Niveau','niveau_id');
+        
+    }
 }
