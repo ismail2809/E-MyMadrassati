@@ -1,5 +1,5 @@
 @extends('back.master') 
-@section('title','Nouveau payment')
+@section('title','Editer payment')
 
 @section('content') 
 <div class="row">
@@ -22,7 +22,7 @@
   <div class="card ">
     <div class="card-header card-header-success card-header-text">
       <div class="card-text">
-        <h4 class="card-title">Nouveau Payment</h4>
+        <h4 class="card-title">Editer Payment</h4>
       </div>
     </div>
     <form method="post" action="{{url('/payment')}}" class="form-horizontal">         
@@ -46,7 +46,7 @@
               <div class="form-group select-wizard"> 
                 <select class="selectpicker" data-size="7" data-style="select-with-transition" name="annee_id" title="Année Scholaire"> 
                   @foreach($années as $année)
-                  <option value="{{ $année->id }}"> {{ $année->titre}} </option> 
+                  <option value="{{ $année->id }}" {{ ( $payment->annee_id == $année->id ) ? 'selected' : '' }}> {{ $année->titre}} </option> 
                   @endforeach
                 </select>
               </div>
@@ -58,9 +58,9 @@
             <div class="col-sm-10">
               <div class="form-group select-wizard">
                  <select class="selectpicker" data-size="7" data-style="select-with-transition" name="mode" title="Mode payment">
-                    <option value="Liquide">Liquide</option>
-                    <option value="Cheque">Chèque</option> 
-                    <option value="Carte_bancaire">Carte bancaire</option> 
+                    <option value="Liquide" {{ ( $payment->mode == 'Liquide') ? 'selected' : '' }}>Liquide</option>
+                    <option value="Cheque"  {{ ( $payment->mode == 'Cheque') ? 'selected' : '' }}>Chèque</option> 
+                    <option value="Carte_bancaire" {{ ( $payment->mode == 'Carte_bancaire') ? 'selected' : '' }}>Carte bancaire</option> 
                   </select>
               </div>
             </div> 
@@ -70,7 +70,7 @@
           <label class="col-sm-2 col-form-label">Versement</label>
           <div class="col-sm-10">
             <div class="form-group">
-              <input type="number" class="form-control" name="versement">
+              <input type="number" class="form-control" name="versement" value="{{ $payment->versement }}">
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
           <label class="col-sm-2 col-form-label">Description </label>
           <div class="col-sm-10">
             <div class="form-group">
-                <textarea class="form-control" rows="5" name="description"></textarea>
+                <textarea class="form-control" rows="5" name="description">{{ $payment->description }}</textarea>
             </div>
           </div>
         </div> 

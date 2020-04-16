@@ -57,7 +57,7 @@ class InscriptionController extends Controller
         $inscription->niveau_id       = $request->niveau_id;  
         $inscription->categorie_id    = $request->categorie_id;  
 		$inscription->classe_id       = $request->classe_id;	
-		$inscription->année_id 	      = $request->année_id;  
+		$inscription->annee_id 	      = 1;  
 
  		$inscription->tarif           = $request->tarif;       
         $inscription->modalité        = $request->modalité;               

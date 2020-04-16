@@ -121,7 +121,7 @@
                         </div>
                         <div class="form-group">
                           <label for="exampleInput5" class="bmd-label-floating">Email</label>
-                          <input type="email" class="form-control" id="exampleInput5" name="email" value="{{ $inscription->etudiants->users->email }}" >
+                          <input type="email" class="form-control" id="exampleInput5" name="email" readonly="true" value="{{ $inscription->etudiants->users->email }}" >
                         </div>
                       </div>
                       <div class="input-group form-control-lg">
@@ -261,9 +261,9 @@
                         <select class="selectpicker" data-size="7" data-style="select-with-transition" name="année_id" title="Single Select"> 
                           @foreach($années as $année)
                             @if($inscription->année_id == $année->id)
-                                  <option value="{{ $année->id }}" selected >{{ $année->année }}</option>
+                                  <option value="{{ $année->id }}" selected >{{ $année->titre }}</option>
                               @else
-                                  <option value="{{ $année->id }}" >{{ $année->année }}</option>
+                                  <option value="{{ $année->id }}" >{{ $année->titre }}</option>
                             @endif
                           @endforeach
                         </select>

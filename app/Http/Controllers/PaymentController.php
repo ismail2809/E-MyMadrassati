@@ -3,67 +3,85 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Payement;
+use App\Payment;
+use App\Inscription;
+use App\Année;
 
 class PaymentController extends Controller
 {
     public function index()
     {
-        $payements = Payement::all();
-        return view('payment.index',compact('payements'));
+        $payments = Payment::with('etudiants','inscriptions')->get();
+        return view('payment.index',compact('payments'));
+    }
+
+    public function show($id){
+
+        $payment = Payment::where('id',$id)->with('etudiants','inscriptions')->first();
+        return view('payment.show',['payment'=>$payment]);
     }
 
     public function create(){
-     
-        return view('payment.new');
+        $inscriptions= Inscription::with('classes','categories','niveaus','etudiants','années')->get(); 
+        //dd($inscriptions);
+        return view('payment.new',compact('inscriptions'));
+    }
+    
+    public function form_payment(Request $request,$id){
+ 
+        $inscription = Inscription::where('id',$id)->with('classes','categories','niveaus','etudiants','années')->first(); 
+        $sum = Payment::where('inscription_id','=',$id)->sum('versement');
+        //dd($sum);
+        $années = Année::all();
+
+        return view('payment.insert',compact('inscription','années','sum'));
     }
 
     public function store(Request $request){
+        //dd($request);
+        $payment                  = new payment();  
+        $payment->etudiant_id     = $request->etudiant_id;
+        $payment->annee_id        = $request->annee_id;
+        $payment->inscription_id  = $request->inscription_id;   
+        $payment->versement       = $request->versement;
+        $payment->mode            = $request->mode;
+        $payment->description     = $request->description;
         
-        $payement                  = new Payement();  
-        $payement->etudiant_id     = $request->etudiant_id;
-        $payement->année_id        = $request->année_id;
-        $payement->inscription_id  = $request->inscription_id;   
-        $payement->versement       = $request->versement;
-        $payement->montantpayé     = $request->montantpayé;
-        $payement->mode            = $request->mode;
-        $payement->description     = $request->description;
+        $payment->save();
 
-
-        $payement->save();
-
-        return redirect('payements');
+        return redirect('payments');
     }
 
     public function edit($id){
 
-        $payement = Payement::find($id);
-        return view('payment.edit',['payement'=>$payement]);
+        $payment = Payment::find($id);
+        $inscription = Inscription::where('id',$payment->inscription_id)->with('classes','categories','niveaus','etudiants','années')->first(); 
+        $sum = Payment::where('inscription_id','=',$id)->sum('versement');
+        $années = Année::all();
+
+        return view('payment.edit',compact('inscription','années','sum','payment'));
     }
     
-    public function update(Request $request){
+    public function update(Request $request,$id){
         
-        $payement                  = new Payement();  
-        $payement->etudiant_id     = $request->etudiant_id;
-        $payement->année_id        = $request->année_id;
-        $payement->inscription_id  = $request->inscription_id;           
-        $payement->versement       = $request->versement;
-        $payement->montantpayé     = $request->montantpayé;
-        $payement->mode            = $request->mode;
-        $payement->description     = $request->description;
+ 
+        $payment                  = Payment::where('id',$id)->first();
+        $payment->etudiant_id     = isset($request->etudiant_id) ? $request->etudiant_id : $payment->etudiant_id;
+        $payment->annee_id        = isset($request->annee_id) ? $request->annee_id : $payment->annee_id;
+        $payment->inscription_id  = isset($request->inscription_id) ? $request->inscription_id : $payment->inscription_id;           
+        $payment->versement       = isset($request->versement) ? $request->versement : $payment->versement;
+        $payment->mode            = isset($request->mode) ? $request->mode : $payment->mode;
+        $payment->description     = isset($request->description) ? $request->description : $payment->description;        
+        $payment->save();
 
-        
-        $payement->save();
-
-        return redirect('/payements');
+        return redirect('/payments');
     }
 
     public function destroy(Request $request,$id){
 
-        $payement = Payement::find($id);
-        $payement->delete();
+        $payment = Payment::find($id);
+        $payment->delete();
 
-        return redirect('/payements');
-        
+        return redirect('/payments');        
     }
 }

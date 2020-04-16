@@ -21,8 +21,8 @@ class CreateAbsencesTable extends Migration
             $table->foreign('professeur_id')->references('id')->on('professeurs');           
             $table->integer('classe_id')->unsigned();
             $table->foreign('classe_id')->references('id')->on('classes');
-            $table->integer('année_id')->unsigned();
-            $table->foreign('année_id')->references('id')->on('années');
+            $table->integer('annee_id')->unsigned();
+            $table->foreign('annee_id')->references('id')->on('années');
             $table->string('absence'); 
             $table->string('observation')->nullable();
             $table->timestamps();

@@ -15,12 +15,13 @@ class CreateInscriptionsTable extends Migration
     {
         Schema::create('inscriptions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('num_inscription');            
             $table->integer('etudiant_id')->unsigned();
             $table->foreign('etudiant_id')->references('id')->on('etudiants');
             $table->integer('classe_id')->unsigned();
             $table->foreign('classe_id')->references('id')->on('classes');
-            $table->integer('année_id')->unsigned();
-            $table->foreign('année_id')->references('id')->on('années');
+            $table->integer('annee_id')->unsigned();
+            $table->foreign('annee_id')->references('id')->on('années');
             $table->string('niveau_id');
             $table->string('categorie_id');
             $table->string('tarif');

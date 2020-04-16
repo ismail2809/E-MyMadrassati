@@ -7,11 +7,13 @@
   <div class="card card-timeline card-plain">
     <div class="card-header text-center">
       <h3 class="alert"  style="border-radius: 50px">  
-          <form method="get" action="https://demos.creative-tim.com/" class="form-horizontal">         
+          <form method="post" action="{{url('/timeline')}}" class="form-horizontal">     
+          {{ csrf_field() }} 
+
                <div class="row"> 
                   <div class="col-sm-12">
                     <div class="form-group">
-                        <textarea class="form-control" rows="3" name="observation" placeholder="Exprimez-vous ..."></textarea>
+                        <textarea class="form-control" rows="3" name="description" placeholder="Exprimez-vous ..."></textarea>
                     </div>
                    </div>
                    <div class="col-sm-2 offset-10">

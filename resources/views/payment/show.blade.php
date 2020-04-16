@@ -27,26 +27,33 @@
 	              <th style="color: red"><b>Année</b></th>  
 	              <th style="color: red"><b>Description</b></th>  
 	              <th style="color: red"><b>Création</b></th>   
-	              <th style="color: red"><b>actions</b></th>
+	              <th style="color: red" colspan="2" style="text-align: center;"><b>actions</b></th>
 	            </tr>
 	          </thead> 
 	          <tbody>
-	            @foreach($payments as $payment)
-	            <tr>
+ 	            <tr>
 	              <td>{{ $payment->inscriptions->num_inscription }}</td> 
 	              <td>{{ $payment->etudiants->users->prenom }} {{ $payment->etudiants->users->nom }}</td> 
  	              <td>{{ $payment->versement }}</td> 
-	              <td>{{ $payment->tarif }}</td> 
+	              <td>{{ $payment->mode }}</td> 
 	              <td>{{ $payment->années->titre }}</td> 
 	              <td>{{ $payment->description }}</td> 
 	              <td>{{ isset($payment->created_at)?$payment->created_at->format('d-m-Y'):$payment->created_at }}</td> 
-	              <td class="td-actions text-center">
-	               	<a href="{{url('/payment/'.$payment->id.'/détail')}}"  class="btn btn-info btn-round" title="détail"><i class="material-icons">search</i> 
+	              <td class="td-actions text-right">
+                  	<a href="{{url('/payment/'.$payment->id.'/edit')}}" type="button" class="btn btn-warning btn-round" title="Modifier"><i class="material-icons">edit</i> 
                   	</a> 
-                  </td> 
+                  </td>
+                  <td class="td-actions text-right">
+                  	 <form action="{{url('/payment/'.$payment->id)}}" method="get">
+	                      {{csrf_field()}}
+	                      {{method_field('DELETE')}}
+	                      <button type="submit"  class="btn btn-danger btn-round" title="Suprimer" style="padding: 6px;">
+	                      <i class="material-icons">close</i>
+	                      </button>
+                     </form>  
+	              </td>
 	            </tr>              
-	            @endforeach       
-	          </tbody>
+ 	          </tbody>
 	        </table>
 	      </div>
 	    </div>

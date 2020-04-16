@@ -248,7 +248,7 @@
                         <label>Année Scholaire</label>
                         <select class="selectpicker" data-size="7" data-style="select-with-transition" name="année_id" title="Single Select"> 
                           @foreach($années as $année)
-                          <option value="{{ $année->id }}"> {{ $année->année}} </option> 
+                          <option value="{{ $année->id }}"> {{ $année->titre}} </option> 
                           @endforeach
                         </select>
                       </div>

@@ -47,7 +47,7 @@
 	              <td>{{ $inscription->modalité }}</td>  
 	              <td>{{ $inscription->transport }}</td> 
 	              <td>{{ $inscription->cantine }}</td> 
-	              <td>{{ $année->année }}</td> 
+	              <td>{{ $année->titre }}</td> 
 	              <td>{{ $inscription->description }}</td>
 	              <td>{{ $inscription->created_at->format('d-m-Y') }}</td>  
                   <td class="td-actions text-right">

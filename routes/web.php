@@ -20,7 +20,7 @@ Route::get('/profile', function () {
 Route::get('/updateprofile', function () {
     return view('user.updateprofile');
 });
-
+/*
 Route::get('/payment/new', function () {
     return view('payment.new');
 });
@@ -28,7 +28,7 @@ Route::get('/payment/new', function () {
 Route::get('/payments', function () {
     return view('payment.index');
 });
-
+*/
 Route::get('/absences', function () {
     return view('absence.index');
 });
@@ -41,11 +41,10 @@ Route::get('/absences/tous', function () {
     return view('absence.listes');
 });
 
-Route::get('/payment/id_inscription', function () {
+/*Route::get('/payment/id_inscription', function () {
     return view('payment.insert');
-});
-
-
+});*/
+ 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 });
@@ -96,7 +95,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+//inscriptions
 Route::get('/inscription/new', 'InscriptionController@create'); 
 Route::get('/inscriptions', 'InscriptionController@index');
 Route::post('/inscription', 'InscriptionController@store');
@@ -105,14 +104,16 @@ Route::put('/inscription/{id}','InscriptionController@update');
 Route::get('/inscription/{id}','InscriptionController@destroy');
 Route::get('/inscription/{id}','InscriptionController@show');
 
-/*Route::get('/inscription/new', function () {
-    return view('inscription.new');
-});
+//payments
+Route::get('/payment/new', 'PaymentController@create');
+Route::get('/payment/add/{id}', 'PaymentController@form_payment');
+Route::get('/payment/{id}/détail', 'PaymentController@show');
+Route::get('/payments', 'PaymentController@index');
+Route::post('/payment', 'PaymentController@store');
+Route::get('/payment/{id}/edit','PaymentController@edit');
+Route::put('/payment/{id}','PaymentController@update');
+Route::get('/payment/{id}','PaymentController@destroy');
 
-Route::get('/inscriptions', function () {
-    return view('inscription.index');
-});*/
-/*
 Route::get('/année/new', 'AnnéeController@create');
 Route::get('/années', 'AnnéeController@index');
 Route::get('/année/{id}/edit','AnnéeController@edit');
@@ -149,10 +150,5 @@ Route::get('/type/{id}/edit','TypeController@edit');
 Route::put('/type/{id}','TypeController@update');
 Route::get('/type/{id}','TypeController@destroy');
 
-Route::get('/payement/new', 'PaymentController@create');
-Route::get('/payements', 'PaymentController@index');
-Route::post('/payement', 'PaymentController@store');
-Route::get('/payement/{id}/edit','PaymentController@edit');
-Route::put('/payement/{id}','PaymentController@update');
-Route::get('/payement/{id}','PaymentController@destroy');
-*/
+
+ 

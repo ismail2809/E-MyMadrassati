@@ -44,7 +44,7 @@
 	              <td>{{ $inscription->niveaus->titre }}</td> 
 	              <td>{{ $inscription->classes->titre }}</td> 
 	              <td>{{ $inscription->tarif }}</td> 
-	              <td>{{ $inscription->années->année }}</td> 
+	              <td>{{ $inscription->années->titre }}</td> 
 	              <td>{{ $inscription->created_at->format('d-m-Y') }}</td> 
 	              <td class="td-actions text-right">
 	               	<a href="{{url('/inscription/'.$inscription->id)}}" type="button" class="btn btn-info btn-round" title="détail"><i class="material-icons">search</i> 

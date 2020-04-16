@@ -13,7 +13,7 @@ class Inscription extends Model
     }
     public function années(){
 
-        return $this->belongsTo('App\Année','année_id');
+        return $this->belongsTo('App\Année','annee_id');
         
     }     
     public function classes(){
@@ -33,4 +33,9 @@ class Inscription extends Model
         return $this->belongsTo('App\Niveau','niveau_id');
         
     }
+
+    public function Payment(){
+        return $this->hasMany('App\Payment');
+    }
+
 }

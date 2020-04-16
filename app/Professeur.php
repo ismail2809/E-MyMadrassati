@@ -9,10 +9,7 @@ class Professeur extends Model
     public function absence(){
         return $this->hasMany('App\Absence');
     }
-
-    public function cour(){
-        return $this->hasMany('App\Cour');
-    }
+ 
     public function note(){
         return $this->hasMany('App\Note');
     }
