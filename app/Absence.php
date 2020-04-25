@@ -18,7 +18,7 @@ class Absence extends Model
     } 
     public function années(){
 
-        return $this->belongsTo('App\Année','année_id');
+        return $this->belongsTo('App\Année','annee_id');
         
     }
     public function classes(){
@@ -26,4 +26,22 @@ class Absence extends Model
         return $this->belongsTo('App\Classe','classe_id');
         
     }
+
+    public function inscriptions(){
+
+        return $this->belongsTo('App\Inscription','inscription_id');
+        
+    }
+    
+    public function matieres(){
+
+        return $this->belongsTo('App\Matiere','matiere_id');
+        
+    }
+     public function users(){
+
+        return $this->belongsTo('App\User','user_id');
+        
+    }
+
 }

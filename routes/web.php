@@ -20,31 +20,7 @@ Route::get('/profile', function () {
 Route::get('/updateprofile', function () {
     return view('user.updateprofile');
 });
-/*
-Route::get('/payment/new', function () {
-    return view('payment.new');
-});
 
-Route::get('/payments', function () {
-    return view('payment.index');
-});
-*/
-Route::get('/absences', function () {
-    return view('absence.index');
-});
-
-Route::get('/absences/classe', function () {
-    return view('absence.classe');
-});
-
-Route::get('/absences/tous', function () {
-    return view('absence.listes');
-});
-
-/*Route::get('/payment/id_inscription', function () {
-    return view('payment.insert');
-});*/
- 
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
 });
@@ -52,7 +28,7 @@ Route::get('/dashboard', function () {
 Route::get('/', function () {
     	return view('dashboard.dashboard');
 });
-
+/*
 Route::get('/notes', function () {
     return view('note.index');
 });
@@ -75,7 +51,7 @@ Route::get('/notes/etudiant/edit', function () {
 Route::get('/notes/listes', function () {
     return view('note.listes');
 });
-
+*/
 Route::get('/Demandesdocuments/nouvelle', function () {
     return view('demandedocument.new');
 });
@@ -87,9 +63,6 @@ Route::get('/Demandesdocuments', function () {
 Route::get('/timeline', function () {
     return view('reseau.timeline');
 });
-
-
-Route::get('events', 'EventController@index');
 
 Auth::routes();
 
@@ -114,6 +87,31 @@ Route::get('/payment/{id}/edit','PaymentController@edit');
 Route::put('/payment/{id}','PaymentController@update');
 Route::get('/payment/{id}','PaymentController@destroy');
 
+//absences
+Route::get('/absence/new', 'AbsenceController@create');
+Route::post('/absence/search', 'AbsenceController@form_search');
+Route::get('/absence/classe', 'AbsenceController@classe');
+Route::post('/absence', 'AbsenceController@store');
+Route::get('/absences', 'AbsenceController@index');
+Route::get('/absence/{id}/détail', 'AbsenceController@show');
+Route::get('/absence/{id}/edit','AbsenceController@edit');
+Route::put('/absence/{id}','AbsenceController@update');
+Route::get('/absence/{id}','AbsenceController@destroy');
+
+//notess
+Route::get('/note/new', 'NoteController@create');
+Route::post('/note/search', 'NoteController@form_search');
+Route::post('/note', 'NoteController@store');
+
+Route::get('/note/classe', 'NoteController@classe');
+Route::get('/notes', 'NoteController@index');
+Route::get('/note/add', 'NoteController@form_note')->name('note_add');
+Route::get('/note/{id}/détail', 'NoteController@show')->name('note_détail');
+Route::get('/note/{id}/list', 'NoteController@list_notes_etudiant')->name('note_list');
+Route::get('/note/{id}/edit','NoteController@edit');
+Route::put('/note/{id}','NoteController@update');
+Route::get('/note/{id}','NoteController@destroy');
+
 Route::get('/année/new', 'AnnéeController@create');
 Route::get('/années', 'AnnéeController@index');
 Route::get('/année/{id}/edit','AnnéeController@edit');
@@ -125,12 +123,6 @@ Route::get('/classes', 'ClasseController@index');
 Route::get('/classe/{id}/edit','ClasseController@edit');
 Route::put('/classe/{id}','ClasseController@update');
 Route::get('/classe/{id}','ClasseController@destroy');
-
-Route::get('/cour/new', 'CourController@create');
-Route::get('/cours', 'CourController@index');
-Route::get('/cour/{id}/edit','CourController@edit');
-Route::put('/cour/{id}','CourController@update');
-Route::get('/cour/{id}','CourController@destroy');
 
 Route::get('/matiere/new', 'MatiereController@create');
 Route::get('/matieres', 'MatiereController@index');
@@ -151,4 +143,8 @@ Route::put('/type/{id}','TypeController@update');
 Route::get('/type/{id}','TypeController@destroy');
 
 
- 
+Route::get('/cour/new', 'CourController@create');
+Route::get('/cours', 'CourController@index');
+Route::get('/cour/{id}/edit','CourController@edit');
+Route::put('/cour/{id}','CourController@update');
+Route::get('/cour/{id}','CourController@destroy');

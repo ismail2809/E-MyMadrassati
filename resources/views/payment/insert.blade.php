@@ -4,27 +4,32 @@
 @section('content') 
 <div class="row">
 
-<div class="col-md-12">
- <div class="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <i class="material-icons">close</i>
-    </button>
-    <span style="text-align: center;">
-      <b>Numéro d'inscription: </b> {{ $inscription->num_inscription }}&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-      <b>Modalité:</b> {{ $inscription->modalité }}  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-      <b>Tarif: </b> {{ $inscription->tarif }}        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-      <b>Reste à payé: </b> {{ ($inscription->tarif - $sum) }}        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-    </span>
- </div>
-</div>
+  <div class="col-md-12">
+      <div class="card">
+
+          <div class="card-header card-header-success card-header-text">
+            <div class="card-text">
+              <h4 class="card-title">Nouveau Payment</h4>
+            </div>
+          </div>
+
+         <div class="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <i class="material-icons">close</i>
+            </button>
+            <span style="text-align: center;">
+              <b>Numéro d'inscription: </b> {{ $inscription->num_inscription }}&nbsp;&nbsp; &nbsp; | &nbsp; &nbsp;&nbsp;
+              <b>Modalité:</b> {{ $inscription->modalité }}  &nbsp;&nbsp; &nbsp; | &nbsp; &nbsp;&nbsp;
+              <b>Tarif: </b> {{ $inscription->tarif }}        &nbsp;&nbsp;&nbsp; | &nbsp; &nbsp;&nbsp;
+              <b>Reste à payé: </b> {{ ($inscription->tarif - $sum) }}        &nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;&nbsp;
+            </span>
+         </div>
+
+      </div>
+  </div>
 
 <div class="col-md-12">
-  <div class="card ">
-    <div class="card-header card-header-success card-header-text">
-      <div class="card-text">
-        <h4 class="card-title">Nouveau Payment</h4>
-      </div>
-    </div>
+  <div class="card">
     <form method="post" action="{{url('/payment')}}" class="form-horizontal">         
           {{ csrf_field() }} 
       <input type="hidden" name="etudiant_id"    value="{{ $inscription->etudiant_id }}">

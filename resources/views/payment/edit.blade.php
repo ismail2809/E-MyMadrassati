@@ -20,16 +20,17 @@
 
 <div class="col-md-12">
   <div class="card ">
-    <div class="card-header card-header-success card-header-text">
+    <div class="card-header card-header-warning card-header-text">
       <div class="card-text">
         <h4 class="card-title">Editer Payment</h4>
       </div>
     </div>
-    <form method="post" action="{{url('/payment')}}" class="form-horizontal">         
-          {{ csrf_field() }} 
-      <input type="hidden" name="etudiant_id"    value="{{ $inscription->etudiant_id }}">
-      <input type="hidden" name="inscription_id" value="{{ $inscription->id }}">
- 
+    <form method="post" action="{{url('/payment/'.$payment->id)}}" class="form-horizontal">         
+              {{ csrf_field() }}  
+              <input type="hidden" name="_method" value="PUT">
+              <input type="hidden" name="etudiant_id"    value="{{ $inscription->etudiant_id }}">
+              <input type="hidden" name="inscription_id" value="{{ $inscription->id }}">
+         
       <div class="card-body">             
          <div class="row">
           <label class="col-sm-2 col-form-label">Numéro d'inscription</label>

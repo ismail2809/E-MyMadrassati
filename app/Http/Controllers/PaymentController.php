@@ -66,12 +66,12 @@ class PaymentController extends Controller
         
  
         $payment                  = Payment::where('id',$id)->first();
-        $payment->etudiant_id     = isset($request->etudiant_id) ? $request->etudiant_id : $payment->etudiant_id;
-        $payment->annee_id        = isset($request->annee_id) ? $request->annee_id : $payment->annee_id;
-        $payment->inscription_id  = isset($request->inscription_id) ? $request->inscription_id : $payment->inscription_id;           
-        $payment->versement       = isset($request->versement) ? $request->versement : $payment->versement;
-        $payment->mode            = isset($request->mode) ? $request->mode : $payment->mode;
-        $payment->description     = isset($request->description) ? $request->description : $payment->description;        
+        $payment->etudiant_id     = $request->etudiant_id;
+        $payment->annee_id        = $request->annee_id;
+        $payment->inscription_id  = $request->inscription_id;           
+        $payment->versement       = $request->versement;
+        $payment->mode            = $request->mode;
+        $payment->description     = $request->description;        
         $payment->save();
 
         return redirect('/payments');

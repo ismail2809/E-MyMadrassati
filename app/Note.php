@@ -13,7 +13,7 @@ class Note extends Model
     }
     public function années(){
 
-        return $this->belongsTo('App\Année','année_id');
+        return $this->belongsTo('App\Année','annee_id');
         
     }     
     public function classes(){

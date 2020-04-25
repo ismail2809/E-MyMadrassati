@@ -9,4 +9,9 @@ class Matiere extends Model
      public function note(){
         return $this->hasMany('App\Note');
     }
+
+    public function absence(){
+        return $this->hasMany('App\Absence');
+    }
+    
 }

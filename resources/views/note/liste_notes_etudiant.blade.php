@@ -1,53 +1,55 @@
 @extends('back.master') 
-@section('title','Les notes de la classe')
+@section('title','Liste des notes')
 @section('content')
 
 <div class="row">
 	<div class="col-md-12">
 	  <div class="card">
-	    <div class="card-header card-header-success card-header-icon">
+	    <div class="card-header card-header-warning card-header-icon">
 	      <div class="card-icon">
 	        <i class="material-icons">assignment</i>
 	      </div>
-	      <h4 class="card-title">La classe</h4>
+	      <h4 class="card-title">Liste des notes</h4>
 	    </div>
 	    <div class="card-body">
 	      <div class="toolbar">
 	        <!--        Here you can write extra buttons/actions for the toolbar              -->
 	      </div>
-	      <div class="material-datatables">
+	      <div class="material-datatables"> 
+
 	        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
-	          <thead>
+	          <thead> 
 	            <tr>
+	              <th style="color: red">N°</th>
 	              <th style="color: red">Numero d'inscription</th>
 	              <th style="color: red">Prénom Nom</th>
 	              <th style="color: red">Classe</th>
-	              <th style="color: red">Matière</th>   
+	              <th style="color: red">Matière</th>   	               
+	              <th style="color: red">Notes </th>   
 	              <th style="color: red">Année</th>  
 	              <th style="color: red" class="disabled-sorting text-center" colspan="2">Actions</th>
 	            </tr>
+ 
 	          </thead> 
 	          <tbody>
-	          	@foreach($inscription as $result)
-	          		@if(isset($result['etudiants']['user_id']))
-              		@php
-              		$user = App\User::where('id',$result['etudiants']['user_id'])->first();
-                	@endphp 
+				
+				@foreach($results['note'] as $key => $result) 
 		            <tr>
-		              <td>{{ $result['num_inscription'] }}</td>
-		              <td>{{ $user->prenom }} {{ $user->nom }}</td>
-		              <td>{{ $result['classes']['titre'] }}</td> 
-		              <td>{{ $data['matiere']['titre'] }}</td>  
-		              <td>{{ $result['années']['titre'] }}</td> 
+		              <td>{{ $key +1 }}</td>
+ 		              <td>{{ $results['inscription']['num_inscription'] }}</td>
+ 		              <td>{{ $results['user']['prenom'] }} {{ $results['user']['nom'] }}</td>
+		              <td>{{ $results['inscription']['classes']['titre'] }}</td> 					
+ 		              <td>{{ $results['matiere']['titre'] }}</td> 					
+ 		              <td>{{ $result['note'] }}</td>  		              
+ 		              <td>{{ $results['inscription']['années']['titre'] }}</td>
 		              <td class="td-actions text-right">
 		              	<a href="{{ route('note_add')}}"  class="btn btn-warning btn-round" title="Ajouter note"><i class="material-icons">add</i></a> 
 		              </td>
 		              <td class="td-actions text-right">
-		              	<a href="{{ url('note/'.$result['id'].'/list') }}"  class="btn btn-info btn-round" title="Liste des notes"><i class="material-icons">remove_red_eye</i></a> 
+		              	<a href="{{ url('note/'.$results['inscription']['id'].'/détail') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
 		              </td>
-		            </tr>     
-	            	@endif
-	            @endforeach                 
+		            </tr>    
+				@endforeach	                                
 	          </tbody>
 	        </table>
 	      </div>
