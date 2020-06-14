@@ -15,10 +15,7 @@
 	      <div class="toolbar">
 	        <!--        Here you can write extra buttons/actions for the toolbar              -->
 	      </div>
-	      <div class="material-datatables">
-            <button type="button" rel="tooltip" class="btn btn-success btn-round" title="Ajouter une note">
-              <i class="material-icons">add</i>
-            </button>
+	      <div class="material-datatables"> 
 
 	        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
 	          <thead>
@@ -29,7 +26,8 @@
 	              <th style="color: red">Matière</th>   
 	              <th style="color: red">Nbr notes</th>   
 	              <th style="color: red">Année</th>  
-	              <th style="color: red" class="disabled-sorting text-center" colspan="2">Actions</th>
+	              <th style="color: red" class="disabled-sorting text-center">Actions</th>
+	              <th style="color: red" class="disabled-sorting text-center"></th>
 	            </tr>
 	          </thead> 
 	          <tbody>

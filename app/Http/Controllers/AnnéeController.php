@@ -20,11 +20,11 @@ class AnnéeController extends Controller
     
     public function store(Request $request){
         
-        $Année              = new Année();
-        $année->Année = $request->Année;        
+        $année              = new Année();
+        $année->titre = $request->titre;    
         $année->save();
 
-        return redirect('année');
+        return redirect('années')->with('success','Année est ajoutée avec succès');
     }
 
     public function edit($id){
@@ -35,19 +35,19 @@ class AnnéeController extends Controller
     
     public function update(Request $request,$id){
         
-        $Année  = Année::find($id);
-        $année->Année = $request->Année;        
+        $année  = Année::find($id);
+        $année->titre = $request->titre;        
         $année->save();
 
-        return redirect('/années');
+        return redirect('/années')->with('warning','Année est modifiée avec succès');
     }
 
     public function destroy(Request $request,$id){
 
-        $année=année::find($id);
+        $année= Année::find($id);
         $année->delete();
 
-        return redirect('/années');
+        return redirect('/années')->with('error','Année est supprimée avec succès');
         
     }
 }

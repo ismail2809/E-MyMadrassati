@@ -6,12 +6,7 @@
 <div class="row">
 	<div class="col-md-12">
 	  <div class="card">
-	    <div class="card-header card-header-success card-header-icon">
-	      <div class="card-icon">
-	        <i class="material-icons">assignment</i>
-	      </div>
-	      <h4 class="card-title">Payment</h4>
-	    </div>
+	  	
 	    <div class="card-body">
 	      <div class="toolbar">
 	        <!--        Here you can write extra buttons/actions for the toolbar              -->

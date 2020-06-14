@@ -9,6 +9,7 @@ use App\Classe;
 use App\Année;
 use App\Inscription;
 use App\User;
+use Illuminate\Support\Facades\Session;
 
 class NoteController extends Controller
 {
@@ -60,7 +61,8 @@ class NoteController extends Controller
     {   
         $data = $request->session()->get('data');
         $inscription = json_decode(Inscription::where('classe_id',$data['classe'])->where('annee_id',$data['année'])->with('années','classes','etudiants')->first(),true);
-
+        dd($data,$inscription);
+        
         return view('note.addnote',compact('inscription','data'));
     }
 
@@ -116,4 +118,24 @@ class NoteController extends Controller
         return redirect('/notes');
         
     }
+
+    public function getCategories(){
+        $categories = json_decode(Inscription::select('categorie_id','niveau_id','classe_id')->with('categories','niveaus','classes')->groupby('categorie_id','niveau_id','classe_id')->get(),true);
+        $niveaux = json_decode(Inscription::select('niveau_id')->with('niveaus')->groupby('niveau_id')->get(),true);
+        $classes = json_decode(Inscription::select('classe_id')->with('classes')->groupby('classe_id')->get(),true);
+        dd($categories,$niveaux,$classes);
+    }
+
+    public function getNotesEtudiant($id=11,$annee_id=1){
+        $notes = json_decode(Note::where('etudiant_id',$id)->where('annee_id',$annee_id)->with('années','professeurs.users','etudiants.users','classes','matieres')->get(),true); 
+        return $notes;
+    }
+
+     public function getNotesEtudiantEp($id=11,$annee_id=1){
+
+        $notes = $this->getNotesEtudiant($id,$annee_id);
+//        dd($notes); 
+        return view('note.etudiantEp',compact('notes'));
+    }
+    
 }

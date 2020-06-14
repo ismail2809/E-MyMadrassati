@@ -28,7 +28,8 @@
 	              <th style="color: red">Classe</th>
 	              <th style="color: red">Matière</th>   
 	              <th style="color: red">Année</th>  
-	              <th style="color: red" class="disabled-sorting text-center" colspan="2">Actions</th>
+	              <th style="color: red" class="disabled-sorting text-center">Actions</th>
+	              <th style="color: red" class="disabled-sorting text-center"></th>
 	            </tr>
 	          </thead> 
 	          <tbody>

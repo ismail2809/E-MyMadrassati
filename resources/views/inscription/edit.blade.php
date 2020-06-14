@@ -108,7 +108,7 @@
                           </span>
                         </div>
                         <div class="form-group">
-                           <input type="date" class="form-control datepicker" id="exampleemalil" name="ddn" value="{{ $inscription->etudiants->users->ddn }}">
+                           <input type="date" class="form-control datepicker" id="exampleemalil" name="ddn" value="{{  date('Y-m-d', strtotime($inscription->etudiants->users->ddn )) }}">
                         </div>
                       </div>
                     </div>
@@ -260,7 +260,7 @@
                         <label>Année Scholaire</label>
                         <select class="selectpicker" data-size="7" data-style="select-with-transition" name="année_id" title="Single Select"> 
                           @foreach($années as $année)
-                            @if($inscription->année_id == $année->id)
+                            @if($inscription->annee_id == $année->id)
                                   <option value="{{ $année->id }}" selected >{{ $année->titre }}</option>
                               @else
                                   <option value="{{ $année->id }}" >{{ $année->titre }}</option>
@@ -381,7 +381,7 @@
               </div>
               <div class="ml-auto">
                 <input type="button" class="btn btn-next btn-fill btn-success btn-wd" name="next" value="Next">
-                <input type="submit" class="btn btn-finish btn-fill btn-success btn-wd" name="finish" value="Finish" style="display: none;">
+                <button type="submit" class="btn btn-finish btn-fill btn-success btn-wd" name="finish" style="display: none;" onclick="md.showNotification('bottom','right')">Modifier</button>
               </div>
               <div class="clearfix"></div>
             </div>

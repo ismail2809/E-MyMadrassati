@@ -67,6 +67,28 @@
             </div> 
         </div>
 
+        <div class="row"> 
+           <label class="col-sm-2 col-form-label">Mois</label>
+            <div class="col-sm-10">
+              <div class="form-group select-wizard">
+                 <select class="selectpicker" data-size="7" data-style="select-with-transition" name="mois" title="Mois"> 
+                  <option value="1" {{ ( $payment->mois == '1') ? 'selected' : '' }}> Janvier </option>  
+                  <option value="2" {{ ( $payment->mois == '2') ? 'selected' : '' }}> Février </option>  
+                  <option value="3" {{ ( $payment->mois == '3') ? 'selected' : '' }}> Mars </option>  
+                  <option value="4" {{ ( $payment->mois == '4') ? 'selected' : '' }}> Avril </option>  
+                  <option value="5" {{ ( $payment->mois == '5') ? 'selected' : '' }}> Mai </option>  
+                  <option value="6" {{ ( $payment->mois == '6') ? 'selected' : '' }}> Juin </option>  
+                  <option value="7" {{ ( $payment->mois == '7') ? 'selected' : '' }}> Juillet</option>  
+                  <option value="8" {{ ( $payment->mois == '8') ? 'selected' : '' }}> Aout </option>  
+                  <option value="9" {{ ( $payment->mois == '9') ? 'selected' : '' }}> Septembre </option>  
+                  <option value="10" {{ ( $payment->mois == '10') ? 'selected' : '' }}> Octobre </option>  
+                  <option value="11" {{ ( $payment->mois == '11') ? 'selected' : '' }}> Novembre </option>  
+                  <option value="12" {{ ( $payment->mois == '12') ? 'selected' : '' }}> Décembre </option>  
+                </select>
+              </div>
+            </div> 
+        </div>
+
          <div class="row">
           <label class="col-sm-2 col-form-label">Versement</label>
           <div class="col-sm-10">
@@ -89,7 +111,7 @@
 
      <div class="card-footer">
         <div class="ml-auto">
-          <input type="submit" class="btn btn-info" value="Valider">
+          <input type="submit" class="btn btn-info" value="Valider"  onclick="md.showNotification('bottom','right')">
         </div>
         <div class="clearfix"></div>
     </div>

@@ -20,36 +20,36 @@ class MatiereController extends Controller
     
     public function store(Request $request){
         
-        $matiere              = new matiere();
-        $matiere->titre = $request->titre;        
+        $matiere              = new Matiere();
+        $matiere->titre       = $request->titre;        
         $matiere->description = $request->description;        
         $matiere->save();
-
-        return redirect('matiere');
+        
+        return redirect('matiere')->with('success','Matière est ajoutée avec succès');
     }
 
     public function edit($id){
 
-        $matiere = matiere::find($id);
+        $matiere = Matiere::find($id);
         return view('matiere.edit',['matiere'=>$matiere]);
     }
     
     public function update(Request $request,$id){
         
-        $matiere  = matiere::find($id);
+        $matiere  = Matiere::find($id);
         $matiere->titre = $request->titre;        
         $matiere->description = $request->description;          
         $matiere->save();
 
-        return redirect('/matieres');
+        return redirect('/matieres')->with('warning','Matière est modifiée avec succès');
     }
 
     public function destroy(Request $request,$id){
 
-        $matiere=matiere::find($id);
+        $matiere=Matiere::find($id);
         $matiere->delete();
 
-        return redirect('/matieres');
+        return redirect('/matieres')->with('error','Matière est supprimée avec succès');
         
     }
 }

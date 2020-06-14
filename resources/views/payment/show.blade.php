@@ -22,12 +22,12 @@
 	            <tr>
 	              <th style="color: red"><b>Numero d'inscription</b></th>
 	              <th style="color: red"><b>Prénom Nom</b></th> 
-	              <th style="color: red"><b>versement</b></th>
+	              <th style="color: red"><b>Versement</b></th>
 	              <th style="color: red"><b>Mode</b></th>
 	              <th style="color: red"><b>Année</b></th>  
 	              <th style="color: red"><b>Description</b></th>  
 	              <th style="color: red"><b>Création</b></th>   
-	              <th style="color: red" colspan="2" style="text-align: center;"><b>actions</b></th>
+	              <th style="color: red" style="text-align: center;"><b>actions</b></th> 
 	            </tr>
 	          </thead> 
 	          <tbody>
@@ -42,16 +42,7 @@
 	              <td class="td-actions text-right">
                   	<a href="{{url('/payment/'.$payment->id.'/edit')}}" type="button" class="btn btn-warning btn-round" title="Modifier"><i class="material-icons">edit</i> 
                   	</a> 
-                  </td>
-                  <td class="td-actions text-right">
-                  	 <form action="{{url('/payment/'.$payment->id)}}" method="get">
-	                      {{csrf_field()}}
-	                      {{method_field('DELETE')}}
-	                      <button type="submit"  class="btn btn-danger btn-round" title="Suprimer" style="padding: 6px;">
-	                      <i class="material-icons">close</i>
-	                      </button>
-                     </form>  
-	              </td>
+                  </td> 
 	            </tr>              
  	          </tbody>
 	        </table>

@@ -342,7 +342,7 @@
               </div>
               <div class="ml-auto">
                 <input type="button" class="btn btn-next btn-fill btn-success btn-wd" name="next" value="Next">
-                <input type="submit" class="btn btn-finish btn-fill btn-success btn-wd" name="finish" value="Finish" style="display: none;">
+                <button type="submit" class="btn btn-finish btn-fill btn-success btn-wd" name="finish"  style="display: none;" onclick="md.showNotification('bottom','right')">Finish</button> 
               </div>
               <div class="clearfix"></div>
             </div>

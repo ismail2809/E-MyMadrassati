@@ -7,15 +7,15 @@ use App\Blog;
 
 class BlogController extends Controller
 {
-        public function index()
+    public function listeBlog()
     {
         $blogs = Blog::all();
-        return view('blog.index',compact('blogs'));
+        return view('blog.timeline',compact('blogs'));
     }
 
-    public function create()
+    public function index()
     { 
-        return view('blog.new');
+        return view('blog.timeline');
     }
 
     public function store(Request $request){

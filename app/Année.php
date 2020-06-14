@@ -17,4 +17,8 @@ class Année extends Model
     public function note(){
         return $this->hasMany('App\Note');
     }
+    
+    public function demandedocument(){
+        return $this->hasMany('App\Demandedocument');
+    }
 }

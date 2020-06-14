@@ -17,17 +17,16 @@ class NiveauController extends Controller
 		$niveau 			 = new Niveau(); 
 		$niveau->titre 		 = $request->input('titre');                 
 		$niveau->description = $request->input('description');          
-		$niveau->type_id 	 = $request->input('type_id');        
         $niveau->save();
         
-		return redirect('/niveaux');
+		return redirect('/niveaux')->with('success','Niveau est ajoutée avec succès');;
 	}
 
 	public function index(){
 
-        $niveaus = Niveau::all();
+        $niveaux = Niveau::all();
         
-        return view('niveau.index',compact('niveaus'));
+        return view('niveau.index',compact('niveaux'));
     }
 
     public function edit($id){
@@ -37,15 +36,14 @@ class NiveauController extends Controller
         return view('niveau.edit',['niveau'=>$niveau]);
     }
     
-    public function update(Request $request){
+    public function update($id,Request $request){
         
         $niveau 			 = Niveau::find($id);        
         $niveau->titre 		 = $request->input('titre');                 
-		$niveau->description = $request->input('description');          
-		$niveau->type_id 	 = $request->input('type_id');        
+		$niveau->description = $request->input('description');       
         $niveau->save();
 
-        return redirect('/niveaux');
+        return redirect('/niveaux')->with('warning','Niveau est modifiée avec succès');
     }
 
     public function destroy(Request $request,$id){
@@ -53,7 +51,7 @@ class NiveauController extends Controller
         $niveau = Niveau::find($id);
         $niveau->delete();
 
-        return redirect('/niveaux');
+        return redirect('/niveaux')->with('error','Niveau est supprimée avec succès');;
         
     }
 }

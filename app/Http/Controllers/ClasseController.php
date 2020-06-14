@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Classe;
-use App\Niveau;
+use App\Classe; 
 
 class ClasseController extends Controller
 {
@@ -15,10 +14,8 @@ class ClasseController extends Controller
     }
 
     public function create()
-    { 
-        $niveaux = Niveau::all();
-        //dd($niveaux);               
-        return view('classe.new',compact('niveaux'));
+    {     
+        return view('classe.new');
     }
 
     public function store(Request $request){
@@ -26,10 +23,9 @@ class ClasseController extends Controller
         $classe         = new Classe();
         $classe->titre = $request->titre;        
         $classe->description = $request->description;        
-        $classe->niveau_id = $request->niveau_id;        
         $classe->save();
 
-        return redirect('/classes');
+        return redirect('/classes')->with('success','Classe est ajoutée avec succès');
     }
 
     public function edit($id){
@@ -38,15 +34,14 @@ class ClasseController extends Controller
         return view('classe.edit',['classe'=>$classe]);
     }
     
-    public function update(Request $request){
+    public function update($id,Request $request){
         
         $classe        = Classe::find($id);
         $classe->titre = $request->titre; 
         $classe->description = $request->description;        
-        $classe->niveau_id = $request->niveau_id;        
         $classe->save();
 
-        return redirect('/classes');
+        return redirect('/classes')->with('warning','Classe est modifiée avec succès');
     }
 
     public function destroy(Request $request,$id){
@@ -54,6 +49,6 @@ class ClasseController extends Controller
         $classe = Classe::find($id);
         $classe->delete();
 
-        return redirect('/classes');        
+        return redirect('/classes')->with('error','Classe est supprimée avec succès');        
     }
 }

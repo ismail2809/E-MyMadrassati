@@ -1,78 +1,390 @@
 @extends('back.master')
+
 @section('title','Détail Inscription')
-
 @section('content') 
-
-<div class="row">
-	<div class="col-md-12">
-	  <div class="card">
-	    <div class="card-header card-header-info card-header-icon">
-	      <div class="card-icon">
-	        <i class="material-icons">assignment</i>
-	      </div>
-	      <h4 class="card-title">Détail inscription</h4>
-	    </div>
-	    <div class="card-body">
-	      <div class="toolbar">
-	        <!--        Here you can write extra buttons/actions for the toolbar              -->
-	      </div>
-	      <div class="material-datatables">
-	        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
-	          <thead>
-	            <tr>
-	              <th style="color: red"><b>Numero d'inscription</b></th>
-	              <th style="color: red"><b>Prénom Nom</b></th>
-	              <th style="color: red"><b>Catégorie</b></th>
-	              <th style="color: red"><b>Niveau</b></th>
-	              <th style="color: red"><b>Classe</b></th>
-	              <th style="color: red"><b>Tarif</b></th>
-	              <th style="color: red"><b>Modalité</b></th>  
-	              <th style="color: red"><b>Transport</b></th>  
-	              <th style="color: red"><b>Cantine</b></th>  
-	              <th style="color: red"><b>Année</b></th>  
-	              <th style="color: red"><b>Description</b></th>  
-	              <th style="color: red"><b>Création</b></th>   			
-	              <th class="disabled-sorting text-center" colspan="2" >
-	              </th>
-	            </tr>
-	          </thead> 
-	          <tbody>
-	            <tr>
-	              <td>{{ $inscription->num_inscription }}</td> 
-	              <td>{{ $user->prenom }} {{ $user->nom }}</td> 
-	              <td>{{ $categorie->titre }}</td>
-	              <td>{{ $niveau->titre }}</td> 
-	              <td>{{ $classe->titre }}</td> 
-	              <td>{{ $inscription->tarif }}</td> 
-	              <td>{{ $inscription->modalité }}</td>  
-	              <td>{{ $inscription->transport }}</td> 
-	              <td>{{ $inscription->cantine }}</td> 
-	              <td>{{ $année->titre }}</td> 
-	              <td>{{ $inscription->description }}</td>
-	              <td>{{ $inscription->created_at->format('d-m-Y') }}</td>  
-                  <td class="td-actions text-right">
-                  	<a href="{{url('/inscription/'.$inscription->id.'/edit')}}" type="button" class="btn btn-warning btn-round" title="Modifier"><i class="material-icons">edit</i> 
-                  	</a> 
-                  </td>
-                  <td class="td-actions text-right">
-                  	 <form action="{{url('/inscription/'.$inscription->id)}}" method="get">
-	                      {{csrf_field()}}
-	                      {{method_field('DELETE')}}
-	                      <button type="submit"  class="btn btn-danger btn-round" title="Suprimer" style="padding: 6px;">
-	                      <i class="material-icons">close</i>
-	                      </button>
-                     </form>  
-	              </td>
-	            </tr>  	            
-	          </tbody>
-	        </table>
-	      </div>
-	    </div>
-	    <!-- end content-->
-	  </div>
-	  <!--  end card  -->
-	</div>
-	<!-- end col-md-12 -->
-</div> 
  
+<div class="mr-auto ml-auto">
+    <!--      Wizard container        -->
+    <div class="wizard-container">
+      
+      <div class="card card-wizard" data-color="blue" id="wizardProfile">
+ 
+            <div class="card-header text-center">
+              <h3 class="card-title">Dossier Etudiant</h3>
+            </div>
+
+            <div class="wizard-navigation">
+              <ul class="nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#infos" data-toggle="tab" role="tab">
+                    Info Etudiant
+                  </a>
+                </li>                
+                <li class="nav-item">
+                  <a class="nav-link" href="#inscriptions" data-toggle="tab" role="tab">
+                    Inscriptions
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#payments" data-toggle="tab" role="tab">
+                    Payments
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#absences" data-toggle="tab" role="tab">
+                    Absences
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#notes" data-toggle="tab" role="tab">
+                    Notes
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+
+              <div class="tab-content">
+              
+                <div class="tab-pane active" id="infos">            
+
+                  <h5 class="info-text"> Les informations personnelles</h5>                 
+
+                   <div class="row">
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Nom Complet : </label> <b>{{ $detail['user']['prenom'] }} {{ $detail['user']['nom'] }}</b></p>
+	                         </div>
+	                    </div>
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Date création  : </label> <b>{{ date('Y-m-d H:m', strtotime($detail['inscription']['created_at'])) }}</b></p>
+	                         </div>
+	                    </div>
+	                </div>
+
+	                <div class="row">
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Num inscription : </label> <b> num </b></p>
+	                         </div>
+	                    </div>
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Email : </label> <b>{{ $detail['user']['email'] }}</b></p>
+	                         </div>
+	                    </div>
+	                </div>
+
+	                <div class="row">
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Phone : </label> <b>{{ $detail['user']['tel'] }}</b></p>
+	                         </div>
+	                    </div>
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Sexe : </label> <b>{{ $detail['user']['sexe'] }}</b></p>
+	                         </div>
+	                    </div>
+	                </div>
+
+	                 <div class="row">
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Date naissance : </label> <b>{{ $detail['user']['ddn'] }}</b></p>
+	                         </div>
+	                    </div>
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Lieu naissance : </label> <b>{{ $detail['user']['lieu_naissance'] }}</b></p>
+	                         </div>
+	                    </div>
+	                </div>
+
+	                 <div class="row">
+	                    <div class="col-sm-12">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Adresse : </label> <b>{{ $detail['user']['adresse'] }}</b></p>
+	                         </div>
+	                    </div> 
+	                </div>
+
+	                <hr>
+					
+                    <h5 class="info-text"> Les informations du Tutteur </h5>
+
+	                <div class="row">
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Nom complet : </label> <b>{{ $detail['user']['ddn'] }}</b></p>
+	                         </div>
+	                    </div>
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Sexe : </label> <b>{{ $detail['user']['lieu_naissance'] }}</b></p>
+	                         </div>
+	                    </div>
+	                </div>
+
+	                <div class="row">
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Email : </label> <b>{{ $detail['user']['ddn'] }}</b></p>
+	                         </div>
+	                    </div>
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Phone : </label> <b>{{ $detail['user']['lieu_naissance'] }}</b></p>
+	                         </div>
+	                    </div>
+	                </div>
+
+	                <div class="row">
+	                    <div class="col-sm-6">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Profession : </label> <b>{{ $detail['user']['ddn'] }}</b></p>
+	                         </div>
+	                    </div> 
+	                </div>
+ 
+                </div>
+ 
+                <div class="tab-pane" id="inscriptions">
+
+                 <h5 class="info-text"> Inscription </h5>
+
+                  <div class="row justify-content-center"> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Catégorie : </label> <b>{{ $detail['categorie']['titre'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Niveau : </label> <b>{{ $detail['niveau']['titre'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Classe : </label> <b>{{ $detail['classe']['titre'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Année scolarité : </label> <b>{{ $detail['annee']['titre'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Modalité : </label> <b>{{ $detail['inscription']['modalité'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Tarif : </label> <b>{{ $detail['inscription']['tarif'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Transport : </label> <b>{{ $detail['inscription']['transport'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Cantine : </label> <b>{{ $detail['inscription']['cantine'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+
+	              </div>
+
+				</div>
+ 
+              <div class="tab-pane" id="payments">                
+                
+	                <div class="row justify-content-center"> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Numéro inscription : </label> <b>{{ $detail['inscription']['num_inscription'] }}</b></p>
+	                         </div>
+	                    </div>  
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Tarif : </label> <b>{{ $detail['inscription']['tarif'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Reste : </label> <b>{{ $detail['sum_payement'] }}</b></p>
+	                         </div>
+	                    </div>
+	                    <div class="col-sm-3">                   
+	                        <div class="form-group">
+	                          <p><label class="bmd-label-floating">Année scolarité : </label> <b>{{ $detail['annee']['titre'] }}</b></p>
+	                         </div>
+	                    </div> 
+
+					</div>	
+
+				<hr>
+                   
+                  <div class="row">
+                  
+                  	<div class="col-sm-12">
+
+	                  	<div class="material-datatables">
+	                    
+	                    <table  id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+				          <thead>
+				            <tr>
+	 			              <th style="text-align: center;"><b>Prénom Nom</b></th> 
+	 			              <th style="text-align: center;"><b>Mode</b></th>  
+	 			              <th style="text-align: center;"><b>Versement</b></th>  
+	 			              <th style="text-align: center;"><b>Mois</b></th>  
+				              <th style="text-align: center;"><b>Description</b></th>  
+				              <th style="text-align: center;"><b>Date</b></th>   			
+				              <th class="disabled-sorting text-center"></th> 
+				            </tr>
+				          </thead> 
+				          <tbody>
+				          	@foreach($detail['historiquePayements'] as $historique)
+				            <tr>
+	 			              <td style="text-align: center;">{{ $detail['user']['prenom'] }} {{ $detail['user']['nom'] }}</td> 
+				              <td style="text-align: center;">{{ $historique['mode'] }}</td>
+				              <td style="text-align: center;">{{ $historique['versement'] }}</td>
+				              <td style="text-align: center;">{{ $historique['mois'] }}</td>
+				              <td style="text-align: center;">{{ $historique['description'] }}</td>
+				              <td style="text-align: center;">{{ $historique['created_at'] }}</td>  
+			                  <td>
+			                  	<a href="{{url('/payment/'.$historique['id'].'/edit')}}" type="button" class="btn btn-warning btn-round" title="Modifier">
+			                  	<i class="material-icons">edit</i> 
+			                  	</a> 
+			                  </td> 
+				            </tr>  
+				            @endforeach	            
+				          </tbody>
+				        </table>
+				        
+				        </div>
+
+			        </div>
+                  
+                  </div>
+
+              </div>
+
+                <div class="tab-pane" id="absences">
+                   
+                 <h5 class="info-text" style="color: red"> Historique d'absences </h5>
+
+                  <div class="row">
+                  	
+                  	<div class="col-sm-12">
+                  	<div class="material-datatables">
+
+                    <table  id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+			          <thead>
+			            <tr>
+ 			              <th style="text-align: center;"><b>Prénom Nom</b></th> 
+ 			              <th style="text-align: center;"><b>Prof</b></th>  
+ 			              <th style="text-align: center;"><b>Matiere</b></th>  
+			              <th style="text-align: center;"><b>Absence / Retard</b></th>  
+			              <th style="text-align: center;"><b>Observation</b></th>  
+			              <th style="text-align: center;"><b>Début sc</b></th>   			
+			              <th style="text-align: center;"><b>Fin sc</b></th>   			
+			              <th style="text-align: center;"><b>Date</b></th>   			
+			              <th class="disabled-sorting text-center"></th> 
+			            </tr>
+			          </thead> 
+			          <tbody>
+			          	@foreach($detail['historiqueAbsences'] as $historique)
+			            <tr>
+ 			              <td style="text-align: center;">{{ $detail['user']['prenom'] }} {{ $detail['user']['nom'] }}</td> 
+			              <td style="text-align: center;">{{ $historique['professeurs']['users']['prenom'] }} {{ $historique['professeurs']['users']['prenom'] }}</td>
+			              <td style="text-align: center;">{{ $historique['matieres']['titre'] }}</td>
+			              <td style="text-align: center;">{{ $historique['absence'] }}</td>
+			              <td style="text-align: center;">{{ $historique['observation'] }}</td>
+			              <td style="text-align: center;">{{ $historique['debutseance'] }}</td>
+			              <td style="text-align: center;">{{ $historique['finseance'] }}</td> 
+			              <td style="text-align: center;">{{ $historique['created_at'] }}</td>  
+		                  <td>
+		                  	<a href="{{url('/absence/'.$historique['id'].'/edit')}}" type="button" class="btn btn-warning btn-round" title="Modifier">
+		                  	<i class="material-icons">edit</i> 
+		                  	</a> 
+		                  </td> 
+			            </tr>  
+			            @endforeach	            
+			          </tbody>
+			        </table>
+			    	</div>
+			    
+			    	</div>
+                  
+                  </div>
+                     
+                </div>
+               
+             <div class="tab-pane" id="notes">
+ 
+               <h5 class="info-text" style="color: red"> Liste des Notes </h5>		                  		             
+                  			
+      		  	<div class="material-datatables">
+
+		                    <table  id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+					          <thead>
+					            <tr>
+		 			              <th style="text-align: center;"><b>Prénom Nom</b></th> 
+		 			              <th style="text-align: center;"><b>Professeur</b></th>  
+		 			              <th style="text-align: center;"><b>Classe</b></th>  
+		 			              <th style="text-align: center;"><b>Matière</b></th>  
+		 			              <th style="text-align: center;"><b>note</b></th>  
+					              <th style="text-align: center;"><b>Observation</b></th>   
+					              <th class="disabled-sorting text-center"></th> 
+					            </tr>
+					          </thead> 
+					          <tbody>
+					          	@foreach($detail['historiqueNotes'] as $note)
+					            <tr>
+		 			              <td style="text-align: center;">{{ $detail['user']['prenom'] }} {{ $detail['user']['nom'] }}</td> 
+					              <td style="text-align: center;">{{ $note['professeurs']['users']['prenom'] }} 
+					              {{ $note['professeurs']['users']['nom'] }}</td>
+					              <td style="text-align: center;">{{ $note['classes']['titre'] }}</td>
+					              <td style="text-align: center;">{{ $note['matieres']['titre'] }}</td>
+					              <td style="text-align: center;">{{ $note['note'] }}</td>
+					              <td style="text-align: center;">{{ $note['observation'] }}</td>  
+				                  <td>
+				                  	<a href="{{url('/note/'.$note['id'].'/edit')}}" type="button" class="btn btn-warning btn-round" title="Modifier">
+				                  	<i class="material-icons">edit</i> 
+				                  	</a> 
+				                  </td> 
+					            </tr>  
+					            @endforeach	            
+					          </tbody>
+					        </table>
+	            </div> 
+
+              </div>
+              
+              </div>
+
+              </div>
+
+            </div>
+             
+      </div>
+</div>
+    <!-- wizard container -->
+
 @endsection

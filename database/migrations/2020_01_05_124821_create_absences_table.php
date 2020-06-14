@@ -23,6 +23,8 @@ class CreateAbsencesTable extends Migration
             $table->foreign('classe_id')->references('id')->on('classes');
             $table->integer('annee_id')->unsigned();
             $table->foreign('annee_id')->references('id')->on('années');
+            $table->time('debutseance'); 
+            $table->time('finseance'); 
             $table->string('absence'); 
             $table->string('observation')->nullable();
             $table->timestamps();

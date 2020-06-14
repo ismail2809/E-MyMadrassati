@@ -33,7 +33,7 @@ class AbsenceController extends Controller
     }
 
     public function store(Request $request)
-    {   
+    {   //dd($request); 
    		$etudiants 	  = $request->etudiant_id;              
    		$absences     = $request->absence;              
    		$observations = $request->observation;  
@@ -61,7 +61,7 @@ class AbsenceController extends Controller
 		    }
     	}
 
-        //dd($absence);
+       // dd($absence);
     	return redirect('/dashboard');
     }    
 
@@ -127,5 +127,17 @@ class AbsenceController extends Controller
         $absence->delete();
 
         return redirect('/absences');        
+    }
+
+    public function getAbsencesEtudiant($id=11,$annee_id=1){
+        $absences = json_decode(Absence::where('etudiant_id',$id)->where('annee_id',$annee_id)->with('années','professeurs.users','etudiants.users','classes','matieres')->get(),true); 
+        return $absences;
+    }
+
+     public function getAbsencesEtudiantEp($id=11,$annee_id=1){
+
+        $absences = $this->getAbsencesEtudiant($id,$annee_id);
+        //dd($absences[0]); 
+        return view('absence.etudiantEp',compact('absences'));
     }
 }

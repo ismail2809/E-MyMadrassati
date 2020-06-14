@@ -47,5 +47,9 @@ class User extends Authenticatable
     public function absence(){
         return $this->hasMany('App\Absence');
     }
+
+    public function demandedocument(){
+        return $this->hasMany('App\Demandedocument');
+    }
  
 }

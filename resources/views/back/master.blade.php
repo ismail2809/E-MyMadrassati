@@ -12,8 +12,7 @@
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="../../../../maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
+   <!-- CSS Files -->
   <link href="{{ asset('back/assets/css/material-dashboard.min1c51.css?v=2.1.2') }}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{ asset('back/assets/demo/demo.css') }}" rel="stylesheet" />
@@ -43,6 +42,7 @@
     </div>
 
   </div> 
+  
   <!--   Core JS Files   -->
   <script src="{{ asset('back/assets/js/core/jquery.min.js') }}"></script>
   <script src="{{ asset('back/assets/js/core/popper.min.js') }}"></script>
@@ -73,21 +73,18 @@
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
   <script src="{{ asset('back/assets/js/plugins/nouislider.min.js') }}"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="../../../../cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-  <!-- Library for adding dinamically elements -->
-  <script src="{{ asset('back/assets/js/plugins/arrive.min.js') }}"></script>
+   <script src="{{ asset('back/assets/js/plugins/arrive.min.js') }}"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
-  <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="../../../../buttons.github.io/buttons.js"></script>
-  <!-- Chartist JS -->
+    <!-- Chartist JS -->
   <script src="{{ asset('back/assets/js/plugins/chartist.min.js') }}"></script>
   <!--  Notifications Plugin    -->
   <script src="{{ asset('back/assets/js/plugins/bootstrap-notify.js') }}"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('back/assets/js/material-dashboard.min1c51.js?v=2.1.2') }}" type="text/javascript"></script>
-  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+  <!-- Material Dashboard DEMO methods, don't include it in your project! --> 
   <script src="{{ asset('back/assets/demo/demo.js') }}"></script>
+
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -259,9 +256,7 @@
       });
     });
   </script>
-  <!-- Sharrre libray -->
-  <script src="{{ asset('back/assets/demo/jquery.sharrre.js') }}"></script>
- 
+  
   <script>
     $(document).ready(function() {
       // Initialise the wizard
@@ -271,10 +266,32 @@
       }, 600);
     });
   </script>
-  
+
   <script>
     $(document).ready(function() {
       md.checkFullPageBackgroundImage();
+    });
+  </script>
+
+  
+   <script>
+    $(document).ready(function() {
+      $('#datatables').DataTable({
+        "pagingType": "full_numbers",
+        "lengthMenu": [
+          [10, 25, 50, -1],
+          [10, 25, 50, "All"]
+        ],
+        responsive: true,
+        language: {
+          search: "_INPUT_",
+          searchPlaceholder: "Search records",
+        }
+      });
+
+      var table = $('#datatable').DataTable();
+
+      
     });
   </script>
 </body>

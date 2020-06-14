@@ -1,4 +1,6 @@
 @extends('back.master')
+@section('title','Tableau de bord')
+
 @section('content') 
 
 <div class="row">
@@ -68,6 +70,17 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+ <div class="col-lg-10 offset-lg-1">
+      <div class="panel panel-default">
+          <div class="panel-body">
+              {!! $chart->html() !!}
+          </div>
+      </div>
+  </div>
+</div>
+
 <h3>Manage Listings</h3>
 <br>
 <div class="row">
@@ -189,4 +202,7 @@
     </div>
   </div>
 </div> 
+
+{!! Charts::scripts() !!}
+{!! $chart->script() !!}
 @endsection

@@ -23,5 +23,11 @@ class Payment extends Model
         return $this->belongsTo('App\Inscription','inscription_id');
         
     }
+
+    public function professeurs(){
+
+        return $this->belongsTo('App\Professeur','professeur_id');
+        
+    } 
     
 }

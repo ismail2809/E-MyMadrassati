@@ -23,7 +23,7 @@
               <b>Tarif: </b> {{ $inscription->tarif }}        &nbsp;&nbsp;&nbsp; | &nbsp; &nbsp;&nbsp;
               <b>Reste à payé: </b> {{ ($inscription->tarif - $sum) }}        &nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;&nbsp;
             </span>
-         </div>
+         </div> 
 
       </div>
   </div>
@@ -56,6 +56,28 @@
                 </select>
               </div>
             </div> 
+        </div>
+
+        <div class="row"> 
+           <label class="col-sm-2 col-form-label">Mois</label>
+            <div class="col-sm-10">
+              <div class="form-group select-wizard">
+                <select class="selectpicker" data-size="7" data-style="select-with-transition" name="mois" title="Mois"> 
+                  <option value="1"> Janvier </option>  
+                  <option value="2"> Février </option>  
+                  <option value="3"> Mars </option>  
+                  <option value="4"> Avril </option>  
+                  <option value="5"> Mai </option>  
+                  <option value="6"> Juin </option>  
+                  <option value="7"> Juillet</option>  
+                  <option value="8"> Aout </option>  
+                  <option value="9"> Septembre </option>  
+                  <option value="10"> Octobre </option>  
+                  <option value="11"> Novembre </option>  
+                  <option value="12"> Décembre </option>  
+                </select>
+              </div>
+            </div>
         </div>
 
          <div class="row"> 
@@ -93,7 +115,7 @@
 
      <div class="card-footer">
         <div class="ml-auto">
-          <input type="submit" class="btn btn-info" value="Valider">
+          <input type="submit" class="btn btn-info" value="Valider"  onclick="md.showNotification('bottom','right')">
         </div>
         <div class="clearfix"></div>
     </div>
@@ -102,5 +124,4 @@
   </div>
 </div>
 
-</option>
 @endsection
