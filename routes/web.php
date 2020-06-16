@@ -86,7 +86,7 @@ Route::get('/note/{id}/détail', 'NoteController@show')->name('note_détail');
 Route::get('/note/{id}/list', 'NoteController@list_notes_etudiant')->name('note_list');
 Route::get('/note/{id}/edit','NoteController@edit');
 Route::put('/note/{id}','NoteController@update');
-Route::get('/note/{id}','NoteController@destroy');
+Route::delete('/note/{id}','NoteController@destroy');
 
 Route::get('/notes/categorie', 'NoteController@getCategories');
 Route::get('/notes/etudiant', 'NoteController@getNotesEtudiant');

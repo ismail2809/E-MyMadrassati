@@ -16,40 +16,34 @@
 	        <!--        Here you can write extra buttons/actions for the toolbar              -->
 	      </div>
 	      <div class="material-datatables">
-            <button type="button" rel="tooltip" class="btn btn-success btn-round" title="Ajouter une note">
-              <i class="material-icons">add</i>
-            </button>
 
 	        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
 	          <thead>
-	            <tr>
-	              <th style="color: red">Numero d'inscription</th>
+	            <tr> 
 	              <th style="color: red">Prénom Nom</th>
+	              <th style="color: red">Professeur</th>
 	              <th style="color: red">Classe</th>
 	              <th style="color: red">Matière</th>   
+	              <th style="color: red">Note</th>   
+	              <th style="color: red">Observation</th>   
 	              <th style="color: red">Année</th>  
 	              <th style="color: red" class="disabled-sorting text-center">Actions</th>
 	              <th style="color: red" class="disabled-sorting text-center"></th>
 	            </tr>
 	          </thead> 
 	          <tbody>
-	           	@if(isset($result['etudiants']['user_id']))
-              		@php
-              		$user = App\User::where('id',$result['etudiants']['user_id'])->first();
-                	@endphp
 		            <tr>
- 		              <td>{{ $user->prenom }} {{ $user->nom }}</td>
+ 		              <td>{{ $result['etudiants']['users']['prenom'] }} {{ $result['etudiants']['users']['nom'] }}</td>
+ 		              <td>{{ $result['professeurs']['users']['prenom'] }} {{ $result['professeurs']['users']['nom'] }}</td>
 		              <td>{{ $result['classes']['titre'] }}</td>
+		              <td>{{ $result['matieres']['titre'] }}</td>
+		              <td>{{ $result['note'] }}</td>
+		              <td>{{ $result['observation'] }}</td>
  		              <td>{{ $result['années']['titre'] }}</td> 
 		              <td class="td-actions text-right">
-		              	<a href="{{ route('note_add')}}"  class="btn btn-warning btn-round" title="Ajouter note"><i class="material-icons">add</i></a> 
+		              	<a href="{{ url('note/'.$result['id'].'/edit') }}"  class="btn btn-warning btn-round" title="Modifier"><i class="material-icons">edit</i></a> 
 		              </td>
-		              <td class="td-actions text-right">
-		              	<a href="{{ url('note/'.$result['id'].'/détail') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
-		              </td>
-		            </tr>    
-	            	@endif
-	                                
+		            </tr>    	                                
 	          </tbody>
 	        </table>
 	      </div>

@@ -19,34 +19,29 @@
 
 	        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
 	          <thead> 
-	            <tr>
-	              <th style="color: red">N°</th>
+	            <tr> 
 	              <th style="color: red">Numero d'inscription</th>
 	              <th style="color: red">Prénom Nom</th>
 	              <th style="color: red">Classe</th>
 	              <th style="color: red">Matière</th>   	               
 	              <th style="color: red">Notes </th>   
 	              <th style="color: red">Année</th>  
-	              <th style="color: red" class="disabled-sorting text-center" colspan="2">Actions</th>
+	              <th style="color: red" class="disabled-sorting text-center">Actions</th>
 	            </tr>
  
 	          </thead> 
 	          <tbody>
 				
 				@foreach($results['note'] as $key => $result) 
-		            <tr>
-		              <td>{{ $key +1 }}</td>
+		            <tr> 
  		              <td>{{ $results['inscription']['num_inscription'] }}</td>
  		              <td>{{ $results['user']['prenom'] }} {{ $results['user']['nom'] }}</td>
 		              <td>{{ $results['inscription']['classes']['titre'] }}</td> 					
  		              <td>{{ $results['matiere']['titre'] }}</td> 					
  		              <td>{{ $result['note'] }}</td>  		              
- 		              <td>{{ $results['inscription']['années']['titre'] }}</td>
+ 		              <td>{{ $results['inscription']['années']['titre'] }}</td> 
 		              <td class="td-actions text-right">
-		              	<a href="{{ route('note_add')}}"  class="btn btn-warning btn-round" title="Ajouter note"><i class="material-icons">add</i></a> 
-		              </td>
-		              <td class="td-actions text-right">
-		              	<a href="{{ url('note/'.$results['inscription']['id'].'/détail') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
+		              	<a href="{{ url('note/'.$result['id'].'/détail') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
 		              </td>
 		            </tr>    
 				@endforeach	                                

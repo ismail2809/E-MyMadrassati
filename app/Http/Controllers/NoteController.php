@@ -41,7 +41,7 @@ class NoteController extends Controller
     public function list_notes_etudiant($id,Request $request){
         //dd($id);
         $data    = $request->session()->get('data');
-        $result1 = json_decode(Inscription::find($id)->with('années','classes','etudiants')->first(),true);
+        $result1 = json_decode(Inscription::where('etudiant_id',$id)->with('années','classes','etudiants')->first(),true);
         $result2 = json_decode(Note::where('etudiant_id',$result1['etudiant_id'])->where('matiere_id',$data['matiere']['id'])->where('classe_id',$data['classe'])->where('annee_id',$data['année'])->with('années','classes','etudiants')->get(),true);
         //sdd($result2);
         $user    = json_decode(User::find($result1['etudiants']['user_id']),true);
@@ -52,8 +52,8 @@ class NoteController extends Controller
 
      public function show($id){
 
-        $result = json_decode(Note::find($id)->with('années','classes','etudiants')->first(),true);
-        
+        $result = json_decode(Note::find($id)->with('années','classes','etudiants.users','professeurs.users','matieres')->first(),true);
+        //dd($result);       
         return view('note.show',['result'=>$result]);
     }
 
@@ -61,7 +61,7 @@ class NoteController extends Controller
     {   
         $data = $request->session()->get('data');
         $inscription = json_decode(Inscription::where('classe_id',$data['classe'])->where('annee_id',$data['année'])->with('années','classes','etudiants')->first(),true);
-        dd($data,$inscription);
+        //dd($data,$inscription);
         
         return view('note.addnote',compact('inscription','data'));
     }
@@ -95,7 +95,7 @@ class NoteController extends Controller
         return view('note.edit',['note'=>$note]);
     }
     
-    public function update(Request $request){
+    public function update($id,Request $request){
         
         $note 			 	 = Note::find($id);        
         $note->etudiant_id 	 = $request->input('etudiant_id');                 
@@ -134,7 +134,7 @@ class NoteController extends Controller
      public function getNotesEtudiantEp($id=11,$annee_id=1){
 
         $notes = $this->getNotesEtudiant($id,$annee_id);
-//        dd($notes); 
+        //dd($notes); 
         return view('note.etudiantEp',compact('notes'));
     }
     

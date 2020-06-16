@@ -64,7 +64,7 @@
 						              	<a href="{{ route('note_add')}}"  class="btn btn-warning btn-round" title="Ajouter note"><i class="material-icons">add</i></a> 
 						              </td>
 						              <td class="td-actions text-right">
-						              	<a href="{{ url('note/'.$result['id'].'/détail') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
+						              	<a href="{{ url('note/'.$result['etudiant_id'].'/list') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
 						              </td>
 						            </tr>
 
