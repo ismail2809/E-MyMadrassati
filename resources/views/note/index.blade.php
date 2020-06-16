@@ -13,15 +13,14 @@
 	    </div>
 	    <div class="card-body">
 	      <div class="toolbar">
-	        <!--        Here you can write extra buttons/actions for the toolbar              -->
-	      </div>
+ 	      </div>
 	      <div class="material-datatables"> 
 
 	        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
 	          <thead>
-	               <tr>
-	              <th style="color: red">Numero d'inscription</th>
-	              <th style="color: red">Prénom Nom</th>
+                <tr>
+ 	              <th style="color: red">Prénom Nom</th>
+ 	              <th style="color: red">Professeur</th>
 	              <th style="color: red">Classe</th>
 	              <th style="color: red">Matière</th>   
 	              <th style="color: red">Nbr notes</th>   
@@ -31,53 +30,24 @@
 	            </tr>
 	          </thead> 
 	          <tbody>
-	          	@foreach($notes as $result)
-	          	
-	          		@if(isset($result['etudiants']['user_id']))
-              		@php
-              		$users = App\User::where('id',$result['etudiants']['user_id'])->get();
-                	@endphp
+	          @foreach($notes as $note)
+	          		        
+	            <tr>
+	              <td>{{ $note['etudiants']['users']['prenom']}} {{ $note['etudiants']['users']['nom']}}</td>
+	              <td>{{ $note['professeurs']['users']['prenom']}} {{ $note['professeurs']['users']['nom']}}</td> 
+	              <td>{{ $note['classes']['titre'] }}</td>
+	              <td>{{ $note['matieres']['titre'] }}</td>   
+	              <td>nbr</td> 
+	              <td>{{ $note['années']['titre'] }}</td>
+	              <td class="td-actions text-center">
+	              	<a href="{{ route('note_add')}}"  class="btn btn-warning btn-round" title="Ajouter note"><i class="material-icons">add</i></a> 
+	              </td>
+	              <td class="td-actions text-center">
+	              	<a href="{{ url('note/'.$note['etudiant_id'].'/list') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
+	              </td>
+	            </tr>
 
-                	@if(isset($result['matiere_id']))
-              		@php
-              		$matiere = App\Matiere::where('id',$result['matiere_id'])->first();
-                	@endphp
-			
-                	@php
-					$inscriptions = json_decode(App\Inscription::where('classe_id',$result['classe_id'])->where('annee_id',$result['annee_id'])->with('années','classes','etudiants')->get(),true);
-					@endphp
-
-                	@foreach($users as $user)
-		            	@if($result['etudiants']['user_id'] == $user->id)
-
-		            		@foreach($inscriptions as $inscription)
-		            			@if($result['etudiants']['id'] == $inscription['etudiant_id'] && $result['années']['id'] == $inscription['annee_id'])
-						          
-						            <tr>
-						              <td>{{ $inscription['num_inscription']}}</td>
-						              <td>{{ $user->prenom }} {{ $user->nom }}</td> 
-						              <td>{{ $result['classes']['titre'] }}</td>
-						              <td>{{ $matiere->titre }}</td>   
-						              <td>nbr</td> 
-						              <td>{{ $result['années']['titre'] }}</td>
-						              <td class="td-actions text-right">
-						              	<a href="{{ route('note_add')}}"  class="btn btn-warning btn-round" title="Ajouter note"><i class="material-icons">add</i></a> 
-						              </td>
-						              <td class="td-actions text-right">
-						              	<a href="{{ url('note/'.$result['etudiant_id'].'/list') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
-						              </td>
-						            </tr>
-
-			            		@endif
-			           		@endforeach 
-
-						@endif
-       				@endforeach                    		            
-	            		
-	            	@endif
-	            	@endif
-
-	            @endforeach                    
+	          @endforeach                    
 	          </tbody>
 	        </table>
 	      </div>

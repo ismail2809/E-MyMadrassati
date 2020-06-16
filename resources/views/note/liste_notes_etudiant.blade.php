@@ -30,20 +30,19 @@
 	            </tr>
  
 	          </thead> 
-	          <tbody>
-				
+	          <tbody>				
 				@foreach($results['note'] as $key => $result) 
-		            <tr> 
- 		              <td>{{ $results['inscription']['num_inscription'] }}</td>
- 		              <td>{{ $results['user']['prenom'] }} {{ $results['user']['nom'] }}</td>
-		              <td>{{ $results['inscription']['classes']['titre'] }}</td> 					
- 		              <td>{{ $results['matiere']['titre'] }}</td> 					
- 		              <td>{{ $result['note'] }}</td>  		              
- 		              <td>{{ $results['inscription']['années']['titre'] }}</td> 
-		              <td class="td-actions text-right">
-		              	<a href="{{ url('note/'.$result['id'].'/détail') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
-		              </td>
-		            </tr>    
+	            <tr> 
+	              <td>{{ $results['inscription']['num_inscription'] }}</td>
+	              <td>{{ $result['etudiants']['users']['prenom'] }} {{ $result['etudiants']['users']['nom'] }}</td>
+	              <td>{{ $result['classes']['titre'] }}</td> 					
+	              <td>{{ $result['matieres']['titre'] }}</td> 					
+	              <td>{{ $result['note'] }}</td>  		              
+	              <td>{{ $result['années']['titre'] }}</td> 
+             	  <td class="td-actions text-center">
+	              	<a href="{{ url('note/'.$result['id'].'/détail') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
+	              </td>
+	            </tr>    
 				@endforeach	                                
 	          </tbody>
 	        </table>

@@ -39,13 +39,12 @@ class NoteController extends Controller
     }
 
     public function list_notes_etudiant($id,Request $request){
-        //dd($id);
+
         $data    = $request->session()->get('data');
-        $result1 = json_decode(Inscription::where('etudiant_id',$id)->with('années','classes','etudiants')->first(),true);
-        $result2 = json_decode(Note::where('etudiant_id',$result1['etudiant_id'])->where('matiere_id',$data['matiere']['id'])->where('classe_id',$data['classe'])->where('annee_id',$data['année'])->with('années','classes','etudiants')->get(),true);
-        //sdd($result2);
-        $user    = json_decode(User::find($result1['etudiants']['user_id']),true);
-        $results = ['inscription' => $result1 ,'user' => $user ,'note' => $result2 , 'matiere' => $data['matiere']];
+        $inscription = json_decode(Inscription::where('etudiant_id',$id)->first(),true);
+        $notes   = json_decode(Note::where('etudiant_id',$inscription['etudiant_id'])->where('matiere_id',$data['matiere']['id'])->where('classe_id',$data['classe'])->where('annee_id',$data['année'])->with('années','classes','etudiants.users','matieres')->get(),true);
+
+        $results = ['inscription' => $inscription ,'note' => $notes];
         //dd($results);
          return view('note.liste_notes_etudiant',['results'=>$results]);    
     }
@@ -68,8 +67,7 @@ class NoteController extends Controller
 
 	public function index(){
 
-        $notes =  json_decode(Note::with('années','classes','etudiants')->get(),true);        
-        
+        $notes =  json_decode(Note::with('années','classes','etudiants.users','professeurs.users','matieres')->get(),true);        
         return view('note.index',compact('notes'));
     }
 

@@ -40,7 +40,7 @@
 		              <td>{{ $result['note'] }}</td>
 		              <td>{{ $result['observation'] }}</td>
  		              <td>{{ $result['années']['titre'] }}</td> 
-		              <td class="td-actions text-right">
+		              <td class="td-actions text-center">
 		              	<a href="{{ url('note/'.$result['id'].'/edit') }}"  class="btn btn-warning btn-round" title="Modifier"><i class="material-icons">edit</i></a> 
 		              </td>
 		            </tr>    	                                
