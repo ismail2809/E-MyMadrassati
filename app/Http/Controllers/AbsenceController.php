@@ -36,7 +36,9 @@ class AbsenceController extends Controller
     {   //dd($request); 
    		$etudiants 	  = $request->etudiant_id;              
    		$absences     = $request->absence;              
-   		$observations = $request->observation;  
+        $observations = $request->observation;  
+        $debutseance  = $request->debutseance;  
+   		$finseance    = $request->finseance;  
 		$matiere_id   = $request->matiere_id;	
 		$année_id     = $request->année_id;
 		$classe_id    = $request->classe_id;
@@ -55,8 +57,8 @@ class AbsenceController extends Controller
 		        $absence->classe_id 	= $request->input('classe_id');
 		        $absence->absence 		= $absences[$key];  
 		        $absence->observation 	= $observations[$key];
-		        $absence->debutseance 	= $request->input('debutseance'); 
-		        $absence->finseance 	= $request->input('finseance'); 
+		        $absence->debutseance 	= $debutseance[$key]; 
+		        $absence->finseance 	= $finseance[$key]; 
 		        $absence->save(); 
 		    }
     	}

@@ -7,7 +7,7 @@ use App\Categorie;
 
 class CategorieController extends Controller
 {
-      public function index()
+    public function index()
     {
         $categories = Categorie::all();
         return view('categorie.index',compact('categories'));
@@ -51,5 +51,19 @@ class CategorieController extends Controller
 
         return redirect('/categories')->with('success','Catégorie est supprimée avec succès');
         
+    }
+
+    public function mesCatégories(){
+        $categories = Categorie::all();
+
+        return view('categorie.mesCatégories');
+    }
+
+    public function mesClasses(){
+        return view('categorie.mesClasses');
+    }
+
+     public function mesEtudiants(){
+        return view('categorie.mesEtudiants');
     }
 }

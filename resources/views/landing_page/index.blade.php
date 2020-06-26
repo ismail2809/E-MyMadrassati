@@ -334,20 +334,20 @@
                 <br>
                     <form method="post" action="#">
                       <div class="row">
-                        <div class="col-lg-7 offset-3"> 
-                            <input type="text" class="form-control" placeholder="Votre Nom"> <br>
+                        <div class="col-lg-8 offset-2"> 
+                            <input type="text" class="form-control" placeholder="Nom Complet"> <br>
                         </div>
-                        <div class="col-lg-7 offset-3"> 
-                            <input type="numero" class="form-control" placeholder="Votre Téléphone"> <br>
+                        <div class="col-lg-8 offset-2"> 
+                            <input type="email" class="form-control" placeholder="Email"> <br>
+                        </div>                         
+                        <div class="col-lg-8 offset-2"> 
+                            <input type="numero" class="form-control" placeholder="Téléphone"> <br>
                         </div> 
-                        <div class="col-lg-7 offset-3"> 
-                            <input type="email" class="form-control" placeholder="Votre Email"> <br>
+                        <div class="col-lg-8 offset-2"> 
+                            <textarea class="form-control" rows="8" placeholder="Message"></textarea><br>
                         </div> 
-                        <div class="col-lg-7 offset-3"> 
-                            <textarea class="form-control" rows="8" placeholder="Votre Message"></textarea><br>
-                        </div> 
-                        <div class="col-lg-2 offset-3"> 
-                            <button class="main-btn">Souscrire</button>
+                        <div class="col-lg-8 offset-2"> 
+                            <button class="main-btn">Envoyer</button>
                         </div> 
                        </div> 
                     </form>  

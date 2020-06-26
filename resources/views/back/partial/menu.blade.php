@@ -58,6 +58,13 @@
           </li> 
 
           <li class="nav-item ">
+            <a class="nav-link" href="{{ url('/mesCatégories') }}">
+              <i class="material-icons">folder_shared</i>
+              <p> Mes Classes </p>
+            </a>
+          </li> 
+
+          <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#a1">
               <i class="material-icons">create_new_folder</i>
               <p> Inscriptions

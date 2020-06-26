@@ -2,12 +2,7 @@
 @section('title','Nouveau payment')
 
 @section('content') 
-
-@if(isset($inscription['etudiants']['user_id']))
-  @php
-   $user = App\User::where('id',$inscription['etudiants']['user_id'])->first();
-  @endphp
-@endif
+ 
 <div class="row">
 
 <div class="col-md-12">
@@ -17,9 +12,9 @@
     </button>
     <span style="text-align: center;">
       <b>Numéro d'inscription : </b> {{ $inscription['num_inscription']}}   &nbsp;&nbsp; | &nbsp;&nbsp; 
-      <b>Prénom Nom : </b>           {{ $user->prenom }} {{ $user->nom }} &nbsp;&nbsp;| &nbsp;&nbsp; 
+      <b>Prénom Nom : </b>           {{ $inscription['etudiants']['users']['prenom'] }} {{ $inscription['etudiants']['users']['nom'] }} &nbsp;&nbsp;| &nbsp;&nbsp; 
       <b>Classe:</b>                 {{ $inscription['classes']['titre'] }} &nbsp;&nbsp;| &nbsp;&nbsp; 
-      <b>Matière: </b>               {{  $data['matiere']['titre']  }} &nbsp;&nbsp;| &nbsp;&nbsp; 
+      <b>Matière: </b>               {{ $data['matiere']['titre']  }} &nbsp;&nbsp;| &nbsp;&nbsp; 
       <b>Année:</b>                  {{ $inscription['années']['titre'] }}   &nbsp;&nbsp; &nbsp;&nbsp;  
     </span>
  </div>
@@ -36,19 +31,19 @@
     <form action="{{url('/note')}}" method="post" class="form-horizontal">
             {{ csrf_field() }}
 
-      <div class="card-body">
-           <div class="row">
+    <div class="card-body">
+          <div class="row">
             <label class="col-sm-2 col-form-label">Note</label>
-            <div class="col-sm-10">
-              <div class="form-group">
-                <input type="number" class="form-control" name="note">
+              <div class="col-sm-8">
+                <div class="form-group">
+                  <input type="number" class="form-control" name="note">
+                </div>
               </div>
-            </div>
           </div>
 
-           <div class="row">
+          <div class="row">
             <label class="col-sm-2 col-form-label">Observation </label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <div class="form-group">
                   <textarea class="form-control" rows="3" name="observation"></textarea>
               </div>
@@ -59,14 +54,14 @@
           <input type="hidden" class="form-control" name="classe_id" value="{{ $data['classe'] }}">
           <input type="hidden" class="form-control" name="annee_id" value="{{ $data['année'] }}">
           <input type="hidden" class="form-control" name="matiere_id" value="{{ $data['matiere']['id'] }}">         
-      </div>
+    </div>
 
-     <div class="card-footer">
+    <div class="card-footer">
         <div class="ml-auto">
           <input type="submit" class="btn btn-next btn-fill btn-info btn-wd" value="Valider">
         </div>
         <div class="clearfix"></div>
-     </div>
+    </div>
 
   </form>
 

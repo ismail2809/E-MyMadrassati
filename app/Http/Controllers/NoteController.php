@@ -38,14 +38,16 @@ class NoteController extends Controller
         return view('note.classe',compact('data' ,'inscription'));
     }
 
-    public function list_notes_etudiant($id,Request $request){
+    public function list_notes_etudiant($id,$matiere_id,Request $request){
 
         $data    = $request->session()->get('data');
         $inscription = json_decode(Inscription::where('etudiant_id',$id)->first(),true);
-        $notes   = json_decode(Note::where('etudiant_id',$inscription['etudiant_id'])->where('matiere_id',$data['matiere']['id'])->where('classe_id',$data['classe'])->where('annee_id',$data['année'])->with('années','classes','etudiants.users','matieres')->get(),true);
+        $notes   = json_decode(Note::where('etudiant_id',$id)->where('matiere_id',$matiere_id)->
+                                     where('classe_id',$data['classe'])->where('annee_id',$data['année'])->
+                                     with('années','classes','etudiants.users','matieres')->get(),true);
 
         $results = ['inscription' => $inscription ,'note' => $notes];
-        //dd($results);
+        dd($id,$results,$matiere_id,$data['classe'],$data['année']);
          return view('note.liste_notes_etudiant',['results'=>$results]);    
     }
 
@@ -59,16 +61,15 @@ class NoteController extends Controller
     public function form_note(Request $request)
     {   
         $data = $request->session()->get('data');
-        $inscription = json_decode(Inscription::where('classe_id',$data['classe'])->where('annee_id',$data['année'])->with('années','classes','etudiants')->first(),true);
-        //dd($data,$inscription);
+        $inscription = json_decode(Inscription::where('classe_id',$data['classe'])->where('annee_id',$data['année'])->with('années','classes','etudiants.users')->first(),true); 
         
         return view('note.addnote',compact('inscription','data'));
     }
 
 	public function index(){
 
-        $notes =  json_decode(Note::with('années','classes','etudiants.users','professeurs.users','matieres')->get(),true);        
-        return view('note.index',compact('notes'));
+        $notes =  json_decode(Note::with('années','classes','etudiants.users','professeurs.users','matieres')->get(),true);  
+         return view('note.index',compact('notes'));
     }
 
     public function store(Request $request){

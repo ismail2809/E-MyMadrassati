@@ -25,6 +25,9 @@ Route::get('/', function () {
     	return view('landing_page.index');
 });
 
+Route::get('events', 'EventController@index');
+Route::post('event', 'EventCont	roller@store');
+
 //tableau de bord
 Route::get('/dashboard', 'UserController@getUsers');
 
@@ -83,7 +86,7 @@ Route::get('/note/classe', 'NoteController@classe');
 Route::get('/notes', 'NoteController@index');
 Route::get('/note/add', 'NoteController@form_note')->name('note_add');
 Route::get('/note/{id}/détail', 'NoteController@show')->name('note_détail');
-Route::get('/note/{id}/list', 'NoteController@list_notes_etudiant')->name('note_list');
+Route::get('/note/{id}/{matiere_id}/list', 'NoteController@list_notes_etudiant')->name('note_list');
 Route::get('/note/{id}/edit','NoteController@edit');
 Route::put('/note/{id}','NoteController@update');
 Route::delete('/note/{id}','NoteController@destroy');
@@ -107,6 +110,10 @@ Route::put('/annee/{id}','AnnéeController@update');
 Route::delete('/année/{id}','AnnéeController@destroy');
 
 //categorie
+Route::get('/mesCatégories', 'CategorieController@mesCatégories');
+Route::get('/mesClasses', 'CategorieController@mesClasses');
+Route::get('/mesEtudiants', 'CategorieController@mesEtudiants');
+
 Route::get('/categorie/new', 'CategorieController@create');
 Route::get('/categories', 'CategorieController@index');
 Route::get('/categorie/{id}/edit','CategorieController@edit');

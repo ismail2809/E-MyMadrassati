@@ -56,10 +56,10 @@
 	                	</select>
 	                  </td>
 	                  <td>
-	                  	<input type="time" name="debutseance" class="form-control">
+	                  	<input type="time" name="debutseance[]" class="form-control">
 	                  </td>
 	                  <td>
-	                  	<input type="time" name="finseance" class="form-control">
+	                  	<input type="time" name="finseance[]" class="form-control">
 	                  </td> 
 	                  <td class="td-text">
 	                    <textarea class="form-control" rows="2" name="observation[]" placeholder="Ecrire ici votre observation"></textarea>		

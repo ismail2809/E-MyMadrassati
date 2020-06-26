@@ -229,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class
     ],
 
 ];
