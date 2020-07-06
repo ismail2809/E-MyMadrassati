@@ -97,13 +97,7 @@
               </p>
             </a>
             <div class="collapse" id="a2">
-              <ul class="nav"> 
-                <li class="nav-item ">
-                  <a class="nav-link" href="{{ url('/payment/new') }}">
-                    <span class="sidebar-mini"> N </span>
-                    <span class="sidebar-normal"> Nouvelle </span>
-                  </a>
-                </li>
+              <ul class="nav">  
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ url('/payments') }}">
                     <span class="sidebar-mini"> L </span>
@@ -122,13 +116,7 @@
               </p>
             </a>
             <div class="collapse" id="a4">
-              <ul class="nav"> 
-                <li class="nav-item ">
-                  <a class="nav-link" href="{{ url('/absence/new') }}">
-                    <span class="sidebar-mini"> N </span>
-                    <span class="sidebar-normal"> Nouvelle </span>
-                  </a>
-                </li>
+              <ul class="nav">  
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ url('/absences') }}">
                     <span class="sidebar-mini"> L </span>
@@ -148,12 +136,6 @@
             </a>
             <div class="collapse" id="a5">
               <ul class="nav"> 
-                <li class="nav-item ">
-                  <a class="nav-link" href="{{ url('/note/new') }}">
-                    <span class="sidebar-mini"> N </span>
-                    <span class="sidebar-normal"> Nouvelle </span>
-                  </a>
-                </li>
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ url('/notes') }}">
                     <span class="sidebar-mini"> L </span>

@@ -86,11 +86,10 @@ Route::post('/note', 'NoteController@store');
 Route::get('/notes', 'NoteController@index');
 //Route::get('/note/add', 'NoteController@form_note')->name('note_add');
 Route::get('/note/{id}/détail', 'NoteController@show')->name('note_détail');
-Route::get('/note/{id}/{matiere_id}/list', 'NoteController@getListNotesEtudiants')->name('note_list');
+Route::get('/note/{id}/{matiere_id}/list', 'NoteController@getListNotesEtudiants');
 Route::get('/note/{id}/edit','NoteController@edit');
 Route::put('/note/{id}','NoteController@update');
-Route::delete('/note/{id}','NoteController@destroy');
-Route::get('/note/{id}','NoteController@show');
+Route::delete('/note/{id}','NoteController@destroy'); 
 
 Route::get('/notes/categorie', 'NoteController@getCategories');
 Route::get('/notes/etudiant', 'NoteController@getNotesEtudiant');
@@ -116,6 +115,8 @@ Route::get('/categorie/{id_categorie}/classes', 'CategorieController@mesClasses'
 Route::get('/classes/{id_classe}/etudiants', 'CategorieController@mesEtudiants');
 Route::get('/absences/{id_classe}/etudiants', 'CategorieController@absenceEtudiants');
 Route::get('/notes/{id_classe}/etudiants', 'CategorieController@noteEtudiants');
+Route::get('/payments/{id_classe}/etudiants', 'CategorieController@addPaymentEtudiants');
+
 Route::post('/storeNote', 'NoteController@storeNote');
 Route::post('/storeAbsence', 'AbsenceController@storeAbsence');
 Route::get('/liste-des-notes-etudiants', 'NoteController@getListNotesEtudiants');

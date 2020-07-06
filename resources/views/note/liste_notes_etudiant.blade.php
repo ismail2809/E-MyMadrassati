@@ -9,7 +9,7 @@
 	      <div class="card-icon">
 	        <i class="material-icons">assignment</i>
 	      </div>
-	      <h4 class="card-title">Liste des notes étudiant</h4>
+	      <h4 class="card-title">Liste notes des étudiants</h4>
 	    </div>
 	    <div class="card-body">
 	      <div class="toolbar">

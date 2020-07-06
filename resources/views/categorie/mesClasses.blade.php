@@ -36,6 +36,9 @@
                           	  Voir
                           </th>
                           <th>
+                              Payement
+                          </th>
+                          <th>
                             <b>Absence</b>
                           </th>
                           <th>
@@ -61,10 +64,14 @@
                             </td> 
                             <td>
                               {{ $classe['année'] }}
-                            </td> 
+                            </td>
                             <td>
-                              <a href="{{ url('/classes/'.$classe['id_classe'].'/etudiants') }}" class="btn btn-info btn-round"><i class="material-icons">search</i></a>
-                            </td>                             
+                              <a href="{{ url('/classes/'.$classe['id_classe'].'/etudiants') }}" class="btn btn-primary btn-round"><i class="material-icons">search</i></a>
+                            </td>  
+                            <td>
+                              <a href="{{ url('/payments/'.$classe['id_classe'].'/etudiants') }}" class="btn btn-info btn-round" title="cliquez ici  pour marquer l'absence">
+                                <i class="material-icons">euro</i></a>
+                            </td>                            
                             <td>
                               <a href="{{ url('/absences/'.$classe['id_classe'].'/etudiants') }}" class="btn btn-warning btn-round" title="cliquez ici  pour marquer l'absence">
                                 <i class="material-icons">access_time</i></a>

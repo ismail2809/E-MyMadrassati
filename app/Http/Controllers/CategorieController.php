@@ -116,4 +116,14 @@ class CategorieController extends Controller
  
         return view('categorie.note',compact('matieres','etudiants'));
     }
+    
+    public function addPaymentEtudiants($id){ 
+         $etudiants = json_decode(Inscription::where('classe_id',$id)->where('annee_id',1)
+                                    ->with('categories','classes','années','niveaus','etudiants.users')->get(),true);
+        //dd($etudiants);
+
+
+        return view('categorie.addPaymentEtudiants',compact('etudiants'));
+    }
+    
 }
