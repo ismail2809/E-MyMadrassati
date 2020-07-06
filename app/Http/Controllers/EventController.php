@@ -22,7 +22,8 @@ class EventController extends Controller{
 
             $events[] = Calendar::event(
                 $value->title,
-                true,
+                false,
+                new \DateTime($value->date),
                 $value->start_date,
                 $value->end_date
             );
@@ -32,17 +33,19 @@ class EventController extends Controller{
        }
 
       $calendar = Calendar::addEvents($events); 
+      $années = Année::all();
+      $matieres = Matiere::all(); 
+      $classes = Classe::all();
 
-        $années = Année::all();
-        $matieres = Matiere::all(); 
-        $classes = Classe::all();
       return view('mycalender', compact('calendar','années','classes','matieres'));
 
     }
+
     public function store(Request $request){
             //dd($request);
             $event              = new Event();
             $event->title       = $request->title;                         
+            $event->date       = $request->date;                         
             $event->start_date  = $request->start_date;
             $event->end_date    = $request->end_date;
             $event->save();

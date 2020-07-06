@@ -29,6 +29,7 @@
               <form method="post" action="{{url('/event')}}">
               {{ csrf_field() }} 
               <input type="text" class="form-control" name="title">
+              <input type="date" class="form-control" name="date">
               <input type="time" class="form-control" name="start_date">
               <input type="time" class="form-control" name="end_date">
               <button type="submit" class="btn btn-info">Finish</button> 

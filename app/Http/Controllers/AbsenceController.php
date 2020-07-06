@@ -40,21 +40,20 @@ class AbsenceController extends Controller
         $debutseance  = $request->debutseance;  
    		$finseance    = $request->finseance;  
 		$matiere_id   = $request->matiere_id;	
-		$année_id     = $request->année_id;
-		$classe_id    = $request->classe_id;
-
-        //dd($request,$observations,$absences);  
+		$année        = $request->année_id;
+        $classe       = $request->classe_id;
+		$professeur   = $request->professeur_id;
         
         foreach($etudiants as $key => $etudiant){ 
-	        
+
 	         if(isset($absences[$key])){       
 
 		        $absence = new Absence(); 
 		        $absence->etudiant_id   = $etudiant;    
-		        $absence->professeur_id = $request->input('professeur_id');    
+		        $absence->professeur_id = $professeur[$key];    
 		        $absence->matiere_id	= $request->input('matiere_id');    
-		        $absence->annee_id 		= $request->input('année_id');        
-		        $absence->classe_id 	= $request->input('classe_id');
+		        $absence->annee_id 		= $année[$key];        
+		        $absence->classe_id 	= $classe[$key];
 		        $absence->absence 		= $absences[$key];  
 		        $absence->observation 	= $observations[$key];
 		        $absence->debutseance 	= $debutseance[$key]; 
@@ -63,7 +62,6 @@ class AbsenceController extends Controller
 		    }
     	}
 
-       // dd($absence);
     	return redirect('/dashboard');
     }    
 
@@ -142,4 +140,37 @@ class AbsenceController extends Controller
         //dd($absences[0]); 
         return view('absence.etudiantEp',compact('absences'));
     }
+
+    public function storeAbsence(Request $request)
+    {   //dd($request); 
+        $etudiants    = $request->etudiant_id;              
+        $absences     = $request->absence;              
+        $observations = $request->observation;  
+        $debutseance  = $request->debutseance;  
+        $finseance    = $request->finseance;  
+        $matiere_id   = $request->matiere_id;   
+        $année        = $request->année_id;
+        $classe       = $request->classe_id;
+        $professeur   = $request->professeur_id;
+        
+        foreach($etudiants as $key => $etudiant){ 
+
+             if(isset($absences[$key])){       
+
+                $absence = new Absence(); 
+                $absence->etudiant_id   = $etudiant;    
+                $absence->professeur_id = $professeur[$key];    
+                $absence->matiere_id    = $request->input('matiere_id');    
+                $absence->annee_id      = $année[$key];        
+                $absence->classe_id     = $classe[$key];
+                $absence->absence       = $absences[$key];  
+                $absence->observation   = $observations[$key];
+                $absence->debutseance   = $debutseance[$key]; 
+                $absence->finseance     = $finseance[$key]; 
+                $absence->save(); 
+            }
+        }
+
+        return back()->with('success','Note est bien ajouté !');
+    }   
 }

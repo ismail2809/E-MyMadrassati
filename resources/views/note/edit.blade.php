@@ -1,20 +1,17 @@
 @extends('back.master') 
-@section('title','Nouveau payment')
+@section('title','Modification Note')
 
 @section('content') 
 <div class="row">
 
 <div class="col-md-12">
- <div class="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <i class="material-icons">close</i>
-    </button>
-    <span style="text-align: center;">
-      <b>Numéro d'inscription : </b> be123456 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-      <b>Prénom Nom : </b> Ismail ABOUNASR    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-      <b>Matière: </b> Mathématique          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-      <b>Année:</b> 2019/2020  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-    </span>
+ <div class="alert"  style="text-align: center;"> 
+    <div class="row">
+      <div class="col-md-3">Etudiant : <b> {{ $note['etudiants']['users']['prenom'] }} &nbsp; {{ $note['etudiants']['users']['nom'] }} </b></div>
+      <div class="col-md-3">Proffesseur : <b> {{ $note['professeurs']['users']['prenom'] }} &nbsp; {{ $note['professeurs']['users']['nom'] }} </b></div>
+      <div class="col-md-3">Classe : <b> {{  $note['classes']['titre']  }} </b></div>
+      <div class="col-md-3">Année :<b> {{ $note['années']['titre'] }} </b></div>
+    </div>
  </div>
 </div>
 
@@ -26,37 +23,50 @@
       </div>
     </div>
     <div class="card-body">
-      <form method="get" action="https://demos.creative-tim.com/" class="form-horizontal">         
-       
-         <div class="row">
-          <label class="col-sm-2 col-form-label">Numéro d'inscription</label>
-          <div class="col-sm-10">
-            <div class="form-group">
-              <input type="text" class="form-control" readonly="true" name="id_inscription" value="id_inscription">
-            </div>
-          </div>
-        </div>
+      <form method="post" action="{{url('/note/'.$note['id'])}}" class="form-horizontal">         
+        {{ csrf_field() }}   
 
-         <div class="row"> 
+        <div class="row"> 
             <label class="col-sm-2 col-form-label">Année Scholaire</label>
             <div class="col-sm-10">
               <div class="form-group select-wizard">
                 <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Année" name="Année_id"> 
-                  <option value="Albania"> 2019 / 2020 </option>
-                  <option value="Algeria"> 2020 / 2021 </option> 
+                   @foreach($années as $année)
+                    @if($note['annee_id'] == $année->id)
+                          <option value="{{ $année->id }}" selected >{{ $année->titre }}</option>
+                      @else
+                          <option value="{{ $année->id }}" >{{ $année->titre }}</option>
+                    @endif
+                  @endforeach
                 </select>
               </div>
             </div> 
         </div>
+
+        <div class="row"> 
+           <label class="col-sm-2 col-form-label">Proffesseur</label>
+            <div class="col-sm-10">
+              <div class="form-group select-wizard">
+                 <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Choisir Classe" name="classe_id">
+                        <option value="{{ $note['professeur_id'] }}" selected> {{  $note['professeurs']['users']['prenom']  }}         
+                        {{  $note['professeurs']['users']['nom']  }}             
+                  </select>
+              </div>
+            </div> 
+        </div> 
 
          <div class="row"> 
            <label class="col-sm-2 col-form-label">Classe</label>
             <div class="col-sm-10">
               <div class="form-group select-wizard">
                  <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Choisir Classe" name="classe_id">
-                    <option disabled selected>Choisir Classe</option>
-                    <option value="1">Classe1</option>
-                    <option value="2">Classe2<option> 
+                    @foreach($classes as $classe)
+                      @if($note['classe_id'] == $classe->id)
+                          <option value="{{ $note['classes']['id'] }}" selected> {{  $note['classes']['titre']  }}</option>
+                        @else
+                            <option value="{{ $note['classes']['id'] }}" > {{  $note['classes']['titre']  }}</option>                     
+                      @endif
+                    @endforeach
                   </select>
               </div>
             </div> 
@@ -67,9 +77,13 @@
             <div class="col-sm-10">
               <div class="form-group select-wizard">
                  <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Choisir Matière">
-                    <option disabled selected>Choisir Matière</option>
-                    <option value="1">Math</option>
-                    <option value="2">php<option> 
+                  @foreach($matieres as $matiere)
+                      @if($note['matiere_id'] == $matiere->id)
+                        <option value="{{ $note['matieres']['id'] }}" selected> {{  $note['matieres']['titre'] }} </option>
+                      @else
+                        <option value="{{ $note['matieres']['id'] }}"> {{  $note['matieres']['titre'] }} </option>
+                      @endif
+                  @endforeach
                   </select>
               </div>
             </div> 
@@ -79,7 +93,7 @@
           <label class="col-sm-2 col-form-label">Note</label>
           <div class="col-sm-10">
             <div class="form-group">
-              <input type="number" class="form-control" name="note">
+              <input type="number" class="form-control" name="note" value="{{  $note['note']  }}">
             </div>
           </div>
         </div>
@@ -88,15 +102,12 @@
           <label class="col-sm-2 col-form-label">Observation </label>
           <div class="col-sm-10">
             <div class="form-group">
-                <textarea class="form-control" rows="3" name="observation"></textarea>
+                <textarea class="form-control" rows="3" name="observation" >{{  $note['observation'] }}</textarea>
             </div>
           </div>
         </div> 
-        <input type="hidden" class="form-control" name="etudiant_id">
-        <input type="hidden" class="form-control" name="professeur_id">
-        <input type="hidden" class="form-control" name="etudiant_id">
-        
-      </form>
+        <input type="hidden" class="form-control" name="etudiant_id" value="{{ $note['etudiant_id'] }}">
+       </form>
     </div>
 
    <div class="card-footer">

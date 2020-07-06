@@ -23,10 +23,10 @@
  	              <th style="color: red">Professeur</th>
 	              <th style="color: red">Classe</th>
 	              <th style="color: red">Matière</th>   
-	              <th style="color: red">Nbr notes</th>   
+	              <th style="color: red">Note</th>   
+	              <th style="color: red">Observation</th>   
 	              <th style="color: red">Année</th>  
-	              <th style="color: red" class="disabled-sorting text-center">Actions</th>
-	              <th style="color: red" class="disabled-sorting text-center"></th>
+	              <th style="color: red" class="disabled-sorting text-center">Actions</th> 
 	            </tr>
 	          </thead> 
 	          <tbody>
@@ -37,13 +37,11 @@
 	              <td>{{ $note['professeurs']['users']['prenom']}} {{ $note['professeurs']['users']['nom']}}</td> 
 	              <td>{{ $note['classes']['titre'] }}</td>
 	              <td>{{ $note['matieres']['titre'] }}</td>   
-	              <td>nbr</td> 
-	              <td>{{ $note['années']['titre'] }}</td>
+	              <td>{{ $note['note'] }}</td> 
+	              <td>{{ $note['observation'] }}</td> 
+	              <td>{{ $note['années']['titre'] }}</td> 
 	              <td class="td-actions text-center">
-	              	<a href="{{ route('note_add')}}"  class="btn btn-warning btn-round" title="Ajouter note"><i class="material-icons">add</i></a> 
-	              </td>
-	              <td class="td-actions text-center">
-	              	<a href="{{ url('note/'.$note['etudiant_id'].'/'.$note['matiere_id'].'/list') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
+	              	<a href="{{ url('note/'.$note['etudiant_id'].'/détail') }}"  class="btn btn-info btn-round" title="Détail"><i class="material-icons">remove_red_eye</i></a> 
 	              </td>
 	            </tr>
 

@@ -4,6 +4,40 @@
 @section('content') 
 
 <div class="row">
+
+  @if ($message = Session::get('info'))
+  <div class="alert alert-info col-12 text-center">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="material-icons">close</i>
+      </button>
+      <span><b> {{ $message }} </b></span>
+  </div>
+  @endif
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success col-12 text-center">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="material-icons">close</i>
+      </button>
+      <span><b> {{ $message }} </b></span>
+  </div>
+  @endif
+  @if ($message = Session::get('error'))
+  <div class="alert alert-danger col-12 text-center">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="material-icons">close</i>
+      </button>
+      <span><b> {{ $message }} </b></span>
+  </div>
+  @endif
+  @if ($message = Session::get('warning'))
+  <div class="alert alert-warning col-12 text-center">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="material-icons">close</i>
+      </button>
+      <span><b> {{ $message }} </b></span>
+  </div>
+  @endif 
+
   <div class="col-lg-3 col-md-6 col-sm-6">
     <div class="card card-stats">
       <div class="card-header card-header-warning card-header-icon">

@@ -58,7 +58,7 @@
           </li> 
 
           <li class="nav-item ">
-            <a class="nav-link" href="{{ url('/mesCatégories') }}">
+            <a class="nav-link" href="{{ url('/mesCategories') }}">
               <i class="material-icons">folder_shared</i>
               <p> Mes Classes </p>
             </a>
@@ -141,7 +141,7 @@
 
           <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#a5">
-              <i class="material-icons">note</i>
+              <i class="material-icons">create</i>
               <p> Notes
                 <b class="caret"></b>
               </p>

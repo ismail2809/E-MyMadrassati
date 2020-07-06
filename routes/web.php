@@ -26,7 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('events', 'EventController@index');
-Route::post('event', 'EventCont	roller@store');
+Route::post('event', 'EventController@store');
 
 //tableau de bord
 Route::get('/dashboard', 'UserController@getUsers');
@@ -79,17 +79,18 @@ Route::get('/absences/etudiant', 'AbsenceController@getAbsencesEtudiant');
 Route::get('/absences/etudiants', 'AbsenceController@getAbsencesEtudiantEp');
 
 //notess
-Route::get('/note/new', 'NoteController@create');
-Route::post('/note/search', 'NoteController@form_search');
+//Route::get('/note/new', 'NoteController@create');
+//Route::post('/note/search', 'NoteController@form_search');
 Route::post('/note', 'NoteController@store');
-Route::get('/note/classe', 'NoteController@classe');
+//Route::get('/note/classe', 'NoteController@classe');
 Route::get('/notes', 'NoteController@index');
-Route::get('/note/add', 'NoteController@form_note')->name('note_add');
+//Route::get('/note/add', 'NoteController@form_note')->name('note_add');
 Route::get('/note/{id}/détail', 'NoteController@show')->name('note_détail');
-Route::get('/note/{id}/{matiere_id}/list', 'NoteController@list_notes_etudiant')->name('note_list');
+Route::get('/note/{id}/{matiere_id}/list', 'NoteController@getListNotesEtudiants')->name('note_list');
 Route::get('/note/{id}/edit','NoteController@edit');
 Route::put('/note/{id}','NoteController@update');
 Route::delete('/note/{id}','NoteController@destroy');
+Route::get('/note/{id}','NoteController@show');
 
 Route::get('/notes/categorie', 'NoteController@getCategories');
 Route::get('/notes/etudiant', 'NoteController@getNotesEtudiant');
@@ -110,9 +111,15 @@ Route::put('/annee/{id}','AnnéeController@update');
 Route::delete('/année/{id}','AnnéeController@destroy');
 
 //categorie
-Route::get('/mesCatégories', 'CategorieController@mesCatégories');
-Route::get('/mesClasses', 'CategorieController@mesClasses');
-Route::get('/mesEtudiants', 'CategorieController@mesEtudiants');
+Route::get('/mesCategories', 'CategorieController@mesCatégories');
+Route::get('/categorie/{id_categorie}/classes', 'CategorieController@mesClasses');
+Route::get('/classes/{id_classe}/etudiants', 'CategorieController@mesEtudiants');
+Route::get('/absences/{id_classe}/etudiants', 'CategorieController@absenceEtudiants');
+Route::get('/notes/{id_classe}/etudiants', 'CategorieController@noteEtudiants');
+Route::post('/storeNote', 'NoteController@storeNote');
+Route::post('/storeAbsence', 'AbsenceController@storeAbsence');
+Route::get('/liste-des-notes-etudiants', 'NoteController@getListNotesEtudiants');
+
 
 Route::get('/categorie/new', 'CategorieController@create');
 Route::get('/categories', 'CategorieController@index');

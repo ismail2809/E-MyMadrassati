@@ -16,64 +16,67 @@
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table">
-                        <thead class=" text-primary">
+                        <thead class="text-danger" style="text-align: center;">
+                          <th>
+                            Catégorie
+                          </th>
+                          <th>
+                            Niveau
+                          </th>
                           <th>
                             Classe
                           </th>
                           <th>
-                            Nbr etudiants
+                            Nombre des etudiants
                           </th>
                           <th>
                             Année scolaire
                           </th> 
                           <th>
-                          	
+                          	  Voir
                           </th>
+                          <th>
+                            <b>Absence</b>
+                          </th>
+                          <th>
+                            <b>Note</b>
+                          </th>                
                         </thead>
                         <tbody>
-
-                          <tr>
+                       
+                        @foreach($classes as $classe)
+                       
+                          <tr style="text-align: center;">                          	
                             <td>
-                              Classe 1
+                              {{ $classe['categories'] }} 
                             </td>
                             <td>
-                              32
+                              {{ $classe['niveau'] }}
                             </td>
                             <td>
-                              2019 / 2020
+                              {{ $classe['classe'] }}
+                            </td>
+                            <td>
+                              {{ $classe['nbrEtudiants'] }}                            	
                             </td> 
-
                             <td>
-                              <a href="#" class="btn btn-info">Voir</a>
+                              {{ $classe['année'] }}
                             </td> 
-
-                          </tr>
-
-
-                          <tr>
                             <td>
-                              Classe 2
+                              <a href="{{ url('/classes/'.$classe['id_classe'].'/etudiants') }}" class="btn btn-info btn-round"><i class="material-icons">search</i></a>
+                            </td>                             
+                            <td>
+                              <a href="{{ url('/absences/'.$classe['id_classe'].'/etudiants') }}" class="btn btn-warning btn-round" title="cliquez ici  pour marquer l'absence">
+                                <i class="material-icons">access_time</i></a>
                             </td>
                             <td>
-                              32
-                            </td>
-                            <td>
-                              2019 / 2020
-                            </td> 
-                          </tr>
-
-
-                          <tr>
-                            <td>
-                              Classe 3
-                            </td>
-                            <td>
-                              32
-                            </td>
-                            <td>
-                              2019 / 2020
+                              <a href="{{url('/notes/'.$classe['id_classe'].'/etudiants')}}" class="btn btn-success btn-round" title="cliquez ici pour ajouter une note">
+                                <i class="material-icons">create</i></a>
                             </td> 
                           </tr>
+
+                        @endforeach
+
                         </tbody>
                       </table>
                     </div>
