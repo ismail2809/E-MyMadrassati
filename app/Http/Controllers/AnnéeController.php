@@ -7,6 +7,11 @@ use App\Année;
 
 class AnnéeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
    public function index()
     {
         $années = Année::all();

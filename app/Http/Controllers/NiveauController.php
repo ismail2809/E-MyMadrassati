@@ -7,6 +7,11 @@ use App\Niveau;
 
 class NiveauController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function create(){
 
     	return view('niveau.new'); 

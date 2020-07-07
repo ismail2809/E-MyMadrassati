@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Session;
 
 class NoteController extends Controller
 {  
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function show($id){
 
         $result = json_decode(Note::find($id)->with('années','classes','etudiants.users','professeurs.users','matieres')->first(),true);

@@ -16,10 +16,10 @@
 }); */
 Route::get('/emploi', 'UserController@event');
 
-Auth::routes();
+ 
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 //landing page
 Route::get('/', function () {
     	return view('landing_page.index');
@@ -41,6 +41,14 @@ Route::get('/profile', 'UserController@profile');
 Route::post('/updateprofile', 'UserController@update_profile');
 Route::get('/editprofile', 'UserController@editprofile');
 
+//etudiants
+Route::get('/etudiants', 'EtudiantController@index');
+Route::get('/etudiant/{id}/détail', 'EtudiantController@show');
+
+//professeurs
+Route::get('/professeurs', 'ProfesseurController@index');
+Route::get('/professeur/{id}/détail', 'ProfesseurController@show');
+
 //inscriptions
 Route::get('/inscription/new', 'InscriptionController@create'); 
 Route::get('/inscriptions', 'InscriptionController@index');
@@ -61,7 +69,7 @@ Route::get('/payments', 'PaymentController@index');
 Route::post('/payment', 'PaymentController@store');
 Route::get('/payment/{id}/edit','PaymentController@edit');
 Route::put('/payment/{id}','PaymentController@update');
-Route::get('/payment/{id}','PaymentController@destroy');
+Route::delete('/payment/{id}','PaymentController@destroy');
 Route::get('/payments/etudiants', 'PaymentController@getPaymentsEtudiantEp');
 
 //absences
@@ -73,7 +81,7 @@ Route::get('/absences', 'AbsenceController@index');
 Route::get('/absence/{id}/détail', 'AbsenceController@show');
 Route::get('/absence/{id}/edit','AbsenceController@edit');
 Route::put('/absence/{id}','AbsenceController@update');
-Route::get('/absence/{id}','AbsenceController@destroy');
+Route::delete('/absence/{id}','AbsenceController@destroy');
 
 Route::get('/absences/etudiant', 'AbsenceController@getAbsencesEtudiant');
 Route::get('/absences/etudiants', 'AbsenceController@getAbsencesEtudiantEp');
@@ -153,9 +161,10 @@ Route::get('/matiere/{id}/edit','MatiereController@edit');
 Route::put('/matiere/{id}','MatiereController@update');
 Route::delete('/matiere/{id}','MatiereController@destroy');
 
-
+//cour
 Route::get('/cour/new', 'CourController@create');
 Route::get('/cours', 'CourController@index');
 Route::get('/cour/{id}/edit','CourController@edit');
 Route::put('/cour/{id}','CourController@update');
 Route::get('/cour/{id}','CourController@destroy');
+

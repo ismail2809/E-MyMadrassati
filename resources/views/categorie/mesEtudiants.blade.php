@@ -32,8 +32,28 @@
                   Classe
                 </th>
                 <th>
+                  Tarif
+                </th>
+                <th>
+                  Modalité
+                </th>                
+                <th>
+                  Transport
+                </th>
+                <th>
+                  Cantine
+                </th>                
+                <th>
+                  Description
+                </th>
+                <th>
                   Année scolaire
+                </th>                 
+                <th> 
+                  Action
                 </th> 
+                <th>                  
+                </th>
               </thead>
               <tbody>
               @foreach($etudiants as $etudiant)
@@ -51,8 +71,31 @@
                     {{ $etudiant['classes']['titre'] }}
                   </td>
                   <td>
+                    {{ $etudiant['tarif'] }}
+                  </td>
+                  <td>
+                    {{ $etudiant['modalité'] }}
+                  </td>
+                  <td>
+                    {{ $etudiant['transport'] }}
+                  </td>
+                  <td>
+                    {{ $etudiant['cantine'] }}
+                  </td>
+                  <td>
+                    {{ $etudiant['description'] }}
+                  </td>
+                  <td>
                     {{ $etudiant['années']['titre'] }}
-                  </td>  
+                  </td> 
+                  <td class="td-actions text-right">
+                  <a href="{{url('/inscription/'.$etudiant['id'])}}" type="button" class="btn btn-info btn-round" title="détail"><i class="material-icons">remove_red_eye</i> 
+                    </a> 
+                  </td>
+                  <td class="td-actions text-right">
+                    <a href="{{url('/inscription/'.$etudiant['id'].'/edit')}}" type="button" class="btn btn-warning btn-round" title="Modifier"><i class="material-icons">edit</i> 
+                    </a> 
+                  </td>
 
                 </tr>
                 @endforeach

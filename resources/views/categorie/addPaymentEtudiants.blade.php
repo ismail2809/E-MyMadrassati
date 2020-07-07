@@ -1,5 +1,5 @@
 @extends('back.master')
-@section('title','Absence des étudiants')
+@section('title','Payment des étudiants')
 
 @section('content') 
  
@@ -45,7 +45,7 @@
           <div class="card-icon">
             <i class="material-icons">assignment</i>
           </div>
-          <h4 class="card-title ">Absence des étudiants</h4>
+          <h4 class="card-title ">Payment des étudiants</h4>
         </div>
 
         <div class="card-body">
@@ -62,13 +62,16 @@
                   Nom complet
                 </th>
                 <th>
-                  MOIS
+                  TARIF
                 </th>
                 <th>
                   VERSEMENT
                 </th>
                 <th>
-                   MODE
+                  MOIS
+                </th>
+                <th>
+                   TYPE
                 </th>
                 <th>
                    DESCRIPTION
@@ -85,6 +88,12 @@
                   <td class="td-name">                     
                       {{ $etudiant['etudiants']['users']['prenom'] }} {{ $etudiant['etudiants']['users']['nom'] }} 
                       <input type="hidden" name="etudiant_id[]" value="{{ $etudiant['etudiant_id'] }}">                
+                  </td>                  
+                  <td>
+                    <p> {{ $etudiant['tarif'] }} </p>
+                  </td>
+                  <td>
+                    <input type="number" name="versement[]" class="form-control">
                   </td>
                   <td>
                     <select class="selectpicker" data-size="7" data-style="select-with-transition" name="mois" title="Mois"> 
@@ -103,14 +112,12 @@
                     </select>
                   </td>
                   <td>
-                    <input type="number" name="versement[]" class="form-control">
-                  </td>
-                  <td>
-                    <select class="selectpicker" data-style="select-with-transition" name="modalité" title="Modalité"> 
-                          <option value="Mensuel"> Mensuel </option>
-                          <option value="Trimestriel"> Trimestriel </option> 
-                          <option value="Annuel"> Annuel </option> 
-                    </select>
+                    <select class="selectpicker" data-size="7" data-style="select-with-transition" name="mode[]" title="Mode payment">
+                    <option value="Liquide">Liquide</option>
+                    <option value="Cheque">Chèque</option> 
+                    <option value="Carte_bancaire">Carte bancaire</option> 
+                  </select>
+              </div>
                   </td> 
                   <td class="td-text">
                     <textarea class="form-control" rows="2" name="observation[]" placeholder="Ecrire ici votre observation"></textarea>   
@@ -124,7 +131,7 @@
               @endforeach
 
               <tr>
-                <td colspan="2"></td>
+                <td colspan="3"></td>
                 <td colspan="2"></td>
                 <td colspan="2" class="text-right">
                   <button type="submit" class="btn btn-info btn-round">Valider <i class="material-icons">done</i></button>

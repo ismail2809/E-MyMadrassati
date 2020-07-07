@@ -32,11 +32,14 @@
                     <span class="sidebar-normal"> Edit Profile </span>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span class="sidebar-mini"> S </span>
-                    <span class="sidebar-normal"> Settings </span>
-                  </a>
+                <li class="nav-item"> 
+                  <a class="nav-link" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <span class="sidebar-mini"> L </span>
+                    <span class="sidebar-normal"> Logout </span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
                 </li>
               </ul>
             </div>
@@ -328,19 +331,19 @@
                   <div class="collapse" id="a3">
                     <ul class="nav"> 
                       <li class="nav-item ">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ url('/etudiants') }}">
                           <span class="sidebar-mini"> E </span>
                           <span class="sidebar-normal"> Etudiants </span>
                         </a>
                       </li> 
                       <li class="nav-item ">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ url('/professeurs') }}">
                           <span class="sidebar-mini"> P </span>
                           <span class="sidebar-normal"> Professeurs </span>
                         </a>
                       </li> 
                       <li class="nav-item ">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ url('/admins') }}">
                           <span class="sidebar-mini"> A </span>
                           <span class="sidebar-normal"> Admin </span>
                         </a>

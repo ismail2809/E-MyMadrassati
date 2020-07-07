@@ -12,6 +12,11 @@ use App\Absence;
 
 class AbsenceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
 	public function create()
     {         
         $matieres = Matiere::all(); 

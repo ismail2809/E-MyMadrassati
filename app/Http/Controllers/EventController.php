@@ -24,6 +24,7 @@ class EventController extends Controller{
                 $value->title,
                 false,
                 new \DateTime($value->date),
+                new \DateTime($value->date), 
                 $value->start_date,
                 $value->end_date
             );
@@ -45,7 +46,7 @@ class EventController extends Controller{
             //dd($request);
             $event              = new Event();
             $event->title       = $request->title;                         
-            $event->date       = $request->date;                         
+            $event->date        = $request->date;                         
             $event->start_date  = $request->start_date;
             $event->end_date    = $request->end_date;
             $event->save();

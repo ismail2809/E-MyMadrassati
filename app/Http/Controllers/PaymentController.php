@@ -9,15 +9,21 @@ use App\Année;
 
 class PaymentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
-        $payments = Payment::with('etudiants','inscriptions')->get();
+        $payments = Payment::with('etudiants.users','inscriptions','années')->get();
+        //dd($payments);
         return view('payment.index',compact('payments'));
     }
 
     public function show($id){
 
-        $payment = Payment::where('id',$id)->with('etudiants','inscriptions')->first();
+        $payment = Payment::where('id',$id)->with('etudiants.users','inscriptions','années')->first();
         return view('payment.show',['payment'=>$payment]);
     }
 

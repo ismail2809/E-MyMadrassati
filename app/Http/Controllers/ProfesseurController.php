@@ -7,10 +7,23 @@ use Illuminate\Http\Request;
 
 class ProfesseurController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $professeurs = Professeur::all();
         return view('professeur.index',compact('professeurs'));
+    }
+
+    public function show($id)
+    {        
+        $professeur = Professeur::where('id',$id)->with('users')->first();
+        //dd($professeur);
+
+        return view('professeur.show',compact('professeur'));
     }
 
     public function create(){

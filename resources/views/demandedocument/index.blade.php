@@ -37,7 +37,7 @@
 	              <td>{{ $demande->description }}</td> 
 	              <td>{{ isset($demande->created_at)?$demande->created_at->format('d-m-Y'):$demande->created_at }}</td> 
 	              <td class="td-actions text-center">
-	               	<a href="{{url('/demande/'.$demande->id.'/détail')}}"  class="btn btn-info btn-round" title="détail"><i class="material-icons">search</i> 
+	               	<a href="{{url('/demande/'.$demande->id.'/détail')}}"  class="btn btn-info btn-round" title="détail"><i class="material-icons">remove_red_eye</i> 
                   	</a> 
                   </td> 
 	            </tr>              

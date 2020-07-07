@@ -66,7 +66,7 @@
                               {{ $classe['année'] }}
                             </td>
                             <td>
-                              <a href="{{ url('/classes/'.$classe['id_classe'].'/etudiants') }}" class="btn btn-primary btn-round"><i class="material-icons">search</i></a>
+                              <a href="{{ url('/classes/'.$classe['id_classe'].'/etudiants') }}" class="btn btn-primary btn-round"><i class="material-icons">remove_red_eye</i></a>
                             </td>  
                             <td>
                               <a href="{{ url('/payments/'.$classe['id_classe'].'/etudiants') }}" class="btn btn-info btn-round" title="cliquez ici  pour marquer l'absence">

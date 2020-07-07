@@ -27,12 +27,13 @@
 	              <th style="color: red"><b>Année</b></th>  
 	              <th style="color: red"><b>Description</b></th>  
 	              <th style="color: red"><b>Création</b></th>   
-	              <th style="color: red" style="text-align: center;"><b>actions</b></th> 
+	              <th style="color: red" style="text-align: right;"><b>actions</b></th> 
+	              <th style="color: red" style="text-align: center;"><b></b></th> 
 	            </tr>
 	          </thead> 
 	          <tbody>
  	            <tr>
-	              <td>{{ $payment->inscriptions->num_inscription }}</td> 
+	              <td>{{ $payment->inscriptions['num_inscription'] }}</td> 
 	              <td>{{ $payment->etudiants->users->prenom }} {{ $payment->etudiants->users->nom }}</td> 
  	              <td>{{ $payment->versement }}</td> 
 	              <td>{{ $payment->mode }}</td> 
@@ -42,7 +43,16 @@
 	              <td class="td-actions text-right">
                   	<a href="{{url('/payment/'.$payment->id.'/edit')}}" type="button" class="btn btn-warning btn-round" title="Modifier"><i class="material-icons">edit</i> 
                   	</a> 
-                  </td> 
+                  </td>                   
+                  <td class="td-actions text-left disabled-sorting">
+                  	 <form action="{{url('/payment/'.$payment->id)}}" method="post">
+	                      {{csrf_field()}}
+	                      {{method_field('DELETE')}}
+	                      <button type="submit"  class="btn btn-danger btn-round" title="Suprimer" style="padding: 6px;">
+	                      <i class="material-icons">close</i>
+	                      </button>
+                     </form>  
+	             </td>   
 	            </tr>              
  	          </tbody>
 	        </table>

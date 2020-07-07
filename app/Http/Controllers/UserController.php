@@ -8,12 +8,18 @@ use App\Etudiant;
 use App\Professeur;
 use Charts;
 use DB;
+use Auth;
 
 class UserController extends Controller
 {   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function profile()
     {   
-        $id =3;        
+        $id = Auth::user()['id'];        
         $etudiant = json_decode(Etudiant::where('user_id',$id)->with('users')->first(),true);
         //dd($etudiant);
         return view('user.profile',compact('etudiant'));
@@ -21,7 +27,7 @@ class UserController extends Controller
 
     public function editprofile()
     {   
-        $id   =1;        
+        $id   = Auth::user()['id'];        
         $user = User::where('id',$id)->first();
 
         if (isset($user) && $user->role == 'etudiant') {
@@ -36,11 +42,9 @@ class UserController extends Controller
 
     public function update_profile(Request $request){
      
-        $id = 1;
+        $id = Auth::user()['id'];
 
-        $profile = User::where('id',$id)->first();   
-
-        $user = User::find($profile->id);        
+        $user = User::find($id);        
         $user->prenom = $request->prenom;
         $user->nom    = $request->nom;
         $user->ddn    = $request->ddn;

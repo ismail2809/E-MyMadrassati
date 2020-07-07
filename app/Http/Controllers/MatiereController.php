@@ -7,6 +7,11 @@ use App\Matiere;
 
 class MatiereController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
       public function index()
     {
         $matieres = Matiere::all();

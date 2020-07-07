@@ -119,7 +119,7 @@
 	              <td>{{ $inscription->années->titre }}</td> 
 	              <td>{{ $inscription->created_at->format('d-m-Y') }}</td> 
 	              <td class="td-actions text-right">
-	               	<a href="{{url('/inscription/'.$inscription->id)}}" type="button" class="btn btn-info btn-round" title="détail"><i class="material-icons">search</i> 
+	               	<a href="{{url('/inscription/'.$inscription->id)}}" type="button" class="btn btn-info btn-round" title="détail"><i class="material-icons">remove_red_eye</i> 
                   	</a> 
                   </td>
                   <td class="td-actions text-center">

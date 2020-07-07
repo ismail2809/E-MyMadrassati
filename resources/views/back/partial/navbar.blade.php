@@ -52,8 +52,13 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                   <a class="dropdown-item" href="{{ url('/profile') }}">Profile</a>
                   <a class="dropdown-item" href="{{ url('/editprofile') }}">Settings</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <div class="dropdown-divider"></div>  
+                  <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    Logout
+                  </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
                 </div>
               </li>
             </ul>

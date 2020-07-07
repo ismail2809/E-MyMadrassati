@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class EtudiantController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,18 +18,16 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        $etudiants = Etudiant::all();
+        $etudiants = Etudiant::with('users')->get();
         return view('etudiant.index',compact('etudiants'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('etudiant.new');        
+    public function show($id)
+    {        
+        $etudiant = Etudiant::where('id',$id)->with('users')->first();
+        //dd($etudiant);
+
+        return view('etudiant.show',compact('etudiant'));
     }
 
     /**
@@ -44,18 +46,7 @@ class EtudiantController extends Controller
         $etudiant->save();
 
         return redirect('/etudiants');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Etudiant  $etudiant
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Etudiant $etudiant)
-    {
-        //
-    }
+    } 
 
     /**
      * Show the form for editing the specified resource.

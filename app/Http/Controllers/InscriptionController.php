@@ -13,9 +13,15 @@ use App\Niveau;
 use App\Payment;  
 use App\Absence;  
 use App\Note;
+use Illuminate\Support\Facades\Hash;
 
 class InscriptionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
 	public function create(){
         $années = Année::all();
         $classes = Classe::all();
@@ -43,6 +49,7 @@ class InscriptionController extends Controller
                     $user->avatar   = $request->avatar->store('avatar');
                 } 
             $user->role     = "etudiant";
+            $user->password = hash::make('abcd1234');
             $user->save();               
             
             $etudiant                    = new Etudiant();                 
@@ -117,6 +124,8 @@ class InscriptionController extends Controller
                     $user->avatar   = $request->avatar->store('avatar');
                 } 
             $user->role     = "etudiant";
+            $user->password = hash::make($request->password);
+
             $user->save();               
              
             $etudiant->user_id           = $user->id;        
