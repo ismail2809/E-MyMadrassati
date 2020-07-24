@@ -23,7 +23,6 @@ class EventController extends Controller{
             $events[] = Calendar::event(
                 $value->title,
                 false,
-                new \DateTime($value->date),
                 new \DateTime($value->date), 
                 $value->start_date,
                 $value->end_date

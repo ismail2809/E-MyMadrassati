@@ -1,7 +1,7 @@
-<!doctype html>
+@extends('back.master')
+@section('title','Profile')
 
-<html lang="en">
-
+@section('content')  
 <head>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -16,41 +16,52 @@
 
 </head>
 
-<body>
-
+ 
 <div class="container">
 
     <div class="panel">
 
-        <div class="panel-heading">
+      <div class="row justify-content-center">
 
-            <div class="row justify-content-center">
+        <form method="post" action="{{url('/event')}}">
+          {{ csrf_field() }} 
 
-              <form method="post" action="{{url('/event')}}">
-              {{ csrf_field() }} 
-              <input type="text" class="form-control" name="title">
-              <input type="date" class="form-control" name="date">
-              <input type="time" class="form-control" name="start_date">
-              <input type="time" class="form-control" name="end_date">
-              <button type="submit" class="btn btn-info">Finish</button> 
-              </form>
+          <div class="col-md-3">
+            <input type="text" class="form-control" name="title">
+          </div>
 
-            </div>            
+          <div class="col-md-3">
+            <input type="date" class="form-control" name="date">
+          </div>
 
-        </div>
+          <div class="col-md-2">
+            <input type="time" class="form-control" name="start_date">
+          </div>
 
-        <div class="panel-body" >
+          <div class="col-md-2">
+            <input type="time" class="form-control" name="end_date">
+          </div>
+          
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-info">Save</button> 
+          </div>
+        
+        </form>
 
-            {!! $calendar->calendar() !!}
+      </div>            
 
-            {!! $calendar->script() !!}
+ 
+      <div class="panel-body" >
 
-        </div>
+          {!! $calendar->calendar() !!}
+
+          {!! $calendar->script() !!}
+
+      </div>
 
     </div>
 
 </div>
-
-</body>
-
-</html>
+ 
+ 
+@endsection

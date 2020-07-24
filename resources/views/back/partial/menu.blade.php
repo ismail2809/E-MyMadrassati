@@ -9,12 +9,12 @@
       <div class="sidebar-wrapper">
         <div class="user">
           <div class="photo">
-            <img src="{{ asset('back/assets/img/faces/avatar.jpg') }}" />
+            <img src="{{ asset('storage/'.Auth::user()->avatar) }}"/>
           </div>
           <div class="user-info">
             <a data-toggle="collapse" href="#collapseExample" class="username">
               <span>
-                Tania Andrew
+                {{ Auth::user()->prenom }} {{ Auth::user()->nom }} 
                 <b class="caret"></b>
               </span>
             </a>

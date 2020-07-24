@@ -60,7 +60,7 @@
       <div class="card card-profile">
         <div class="card-avatar">
           <a href="#pablo">
-            <img class="img" src="{{asset('storage/'.$etudiant['users']['avatar'])}}" />
+            <img class="img" src="{{ asset('storage/'.$etudiant['users']['avatar']) }}" />
           </a>
         </div>
         <div class="card-body">

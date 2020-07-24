@@ -50,7 +50,7 @@
 
         <div class="card-body">
 
-          <form action="{{url('/storeAbsence')}}" method="post">
+          <form action="{{url('/payment')}}" method="post">
               {{ csrf_field() }} 
 
           <div class="table-responsive">
@@ -82,7 +82,7 @@
                 <tr style="text-align: center;">
                   <td>
                     <div class="img-container" style="width: 50px;">
-                      <img src="{{ asset('back/assets/img/product1.jpg') }}" alt="...">
+                      <img src="{{ asset('storage/'.$etudiant['etudiants']['users']['avatar']) }}" alt="...">
                     </div>
                   </td>
                   <td class="td-name">                     
@@ -96,7 +96,7 @@
                     <input type="number" name="versement[]" class="form-control">
                   </td>
                   <td>
-                    <select class="selectpicker" data-size="7" data-style="select-with-transition" name="mois" title="Mois"> 
+                    <select class="selectpicker" data-size="7" data-style="select-with-transition" name="mois[]" title="Mois"> 
                       <option value="1"> Janvier </option>  
                       <option value="2"> Février </option>  
                       <option value="3"> Mars </option>  
@@ -124,8 +124,8 @@
                   </td>  
               </tr>  
 
-              <input type="hidden" name="année_id[]"   value="{{ $etudiant['années']['id'] }}">                      
-              <input type="hidden" name="classe_id[]"  value="{{ $etudiant['classes']['id'] }}">                       
+              <input type="hidden" name="annee_id[]"   value="{{ $etudiant['années']['id'] }}">                      
+              <input type="hidden" name="inscription_id[]"   value="{{ $etudiant['id'] }}">                      
               <input type="hidden" name="professeur_id[]"  value="1">
 
               @endforeach

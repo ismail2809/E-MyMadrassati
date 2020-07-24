@@ -19,10 +19,8 @@
 	      <div class="material-datatables">
 	           <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
 	          <thead>
-	            <tr>
- 	              <th style="color: red"><b>Nom complet</b></th> 
-	              <th style="color: red"><b>Email</b></th>
-	              <th style="color: red"><b>Tél</b></th>
+	            <tr style="text-align: center;">
+ 	              <th style="color: red"><b>Nom complet</b></th>  
 	              <th style="color: red"><b>Date naissance</b></th>
 	              <th style="color: red"><b>Lieu naissance</b></th>
 	              <th style="color: red"><b>Sexe</b></th>
@@ -34,10 +32,8 @@
 	            </tr>
 	          </thead> 
 	          <tbody>
- 	            <tr>
- 	              <td>{{ $professeur->users->prenom }} {{ $professeur->users->nom }}</td> 
- 	              <td>{{ $professeur->users->email }}</td> 
-	              <td>{{ $professeur->users->tel}}</td> 
+ 	            <tr style="text-align: center;">
+ 	              <td>{{ $professeur->users->prenom }} {{ $professeur->users->nom }}</td>  
 	              <td>{{ $professeur->users->ddn }}</td> 
 	              <td>{{ $professeur->users->lieu_naissance }}</td> 
 	              <td>{{ $professeur->users->sexe }}</td> 

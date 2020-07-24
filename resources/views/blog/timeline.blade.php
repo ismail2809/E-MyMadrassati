@@ -2,7 +2,7 @@
 @section('title','Fil d\'actualité')
 @section('content')
 
-<div class="row"> 
+<div class="row justify-content-center"> 
 <div class="col-md-12">
   <div class="card card-timeline card-plain">
     <div class="card-header text-center">
@@ -10,19 +10,17 @@
           <form method="post" action="{{url('/timeline')}}" class="form-horizontal">     
           {{ csrf_field() }} 
 
-               <div class="row"> 
+               <div class="row justify-content-center"> 
                   <div class="col-sm-12">
                     <div class="form-group">
                         <textarea class="form-control" rows="5  " name="description" placeholder="Exprimez-vous ..."></textarea>
                     </div>
                    </div>
-                   <div class="col-sm-2 offset-10">
-                      <div class="ml-auto">
-                        <input type="button" class="btn btn-round btn-info" value="Publier">
-                      </div>
-                      <div class="clearfix"></div>
-                  </div>
-                </div>
+                   <div class="ml-auto">
+                    <input type="button" class="btn btn-round btn-info" value="Publier">
+                    </div>
+                   <div class="clearfix"></div>
+                 </div>
           </form>
        </h3>
     </div>

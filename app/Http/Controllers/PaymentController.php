@@ -44,19 +44,31 @@ class PaymentController extends Controller
     }
 
     public function store(Request $request){
-        //dd($request);
-        $payment                  = new Payment();  
-        $payment->etudiant_id     = $request->etudiant_id;
-        $payment->annee_id        = $request->annee_id;
-        $payment->inscription_id  = $request->inscription_id;   
-        $payment->mois            = $request->mois;   
-        $payment->versement       = $request->versement;
-        $payment->mode            = $request->mode;
-        $payment->description     = $request->description;
+        //dd($request); 
+        $etudiants    = $request->etudiant_id;  
+        $inscription   = $request->inscription_id;        
+        $année        = $request->annee_id;
+        $versement    = $request->versement;    
+        $mois         = $request->mois;   
+        $mode         = $request->mode;         
+        $descriptions = $request->description; 
         
-        $payment->save();
+        foreach($etudiants as $key => $etudiant){ 
 
-        return redirect('/payments')->with('success','Payment est bien ajouté !');
+            if(isset($versement[$key])){       
+                $payment                 = new Payment(); 
+                $payment->etudiant_id    = $etudiant;    
+                $payment->inscription_id = $inscription[$key];    
+                $payment->annee_id       = $année[$key];        
+                $payment->versement      = $versement[$key];
+                $payment->mois           = $mois[$key]; 
+                $payment->mode           = $mode[$key]; 
+                $payment->description    = $descriptions[$key];
+                $payment->save(); 
+            }
+        }        
+         
+        return back()->with('success','Payment est bien ajouté !');
     }
 
     public function edit($id){
@@ -82,7 +94,8 @@ class PaymentController extends Controller
         $payment->description     = $request->description;        
         $payment->save();
 
-        return redirect('/payments')->with('warning','Payement est modifié avec succès');
+        return redirect()->to('inscription/'.$request->inscription_id)->with('warning','Payement est modifié avec succès');
+
     }
 
     public function destroy(Request $request,$id){

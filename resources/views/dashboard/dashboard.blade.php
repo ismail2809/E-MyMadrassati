@@ -42,10 +42,10 @@
     <div class="card card-stats">
       <div class="card-header card-header-warning card-header-icon">
         <div class="card-icon">
-          <i class="material-icons">weekend</i>
+          <i class="material-icons">contact_mail</i>
         </div>
-        <p class="card-category">Bookings</p>
-        <h3 class="card-title">184</h3>
+        <p class="card-category">Inscriptions / etudiants</p>
+        <h3 class="card-title">{{ $nb_etudiants }}</h3>
       </div>
       <div class="card-footer">
         <div class="stats">
@@ -59,10 +59,10 @@
     <div class="card card-stats">
       <div class="card-header card-header-rose card-header-icon">
         <div class="card-icon">
-          <i class="material-icons">store</i>
+          <i class="material-icons">card_travel</i>
         </div>
-        <p class="card-category">Website Visits</p>
-        <h3 class="card-title">75.521</h3>
+        <p class="card-category">Professeurs</p>
+        <h3 class="card-title">{{ $professeurs }}</h3>
       </div>
       <div class="card-footer">
         <div class="stats">
@@ -77,8 +77,8 @@
         <div class="card-icon">
           <i class="material-icons">equalizer</i>
         </div>
-        <p class="card-category">Revenue</p>
-        <h3 class="card-title">$34,245</h3>
+        <p class="card-category">Payments de l'année</p>
+        <h3 class="card-title">$ {{ $payments }}</h3>
       </div>
       <div class="card-footer">
         <div class="stats">
@@ -91,7 +91,7 @@
     <div class="card card-stats">
       <div class="card-header card-header-info card-header-icon">
         <div class="card-icon">
-          <i class="material-icons">contact_mail</i>
+          <i class="material-icons">event</i>
         </div>
         <p class="card-category">Followers</p>
         <h3 class="card-title">+245</h3>

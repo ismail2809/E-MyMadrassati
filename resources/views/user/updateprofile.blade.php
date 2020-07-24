@@ -168,7 +168,7 @@
 		  <h4 class="title text-center">Photo de profil</h4>
 		  <div class="fileinput fileinput-new text-center" data-provides="fileinput" style="display: block;">
 		    <div class="fileinput-new thumbnail">
-		      <img src="{{ asset('back/assets/img/placeholder.jpg') }}" alt="...">
+		      <img src="{{ asset('storage/'.$data['users']['avatar']) }}" alt="...">
 		    </div>
 		    <div class="fileinput-preview fileinput-exists thumbnail"></div>
 		    <div>

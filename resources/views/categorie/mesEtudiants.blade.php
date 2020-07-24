@@ -20,6 +20,8 @@
             <table class="table">
               <thead class="text-danger" style="text-align: center;">
                 <th>
+                </th>
+                <th>
                   Nom complet
                 </th>
                 <th>
@@ -58,6 +60,11 @@
               <tbody>
               @foreach($etudiants as $etudiant)
                 <tr style="text-align: center;">
+                  <td>
+                    <div class="img-container" style="width: 50px;">
+                      <img src="{{ asset('storage/'.$etudiant['etudiants']['users']['avatar']) }}" alt="...">
+                    </div>
+                  </td>
                   <td>
                   {{ $etudiant['etudiants']['users']['prenom'] }} {{ $etudiant['etudiants']['users']['nom'] }}                               
                   </td>

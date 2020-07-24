@@ -69,7 +69,8 @@ class CategorieController extends Controller
 
     public function mesClasses($id){
 
-        $annee_id = 1;
+        $annee_id = Session::get('année');
+        //$annee_id = 1;
         $inscriptions = json_decode(Inscription::select('classe_id','niveau_id','categorie_id','annee_id')->where('categorie_id','=',$id)->where('annee_id','=',$annee_id)->with('categories','classes','années','niveaus')->groupBy('classe_id')->get(),true);
 
         $classes = array();
@@ -93,11 +94,11 @@ class CategorieController extends Controller
         return view('categorie.mesClasses',compact('classes'));
     }
 
-     public function mesEtudiants($id){ 
+     public function mesEtudiants($id){
 
-        $etudiants = json_decode(Inscription::where('classe_id',$id)->where('annee_id',1)
+        $annee_id = Session::get('année');
+        $etudiants = json_decode(Inscription::where('classe_id',$id)->where('annee_id',$annee_id)
                                     ->with('categories','classes','années','niveaus','etudiants.users')->get(),true);
-
         // Session::forget('etudiants');
         // Session::push('etudiants',$etudiants);
 
@@ -106,8 +107,10 @@ class CategorieController extends Controller
 
     public function absenceEtudiants($id){        
 
+        $annee_id = Session::get('année');
+
         $matieres  = Matiere::all(); 
-        $etudiants = json_decode(Inscription::where('classe_id',$id)->where('annee_id',1)
+        $etudiants = json_decode(Inscription::where('classe_id',$id)->where('annee_id',$annee_id)
                                     ->with('categories','classes','années','niveaus','etudiants.users')->get(),true);
 
         return view('categorie.absence',compact('matieres','etudiants'));
@@ -115,18 +118,20 @@ class CategorieController extends Controller
 
     public function noteEtudiants($id){
 
+        $annee_id = Session::get('année');
         $matieres  = Matiere::all(); 
-        $etudiants = json_decode(Inscription::where('classe_id',$id)->where('annee_id',1)
+        $etudiants = json_decode(Inscription::where('classe_id',$id)->where('annee_id',$annee_id)
                                     ->with('categories','classes','années','niveaus','etudiants.users')->get(),true);
- 
+        
         return view('categorie.note',compact('matieres','etudiants'));
     }
     
     public function addPaymentEtudiants($id){ 
-         $etudiants = json_decode(Inscription::where('classe_id',$id)->where('annee_id',1)
+        
+        $annee_id = Session::get('année');
+        $etudiants = json_decode(Inscription::where('classe_id',$id)->where('annee_id',$annee_id)
                                     ->with('categories','classes','années','niveaus','etudiants.users')->get(),true);
         //dd($etudiants);
-
 
         return view('categorie.addPaymentEtudiants',compact('etudiants'));
     }

@@ -91,7 +91,7 @@
                 <tr style="text-align: center;">
                   <td>
                     <div class="img-container" style="width: 50px;">
-                      <img src="{{ asset('back/assets/img/product1.jpg') }}" alt="...">
+                      <img src="{{ asset('storage/'.$etudiant['etudiants']['users']['avatar']) }}" alt="...">
                     </div>
                   </td>
                   <td class="td-name">                     

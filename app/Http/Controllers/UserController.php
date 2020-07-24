@@ -89,20 +89,6 @@ class UserController extends Controller
         return back();
     }
 
-    public function getUsers()
-    {
-        $users = User::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
-                    ->get();
-        $chart = Charts::database($users, 'bar', 'highcharts')
-                  ->title("Monthly new Register Users")
-                  ->elementLabel("Total Users")
-                  ->dimensions(1000, 500)
-                  ->responsive(false)
-                  ->groupByMonth(date('Y'), true);
-                  
-        return view('dashboard.dashboard',compact('chart'));
-    }
-
     public function event(){
         $events = [];
 

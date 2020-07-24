@@ -67,7 +67,7 @@ class InscriptionController extends Controller
         $inscription->niveau_id       = $request->niveau_id;  
         $inscription->categorie_id    = $request->categorie_id;  
 		$inscription->classe_id       = $request->classe_id;	
-		$inscription->annee_id 	      = 1;  
+		$inscription->annee_id 	      = $request->année_id;  
 
  		$inscription->tarif           = $request->tarif;       
         $inscription->modalité        = $request->modalité;               
@@ -287,14 +287,14 @@ class InscriptionController extends Controller
 
         $historiquePayements = json_decode(Payment::where('inscription_id',$inscription['id'])
                                                 ->where('annee_id',$inscription['annee_id'])->get(),true);
-
+        /*
         $historiqueAbsences = json_decode(Absence::where('annee_id',$inscription['annee_id'])
                                                 ->where('etudiant_id',$inscription['etudiant_id'])
                                                 ->where('classe_id',$inscription['classe_id'])->with('matieres','professeurs.users')->get(),true);
         $historiqueNotes = json_decode(Note::where('annee_id',$inscription['annee_id'])
                                                 ->where('etudiant_id',$inscription['etudiant_id'])
                                                 ->where('classe_id',$inscription['classe_id'])->with('classes','matieres','professeurs.users')->get(),true);
- 
+        */
         $sum_payement = Payment::where('inscription_id','=',$id)
                                ->where('annee_id','=',$inscription['annee_id'])
                                ->where('etudiant_id','=',$inscription['etudiant_id'])->sum('versement');
@@ -307,8 +307,8 @@ class InscriptionController extends Controller
         $detail['niveau']= $niveau;                               
         $detail['classe']= $classe;  
         $detail['historiquePayements']= $historiquePayements;  
-        $detail['historiqueAbsences']= $historiqueAbsences;  
-        $detail['historiqueNotes']= $historiqueNotes;  
+        //$detail['historiqueAbsences']= $historiqueAbsences;  
+        //$detail['historiqueNotes']= $historiqueNotes;  
         $detail['sum_payement']= $sum_payement;  
 
         return $detail; 

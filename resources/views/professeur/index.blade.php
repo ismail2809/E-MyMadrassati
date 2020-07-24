@@ -1,5 +1,5 @@
 @extends('back.master') 
-@section('title','Lise des professeurs')
+@section('title','Liste des professeurs')
 
 @section('content') 
 
@@ -42,7 +42,7 @@
 	      <div class="card-icon">
 	        <i class="material-icons">assignment</i>
 	      </div>
-	      <h4 class="card-title">Lise des Etudiants</h4>
+	      <h4 class="card-title">Liste des professeurs</h4>
 	    </div>
 	    <div class="card-body">
 	      <div class="toolbar">

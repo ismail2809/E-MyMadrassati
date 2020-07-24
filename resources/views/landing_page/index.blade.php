@@ -229,12 +229,9 @@
                             <h3 class="title">Administration</h3>
                         </div> <!-- section title -->
                         <p class="text">Gestion du dossier de l'élève</p>
-                        <p class="text">Gestion du payment</p>
+                        <p class="text">Gestion des payments</p>
                         <p class="text">Gestion des professeurs</p>
-                        <p class="text">Gestion des emplois du temps et des cours</p>
-                        <p class="text">Gestion des absences et retards</p>
-                        <p class="text">Gestion des notes</p>
-                        <p class="text">Gestion les payments</p>
+                        <p class="text">Gestion des emplois du temps, notes et absences</p>
                         <p class="text">Consultation les messages des parents</p>                        
                      </div> <!-- about content -->
                 </div>
@@ -323,7 +320,7 @@
     <footer id="footer" class="footer-area pt-120">
         <div class="container">
             <div class="subscribe-area wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-lg-12">
                         <div class="subscribe-content mt-45">
                             <h2 class="subscribe-title" style="text-align: center;">CONTACTEZ-NOUS</h2>
@@ -333,20 +330,20 @@
                 <br>
                 <br>
                     <form method="post" action="#">
-                      <div class="row">
-                        <div class="col-lg-8 offset-2"> 
+                      <div class="row justify-content-center">
+                        <div class="col-lg-12"> 
                             <input type="text" class="form-control" placeholder="Nom Complet"> <br>
                         </div>
-                        <div class="col-lg-8 offset-2"> 
+                        <div class="col-lg-12"> 
                             <input type="email" class="form-control" placeholder="Email"> <br>
                         </div>                         
-                        <div class="col-lg-8 offset-2"> 
+                        <div class="col-lg-12"> 
                             <input type="numero" class="form-control" placeholder="Téléphone"> <br>
                         </div> 
-                        <div class="col-lg-8 offset-2"> 
+                        <div class="col-lg-12"> 
                             <textarea class="form-control" rows="8" placeholder="Message"></textarea><br>
                         </div> 
-                        <div class="col-lg-8 offset-2"> 
+                        <div class="col-lg-12"> 
                             <button class="main-btn">Envoyer</button>
                         </div> 
                        </div> 

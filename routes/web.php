@@ -16,6 +16,8 @@
 }); */
 Route::get('/emploi', 'UserController@event');
 
+Route::get('/sessions/{id}', 'HomeController@putAnnee');
+
  
 Auth::routes(['register' => false]);
 
@@ -29,7 +31,7 @@ Route::get('events', 'EventController@index');
 Route::post('event', 'EventController@store');
 
 //tableau de bord
-Route::get('/dashboard', 'UserController@getUsers');
+Route::get('/dashboard', 'DashboardController@index');
 
 //timeline
 Route::get('/timeline', 'BlogController@index');
@@ -104,7 +106,6 @@ Route::get('/notes/etudiant', 'NoteController@getNotesEtudiant');
 Route::get('/notes/etudiants', 'NoteController@getNotesEtudiantEp');
 
 //demande document
-
 Route::get('/demandedocument/nouvelle', 'DemandedocumentController@create');
 Route::post('/demandedocument', 'DemandedocumentController@store');
 Route::get('/demandedocuments', 'DemandedocumentController@index');
