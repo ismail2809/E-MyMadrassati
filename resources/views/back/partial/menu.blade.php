@@ -25,7 +25,7 @@
                     <span class="sidebar-mini"> MP </span>
                     <span class="sidebar-normal"> Mon Profile </span>
                   </a>
-                </li>
+                </li> 
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url('/editprofile') }}">
                     <span class="sidebar-mini"> EP </span>

@@ -127,7 +127,7 @@
       </div>
       <div class="card-body"> 
         <h4 class="card-title">
-          <a href="#pablo"> Crèche </a>
+          <a href="#pablo"> Emploi du temps </a>
         </h4> 
       </div> 
     </div>
@@ -141,7 +141,7 @@
       </div>
       <div class="card-body"> 
         <h4 class="card-title">
-          <a href="#pablo"> Primaire </a>
+          <a href="#pablo"> Absences </a>
         </h4> 
       </div> 
     </div>
@@ -155,7 +155,7 @@
       </div>
       <div class="card-body"> 
         <h4 class="card-title">
-          <a href="#pablo"> Collège </a>
+          <a href="#pablo"> Notes </a>
         </h4> 
       </div> 
     </div>
@@ -169,7 +169,7 @@
       </div>
       <div class="card-body"> 
         <h4 class="card-title">
-          <a href="#pablo"> Lycée </a>
+          <a href="#pablo"> Demande document </a>
         </h4> 
       </div> 
     </div>
