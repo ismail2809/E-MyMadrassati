@@ -84,7 +84,7 @@
   <script src="{{ asset('back/assets/js/material-dashboard.min1c51.js?v=2.1.2') }}" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! --> 
   <script src="{{ asset('back/assets/demo/demo.js') }}"></script>
-
+ 
   <script>
     $(document).ready(function() {
       $().ready(function() {

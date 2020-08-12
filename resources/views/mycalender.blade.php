@@ -1,67 +1,85 @@
 @extends('back.master')
-@section('title','Profile')
+@section('title','Emploi du temps')
 
 @section('content')  
 <head>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
-
 </head>
 
  
-<div class="container">
+<div class="container" style="background-color: white">
 
-    <div class="panel">
+  <div class="panel">
 
-      <div class="row justify-content-center">
+    <form method="post" action="{{url('/event')}}">
+    {{ csrf_field() }} 
 
-        <form method="post" action="{{url('/event')}}">
-          {{ csrf_field() }} 
-
-          <div class="col-md-3">
-            <input type="text" class="form-control" name="title">
-          </div>
+      <div class="row">      
 
           <div class="col-md-3">
-            <input type="date" class="form-control" name="date">
+            <select class="selectpicker" data-size="7" data-style="select-with-transition" name="matiere"
+             title="Matière"> 
+              @foreach($matieres as $matiere)
+                  <option value="{{ $matiere->titre }}"> {{ $matiere->titre}} </option> 
+              @endforeach 
+            </select>
           </div>
 
-          <div class="col-md-2">
-            <input type="time" class="form-control" name="start_date">
+          <div class="col-md-3">
+            <select class="selectpicker" data-size="7" data-style="select-with-transition" name="classe" 
+              title="Classe"> 
+               @foreach($classes as $classe)
+              <option value="{{ $classe->titre }}"> {{ $classe->titre}} </option> 
+              @endforeach 
+            </select>
           </div>
 
-          <div class="col-md-2">
-            <input type="time" class="form-control" name="end_date">
+          <div class="col-md-3">
+              <select class="selectpicker" data-size="7" data-style="select-with-transition" name="professeur"
+              title="Professeur"> 
+               @foreach($professeurs as $professeur)
+                  <option value="{{ $professeur->users->prenom}} {{ $professeur->users->nom}}"> {{ $professeur->users->prenom}} {{ $professeur->users->nom}} </option> 
+                 @endforeach 
+              </select>
+          </div>          
+
+          <div class="col-md-3">
+              <input type="date" class="form-control" name="start_date">
           </div>
-          
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-info">Save</button> 
-          </div>
-        
-        </form>
-
-      </div>            
-
- 
-      <div class="panel-body" >
-
-          {!! $calendar->calendar() !!}
-
-          {!! $calendar->script() !!}
-
-      </div>
-
     </div>
 
+    <div class="row"> 
+
+          <div class="col-md-2">
+              <input type="time" class="form-control" name="heure_debut">
+          </div> 
+
+          <div class="col-md-2">
+              <input type="time" class="form-control" name="heure_fin">
+          </div> 
+
+          <div class="col-md-1">
+              <button type="submit" class="btn btn-rounded btn-info"><i class="material-icons">check</i></button> 
+          </div>
+      
+      </div> 
+
+    </form>
+
+  </div>            
+
+ 
+  <div class="card card-calendar">
+
+    {!! $calendar->calendar() !!}
+
+  </div> 
+ 
 </div>
  
+{!! $calendar->script() !!} 
+
  
+
 @endsection
