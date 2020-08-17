@@ -19,8 +19,8 @@
  
 </head>
 
-<body class=""> 
-  <div class="wrapper ">
+<body> 
+  <div class="wrapper">
    
       @include('back.partial.menu')          
 

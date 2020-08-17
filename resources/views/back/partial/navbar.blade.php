@@ -20,7 +20,7 @@
             <ul class="navbar-nav">
               <li class="nav-item"> 
                 <div class="dropdown">                
-                  <button class="dropdown-toggle btn btn-default btn-round btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="dropdown-toggle btn btn-round btn-block" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: transparent;color: black;box-shadow: none;">
                     Année unniversitaire
                   </button>
                 
